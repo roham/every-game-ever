@@ -769,6 +769,7 @@ def cmd_build(args, log=print):
 
 def cmd_check(args, log=print):
     import duckdb
+    import pandas as pd
     con = duckdb.connect()
     con.execute(f"CREATE VIEW flow AS SELECT * FROM read_parquet('{FLOW_DIR}/*.parquet')")
     games_t = con.execute("SELECT * FROM read_parquet('" + str(DATA / "games.parquet") + "')").fetchdf()
@@ -778,7 +779,7 @@ def cmd_check(args, log=print):
     mism = 0
     checked = 0
     for _, g in sample.iterrows():
-        if g.get("home_score") is None:
+        if pd.isna(g.get("home_score")):
             continue  # flow-incomplete games carry no claimed final
         last = con.execute("SELECT home_score, away_score FROM flow WHERE game_id = ? "
                            "ORDER BY seq DESC LIMIT 1", [g["game_id"]]).fetchone()
