@@ -24,14 +24,9 @@ TICK_SECONDS=60
 MID_HOURS=12
 BUDGET_HOURS_OVERRIDE=""   # set e.g. "6" for tests
 
-log() { echo "$(date -u +%FT%TZ) $*" >> "$LOG"; }
+log() { echo "$(date -u +%FT%TZ) $*" >> "$LOG"; echo "$*"; }
 
-py() { python3 - "$@"; }
-
-read_state() { py <<'PY'
-import json, sys
-print(json.dumps(json.load(open(sys.argv[1]))))
-PY "$STATE"; }
+read_state() { python3 -c 'import json, sys; print(json.dumps(json.load(open(sys.argv[1]))))' "$STATE"; }
 
 # --- init -----------------------------------------------------------------
 if [ ! -f "$STATE" ]; then

@@ -6,16 +6,28 @@
   "heartbeat_ts": null,
   "stall_count": 0,
   "resume_spawns": 0,
-  "budget_hours": 24,
-  "started_at": null,
-  "budget_end_at": null,
+  "budget_hours": 24.0,
+  "started_at": 1786083996.613266,
+  "budget_end_at": 1786170396.613266,
   "mid_report_written": false,
   "final_report_written": false,
   "phases": {
-    "P1": {"status": "pending", "note": "dataset pipeline"},
-    "P2": {"status": "pending", "note": "win-probability + precedents"},
-    "P3": {"status": "pending", "note": "web client"},
-    "P4": {"status": "pending", "note": "public release + deploy"}
+    "P1": {
+      "status": "pending",
+      "note": "dataset pipeline"
+    },
+    "P2": {
+      "status": "pending",
+      "note": "win-probability + precedents"
+    },
+    "P3": {
+      "status": "pending",
+      "note": "web client"
+    },
+    "P4": {
+      "status": "pending",
+      "note": "public release + deploy"
+    }
   },
   "last_event": "state initialized"
 }

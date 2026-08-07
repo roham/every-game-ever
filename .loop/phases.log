@@ -1,1 +1,7 @@
 2026-08-07T06:25:32Z loop scaffolded (engine + specs P1-P4 + design)
+2026-08-07T06:26:36Z budget initialized: 86400 seconds
+2026-08-07T06:26:36Z SUPERVISOR UP pid=29715
+2026-08-07T06:27:29Z SUPERVISOR UP pid=30756
+2026-08-07T06:28:03Z SUPERVISOR UP pid=31445
+2026-08-07T06:28:45Z SUPERVISOR UP pid=32236
+2026-08-07T06:28:53Z supervisor live (pid detached, budget 24h)
