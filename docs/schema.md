@@ -44,8 +44,10 @@ avg_attendance, ev (flow events), games_with_pbp (flow presence).
 
 ## wp.parquet — empirical win probability
 
-era × period × sec_bucket(24s) × margin_bucket(±30): `n`, `wins`,
-`prob_home`, `inherited` (era | era-all | global — small-sample fills).
+era × period × sec_bucket(24s) × margin_bucket (3-point windows,
+clipped ±30): `n_raw`, `n`, `wins`, `prob_home`, `inherited`
+(era | era-all | global | **neighbor** — smooths sparse cells toward the
+nearest well-sampled window instead of the base rate).
 
 ## precedents.parquet — the corpus judging itself
 

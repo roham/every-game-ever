@@ -844,7 +844,9 @@ def cmd_wp(args, log=print):
     con.execute("""
         CREATE OR REPLACE TABLE agg AS
         SELECT w.era, w.period, w.sec_bucket,
-               CASE WHEN w.margin < -30 THEN -30 WHEN w.margin > 30 THEN 30 ELSE w.margin END AS margin_bucket,
+               -- 3-point margin windows (exact int bins are too sparse late)
+               CASE WHEN w.margin < -30 THEN -30 WHEN w.margin > 30 THEN 30
+                    ELSE round(w.margin / 3.0) * 3 END AS margin_bucket,
                count(*) AS n, sum(g.home_won::int) AS wins
         FROM wpin w JOIN games g USING (game_id)
         GROUP BY 1, 2, 3, 4
@@ -862,6 +864,7 @@ def cmd_wp(args, log=print):
     """)
     out = con.execute("""
         SELECT a.era, a.period, a.sec_bucket, a.margin_bucket,
+               a.n AS n_raw,
                CASE WHEN a.n >= 20 THEN a.n
                     WHEN e.n >= 20 THEN e.n ELSE g.n END AS n,
                CASE WHEN a.n >= 20 THEN a.wins
@@ -873,6 +876,22 @@ def cmd_wp(args, log=print):
         JOIN global_agg g USING (period, sec_bucket)
     """).fetchdf()
     out["prob_home"] = (out["wins"] / out["n"]).round(4)
+    # neighbor smoothing: sparse cells inherit the nearest well-sampled
+    # margin window within the same (era, period, sec) group instead of
+    # collapsing to the base rate
+    for key, grp in out.groupby(["era", "period", "sec_bucket"], sort=False):
+        well = grp[grp["n_raw"] >= 20]
+        if well.empty:
+            continue
+        well = well.sort_values("margin_bucket")
+        idxs = grp.index[grp["inherited"] == "global"]
+        for i in idxs:
+            m = out.at[i, "margin_bucket"]
+            near = well.iloc[(well["margin_bucket"] - m).abs().argsort()[:1]]
+            out.loc[i, "prob_home"] = near["prob_home"].iloc[0]
+            out.loc[i, "n"] = near["n"].iloc[0]
+            out.loc[i, "wins"] = near["wins"].iloc[0]
+            out.loc[i, "inherited"] = "neighbor"
     out.to_parquet(DATA / "wp.parquet")
     log(f"wp: {len(out)} buckets")
     # sanity checks
