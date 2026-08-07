@@ -18,7 +18,10 @@ export const DATA = "data";
 export const P = (p: string): string => {
   const base = window.location.href.split("#")[0] || window.location.href;
   const dir = base.endsWith("/") ? base : base + "/";
-  return new URL(p, dir).href;
+  let u = new URL(p, dir).href;
+  // version the parquet paths so browser HTTP caches refresh between releases
+  if (u.endsWith(".parquet")) u += (u.includes("?") ? "&" : "?") + "v=20260807A";
+  return u;
 };
 export const FLOW_FILES = [P("data/flow/2022-23.parquet"), P("data/flow/2025-26.parquet")];
 export const PLAYER_GAME_FILES = [P("data/player_games/2022-23.parquet"), P("data/player_games/2025-26.parquet")];
