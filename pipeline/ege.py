@@ -919,7 +919,6 @@ def cmd_precedents(args, log=print):
     """).fetchdf()
     import pandas as pd
     res = fin.merge(flow_shape, on="game_id", how="left")
-    res = res[res["home_score"].notna()]  # boards only claim games with a real final
     res.to_parquet(DATA / "allprecedents.parquet")
 
     boards = []
@@ -936,6 +935,7 @@ def cmd_precedents(args, log=print):
     out = pd.concat(boards, ignore_index=True)
     out = out.merge(con.execute("SELECT game_id, game_date, home_team_id, away_team_id, home_score, away_score, season_id FROM games").fetchdf(),
                     on="game_id", how="left")
+    out = out[out["home_score"].notna()]  # boards only claim games with a real final
     # bake readable team abbreviations
     teams = con.execute("SELECT team_id, abbreviation, bbref_slug, current_name, display_name FROM read_parquet('"
                         + str(DATA / "teams.parquet") + "')").fetchdf()

@@ -46,3 +46,4 @@
 2026-08-07T09:15:44Z content cycle 2: 12-game listicle w/ live replay links; STORIES fact-corrected
 2026-08-07T09:16:19Z supervisor tuned (stall 1800s); resume spawns were build-time artifacts, no foreign commits
 2026-08-07T09:16:23Z SUPERVISOR UP pid=41973
+2026-08-07T09:17:29Z v0.1.3: boards integrity (no null-final rows)
