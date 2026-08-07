@@ -5,7 +5,7 @@
   "iteration": 0,
   "heartbeat_ts": null,
   "stall_count": 0,
-  "resume_spawns": 1,
+  "resume_spawns": 5,
   "budget_hours": 24.0,
   "started_at": 1786083996.613266,
   "budget_end_at": 1786170396.613266,
@@ -29,5 +29,5 @@
       "note": "public release + deploy"
     }
   },
-  "last_event": "resume requested 2026-08-07T06:41:50Z"
+  "last_event": "resume requested 2026-08-07T08:04:18Z"
 }

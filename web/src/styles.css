@@ -1,0 +1,89 @@
+:root {
+  --bg: #0b0d10;
+  --panel: #12151a;
+  --line: #232933;
+  --fg: #e8eaed;
+  --dim: #8b93a1;
+  --home: #ff6a3d;
+  --away: #3aa0ff;
+  --wp: #d8f34e;
+  --accent: #ff6a3d;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; background: var(--bg); color: var(--fg);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+#topbar {
+  display: flex; align-items: center; gap: 24px;
+  padding: 10px 18px; border-bottom: 1px solid var(--line);
+  background: var(--panel); position: sticky; top: 0; z-index: 10;
+}
+.brand { font-weight: 800; letter-spacing: 1.5px; font-size: 15px; color: var(--fg); }
+#nav { display: flex; gap: 16px; align-items: center; flex: 1; }
+#nav a { color: var(--dim); text-decoration: none; font-size: 14px; }
+#nav a:hover { color: var(--fg); }
+#player-search {
+  margin-left: auto; background: var(--bg); border: 1px solid var(--line);
+  color: var(--fg); border-radius: 8px; padding: 6px 12px; font-size: 14px; width: 220px;
+}
+#app { padding: 0; }
+#status { padding: 6px 18px; color: var(--dim); font-size: 12px; border-top: 1px solid var(--line); min-height: 28px; }
+
+/* atlas */
+#atlas-wrap { padding: 12px 18px 40px; }
+#atlas-scroll { overflow-y: auto; }
+.season-row { display: flex; align-items: center; gap: 10px; height: 44px;
+  border-bottom: 1px solid #151a21; cursor: pointer; }
+.season-label { width: 110px; min-width: 110px; color: var(--dim); font-size: 12px; text-align: right;
+  font-variant-numeric: tabular-nums; }
+.season-canvas { flex: 1; height: 40px; }
+.career-glow { background: rgba(216, 243, 78, 0.08); }
+
+canvas.game-line { width: 100%; height: 40px; display: block; }
+
+/* game view */
+#game-view { padding: 14px 18px 60px; }
+.scoreboard {
+  display: flex; justify-content: space-between; align-items: baseline;
+  font-size: 34px; font-weight: 800; font-variant-numeric: tabular-nums;
+  max-width: 720px; margin: 10px auto;
+}
+.scoreboard .away { text-align: right; }
+.scoreboard .clock { font-size: 22px; color: var(--dim); font-weight: 600; }
+.team-name { font-size: 15px; font-weight: 600; display: block; color: var(--dim); }
+.h { color: var(--home); } .a { color: var(--away); }
+#replay-canvas { width: 100%; max-width: 900px; height: 360px; display: block; margin: 0 auto;
+  background: var(--panel); border: 1px solid var(--line); border-radius: 10px; }
+.controls { display: flex; gap: 8px; align-items: center; justify-content: center; margin: 12px 0; flex-wrap: wrap; }
+.controls button, .controls input {
+  background: var(--panel); color: var(--fg); border: 1px solid var(--line);
+  border-radius: 8px; padding: 7px 14px; font-size: 14px; cursor: pointer;
+}
+.controls button:hover { border-color: var(--accent); }
+.controls .scrub { width: 320px; accent-color: var(--accent); }
+.caption { text-align: center; color: var(--dim); font-size: 13px; margin-top: 10px; min-height: 20px; }
+.caption b { color: var(--fg); }
+.era-badge {
+  display: inline-block; background: #1c222c; border: 1px solid var(--line);
+  border-radius: 20px; padding: 3px 12px; font-size: 12px; color: var(--dim); margin: 4px;
+}
+.game-meta { text-align: center; font-size: 13px; color: var(--dim); margin-bottom: 8px; }
+
+/* precedents */
+#precedents-view { padding: 14px 18px 60px; max-width: 980px; }
+.precedent-card {
+  background: var(--panel); border: 1px solid var(--line); border-radius: 10px;
+  padding: 14px 18px; margin-bottom: 14px;
+}
+.precedent-card h2 { margin: 0 0 6px; font-size: 18px; }
+.precedent-card p { margin: 0 0 10px; color: var(--dim); font-size: 13px; }
+table.board { width: 100%; border-collapse: collapse; font-size: 13px; }
+table.board td, table.board th { padding: 6px 8px; border-bottom: 1px solid #171c24; text-align: left; }
+table.board tr:hover td { background: #171c24; cursor: pointer; }
+table.board th { color: var(--dim); font-weight: 600; }
+
+/* constellation */
+#constellation-note { max-width: 900px; margin: 8px auto; color: var(--dim); font-size: 13px; text-align: center; }
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+}

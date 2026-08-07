@@ -101,40 +101,57 @@ def rest(url: str, key: str, profile: str, tail: str, timeout: int = 45):
     raise RuntimeError(f"REST failed: {last}")
 
 
+def _fetch_page(url, key, profile, table, params, off, page_size):
+    qs = urllib.parse.urlencode(params)
+    req = urllib.request.Request(
+        url + f"/rest/v1/{table}?{qs}&limit={page_size}&offset={off}",
+        headers={"apikey": key, "Authorization": f"Bearer {key}",
+                 "Accept-Profile": profile},
+    )
+    last = None
+    for attempt in range(RETRIES):
+        try:
+            with urllib.request.urlopen(req, timeout=60) as r:
+                return json.loads(r.read().decode())
+        except Exception as e:  # noqa: BLE001
+            last = e
+            time.sleep(0.5 * (2 ** attempt) + random.random() * 0.3)
+    raise RuntimeError(f"page {table}@{off}: {last}")
+
+
 def fetch_all(url, key, profile, table, select, filters=None,
               page_size=PAGE, log=None) -> list[dict]:
-    """Paginated fetch with Range headers."""
-    out = []
+    """Paginated fetch with limit/offset, parallel pages, hard page cap."""
     params = {"select": select}
     params.update(filters or {})
-    qs = urllib.parse.urlencode(params)
-    off = 0
-    while True:
-        hdr = f"Range={off}-{off + page_size - 1}"
-        req = urllib.request.Request(
-            url + f"/rest/v1/{table}?{qs}",
-            headers={"apikey": key, "Authorization": f"Bearer {key}",
-                     "Accept-Profile": profile, "Range": hdr},
-        )
-        rows = None
-        for attempt in range(RETRIES):
-            try:
-                with urllib.request.urlopen(req, timeout=60) as r:
-                    rows = json.loads(r.read().decode())
-                break
-            except Exception as e:  # noqa: BLE001
-                last = e
-                time.sleep(0.5 * (2 ** attempt) + random.random() * 0.3)
-        if rows is None:
-            raise RuntimeError(f"fetch_all {table} @{off}: {last}")
-        if not rows:
-            break
-        out.extend(rows)
+    MAX_PAGES = 300
+    first = _fetch_page(url, key, profile, table, params, 0, page_size)
+    if len(first) < page_size:
+        return first
+    out = first
+    off = page_size
+    pages_seen = 1
+    while pages_seen < MAX_PAGES:
+        got = []
+        with cf.ThreadPoolExecutor(max_workers=WORKERS) as ex:
+            futs = {ex.submit(_fetch_page, url, key, profile, table, params, o,
+                              page_size): o
+                    for o in range(off, off + page_size * WORKERS, page_size)}
+            for fut in cf.as_completed(futs):
+                try:
+                    got.append(fut.result())
+                except Exception as e:  # noqa: BLE001
+                    raise RuntimeError(f"fetch_all {table}: {e}")
+        got = [g for g in got if g]
+        out.extend(r for pg in got for r in pg)
+        pages_seen += len(got)
         if log:
             log(f"  {table}: {len(out)} rows")
-        if len(rows) < page_size:
+        if len(got) < WORKERS or len(got[-1]) < page_size:
             break
-        off += page_size
+        off += page_size * WORKERS
+    if pages_seen >= MAX_PAGES:
+        raise RuntimeError(f"fetch_all {table} exceeded {MAX_PAGES} pages — abort")
     return out
 
 
@@ -143,6 +160,15 @@ def fetch_all(url, key, profile, table, select, filters=None,
 def season_year(season_id: str) -> int | None:
     m = re.search(r"(19|20)\d{2}", season_id or "")
     return int(m.group(0)) if m else None
+
+
+def season_of(game_date: str) -> str:
+    """Real NBA season label from a game date (Oct 1 season boundary)."""
+    y = int(game_date[:4])
+    m = int(game_date[5:7])
+    if m >= 10:
+        return f"{y}-{str((y + 1) % 100).zfill(2)}"
+    return f"{y - 1}-{str(y % 100).zfill(2)}"
 
 
 def era_for(season_id: str) -> str:
@@ -185,17 +211,47 @@ def fetch_games(url, key) -> list[dict]:
     return played
 
 
+def _fetch_chunk(url, key, ids: str) -> list[dict]:
+    """All rows for one in.() filter, walked via limit/offset pages."""
+    out: list[dict] = []
+    off = 0
+    tail = f"/rest/v1/nba_plays?select={PLAYS_SELECT}&game_id=in.({ids})"
+    while True:
+        req = urllib.request.Request(
+            url + tail + f"&limit=1000&offset={off}",
+            headers={"apikey": key, "Authorization": f"Bearer {key}",
+                     "Accept-Profile": "nba_reference"},
+        )
+        rows = None
+        last = None
+        for attempt in range(RETRIES):
+            try:
+                with urllib.request.urlopen(req, timeout=60) as r:
+                    rows = json.loads(r.read().decode())
+                break
+            except Exception as e:  # noqa: BLE001
+                last = e
+                time.sleep(0.4 * (2 ** attempt) + random.random() * 0.2)
+        if rows is None:
+            raise RuntimeError(f"chunk fetch failed: {last}")
+        if not rows:
+            break
+        out.extend(rows)
+        if len(rows) < 1000:
+            break
+        off += 1000
+    return out
+
+
 def fetch_plays_for_games(url, key, game_ids: list[str], log):
-    """Chunked in.() pulls, parallel workers. Returns flat row list."""
+    """Chunked in.() pulls with full pagination, parallel workers."""
     chunks = [game_ids[i:i + URL_CHUNK] for i in range(0, len(game_ids), URL_CHUNK)]
     results: list[list[dict]] = []
     with cf.ThreadPoolExecutor(max_workers=WORKERS) as ex:
         futs = {}
         for c in chunks:
             ids = ",".join(c)
-            futs[ex.submit(rest, url, key, "nba_reference",
-                           f"/rest/v1/nba_plays?select={PLAYS_SELECT}"
-                           f"&game_id=in.({ids})")] = len(c)
+            futs[ex.submit(_fetch_chunk, url, key, ids)] = len(c)
         for fut in cf.as_completed(futs):
             try:
                 results.append(fut.result())
@@ -247,7 +303,7 @@ def derive_flow(game_id: str, rows: list[dict]) -> list[dict]:
 
 def build_season(seas: str, games: dict[str, dict], slug_of_qid: dict,
                  url, key, log) -> dict:
-    gids = [g for g in games if games[g]["season_id"] == seas]
+    gids = [g for g in games if season_of(games[g]["game_date"]) == seas]
     rows = fetch_plays_for_games(url, key, gids, log)
     log(f"{seas}: {len(gids)} games, {len(rows)} play rows")
 
@@ -321,6 +377,118 @@ def build_season(seas: str, games: dict[str, dict], slug_of_qid: dict,
     return out
 
 
+def _rescue_hoopr(url, key, games, slug_of_qid, log) -> dict:
+    """Games whose real PBP exists in nba_plays (g_2022_hoopR_*) but whose
+    nba_games rows are unscored/missing: derive finals from the last play and
+    emit flow for them, so the 2022-23 replay layer is complete."""
+    out: dict[str, dict] = {}
+    if (FLOW_DIR / "2022-23.parquet").exists():
+        log("hoopR rescue: already done (flow/2022-23.parquet exists)")
+        return out
+    rows: list[dict] = []
+    cursor = ""
+    while True:
+        gt = f"&game_id=gt.{cursor}" if cursor else ""
+        req = urllib.request.Request(
+            url + f"/rest/v1/nba_plays?select={PLAYS_SELECT}"
+                  f"&game_id=like.g_2022_hoopR_%25&order=game_id{gt}&limit=1000",
+            headers={"apikey": key, "Authorization": f"Bearer {key}",
+                     "Accept-Profile": "nba_reference"},
+        )
+        last = None
+        pg = None
+        for attempt in range(RETRIES):
+            try:
+                with urllib.request.urlopen(req, timeout=60) as r:
+                    pg = json.loads(r.read().decode())
+                break
+            except Exception as e:  # noqa: BLE001
+                last = e
+                time.sleep(0.4 * (2 ** attempt) + random.random() * 0.2)
+        if pg is None:
+            raise RuntimeError(f"hoopR fetch @{cursor}: {last}")
+        if not pg:
+            break
+        rows.extend(pg)
+        if len(pg) < 1000:
+            break
+        cursor = pg[-1]["game_id"]
+        if len(rows) % 100000 == 0:
+            log(f"  hoopR plays: {len(rows)}")
+    log(f"hoopR plays fetched: {len(rows)}")
+    by_game: dict[str, list[dict]] = {}
+    for r in rows:
+        if r["game_id"] in games:
+            continue
+        by_game.setdefault(r["game_id"], []).append(r)
+    flow_rows: list[dict] = []
+    wpin_rows: list[dict] = []
+    pg_rows: list[dict] = []
+    for gid, rs in by_game.items():
+        evs = derive_flow(gid, rs)
+        if not evs:
+            continue
+        last = evs[-1]
+        # season: hoopR stem year → 2022-23
+        season = "2022-23"
+        for e in evs:
+            e["season_id"] = season
+        flow_rows.extend(evs)
+        max_sec = sec_from_start(last["period"], last["clock_remaining_s"])
+        if max_sec < 999_999_999:
+            cur = None
+            ei = 0
+            for b in range(0, max_sec + 24, 24):
+                while ei < len(evs) and sec_from_start(evs[ei]["period"],
+                                                       evs[ei]["clock_remaining_s"]) <= b:
+                    cur = evs[ei]
+                    ei += 1
+                if cur is not None:
+                    wpin_rows.append({"game_id": gid, "season_id": season,
+                                      "era": era_for(season), "sec_bucket": b,
+                                      "margin": max(-30, min(30, cur["margin"]))})
+        for r in rs:
+            q = r.get("primary_player_qid")
+            if q and q in slug_of_qid:
+                pg_rows.append({"bbref_slug": slug_of_qid[q], "game_id": gid})
+        out[gid] = {
+            "game_id": gid, "game_date": None,
+            "season_id": season, "source_season_id": "NBA_2022-23",
+            "game_type": "regular",
+            "home_team_id": None, "away_team_id": None,
+            "home_score": last["home_score"], "away_score": last["away_score"],
+            "playoff_round": None, "overtime_periods": None,
+            "attendance": None, "venue_name": None,
+        }
+    if flow_rows:
+        t = pa.table({
+            "game_id": [e["game_id"] for e in flow_rows],
+            "season_id": [e["season_id"] for e in flow_rows],
+            "period": [e["period"] for e in flow_rows],
+            "clock_remaining_s": [e["clock_remaining_s"] for e in flow_rows],
+            "home_score": [e["home_score"] for e in flow_rows],
+            "away_score": [e["away_score"] for e in flow_rows],
+            "margin": [e["margin"] for e in flow_rows],
+            "event": [e["event"] for e in flow_rows],
+            "seq": [e["seq"] for e in flow_rows],
+        })
+        pq.write_table(t, FLOW_DIR / "2022-23.parquet")
+        t = pa.table({"game_id": [w["game_id"] for w in wpin_rows],
+                      "season_id": [w["season_id"] for w in wpin_rows],
+                      "era": [w["era"] for w in wpin_rows],
+                      "sec_bucket": [w["sec_bucket"] for w in wpin_rows],
+                      "margin": [w["margin"] for w in wpin_rows]})
+        pq.write_table(t, WPIN_DIR / "2022-23.parquet")
+        if pg_rows:
+            uniq = {(p["bbref_slug"], p["game_id"]) for p in pg_rows}
+            t = pa.table({"bbref_slug": [u[0] for u in sorted(uniq)],
+                          "game_id": [u[1] for u in sorted(uniq)],
+                          "season_id": ["2022-23"] * len(uniq)})
+            pq.write_table(t, DATA / "player_games" / "2022-23.parquet")
+        log(f"hoopR flow: {len(flow_rows)} events, {len(out)} games")
+    return out
+
+
 def cmd_build(args, log=print):
     url, key = _creds()
     (FLOW_DIR / "..").mkdir(parents=True, exist_ok=True)
@@ -340,9 +508,9 @@ def cmd_build(args, log=print):
     qid_of_slug = {p["bbref_slug"]: p for p in players if p.get("bbref_slug")}
     log(f"players: {len(players)} (qid-resolved {len(slug_of_qid)})")
 
-    seas_all = sorted({g["season_id"] for g in games.values()})
+    seas_all = sorted({season_of(g["game_date"]) for g in games.values()})
     seas = list(args.seasons) if args.seasons else seas_all
-    log(f"seasons to build: {len(seas)}")
+    log(f"seasons to build: {len(seas)} (date-derived)")
 
     manifest = {"version": "0.1.0", "built_at": time.strftime(
         "%Y-%m-%dT%H:%M:%SZ", time.gmtime()), "seasons": {}}
@@ -371,12 +539,20 @@ def cmd_build(args, log=print):
         mpath.write_text(json.dumps(manifest, indent=2))
         log(f"[{i}/{len(seas)}] {seas}: done in {time.time() - t0:.0f}s {out}")
 
+    log("hoopR rescue: rebuild scored games from real PBP where game rows are unscored…")
+    rescued = _rescue_hoopr(url, key, games, slug_of_qid, log)
+    if rescued:
+        games.update(rescued)
+        log(f"rescue added {len(rescued)} played games from hoopR plays")
+
     log("deriving games/teams/era…")
     rows = []
     for g in games.values():
         rows.append({
             "game_id": g["game_id"], "game_date": g["game_date"],
-            "season_id": g["season_id"], "game_type": g["game_type"],
+            "season_id": season_of(g["game_date"]),
+            "source_season_id": g["season_id"],
+            "game_type": g["game_type"],
             "home_team_id": g["home_team_id"], "away_team_id": g["away_team_id"],
             "home_score": g["home_score"], "away_score": g["away_score"],
             "playoff_round": g.get("playoff_round"),
@@ -388,14 +564,15 @@ def cmd_build(args, log=print):
 
     team_rows = {}
     for g in games.values():
+        s = season_of(g["game_date"])
         for side in ("home", "away"):
             tid, name = g[f"{side}_team_id"], None
             team_rows.setdefault(tid, {"team_id": tid, "name": name,
-                                       "first_season": g["season_id"],
-                                       "last_season": g["season_id"]})
+                                       "first_season": s,
+                                       "last_season": s})
             tr = team_rows[tid]
-            tr["first_season"] = min(tr["first_season"], g["season_id"])
-            tr["last_season"] = max(tr["last_season"], g["season_id"])
+            tr["first_season"] = min(tr["first_season"], s)
+            tr["last_season"] = max(tr["last_season"], s)
     t = pa.table({k: [r[k] for r in team_rows.values()] for k in
                   ("team_id", "name", "first_season", "last_season")})
     pq.write_table(t, DATA / "teams.parquet")
@@ -414,20 +591,27 @@ def cmd_build(args, log=print):
         t = pa.table({k: [r[k] for r in pub] for k in pub[0]})
         pq.write_table(t, DATA / "players-public.parquet")
 
-    log("deriving era.parquet…")
+    log("deriving era.parquet (finals across all seasons)…")
     import duckdb
     con = duckdb.connect()
-    con.execute(
-        f"CREATE VIEW flow AS SELECT * FROM read_parquet('{FLOW_DIR}/*.parquet')")
+    con.execute(f"CREATE VIEW flow AS SELECT * FROM read_parquet('{FLOW_DIR}/*.parquet')")
+    con.execute("CREATE OR REPLACE VIEW games AS SELECT * FROM read_parquet('" + str(DATA / "games.parquet") + "')")
+    flow_seasons = con.execute("SELECT season_id, count(*) AS ev, count(DISTINCT game_id) AS games_with_pbp "
+                               "FROM flow GROUP BY season_id").fetchdf()
     era = con.execute("""
-        SELECT season_id, count(*) AS ev,
-               count(DISTINCT game_id) AS games_with_pbp,
-               sum(CASE WHEN margin != 0 THEN 1 ELSE 0 END) AS nonzero_ev,
-               avg(abs(margin)) AS avg_margin_abs
-        FROM flow GROUP BY season_id
+        SELECT season_id, count(*) AS games,
+               round(avg(home_score + away_score), 1) AS avg_total_pts,
+               round(avg(abs(home_score - away_score)), 2) AS avg_margin,
+               sum(CASE WHEN abs(home_score - away_score) <= 3 THEN 1 ELSE 0 END) AS games_within_3,
+               sum(CASE WHEN coalesce(overtime_periods, 0) > 0 THEN 1 ELSE 0 END) AS ot_games,
+               round(avg(coalesce(attendance, 0)), 0) AS avg_attendance
+        FROM games GROUP BY season_id ORDER BY season_id
     """).fetchdf()
+    era = era.merge(flow_seasons, on="season_id", how="left")
     era.to_parquet(DATA / "era.parquet")
-    log("build complete")
+    cov = con.execute("SELECT count(DISTINCT game_id) FROM flow").fetchone()[0]
+    log("coverage: played games " + str(len(games)) + ", games with real PBP flow " + str(cov))
+    log("build complete (games=" + str(len(games)) + ")")
     return games, players
 
 
@@ -549,7 +733,16 @@ def cmd_precedents(args, log=print):
     con = duckdb.connect()
     con.execute(f"CREATE VIEW flow AS SELECT * FROM read_parquet('{FLOW_DIR}/*.parquet')")
     con.execute("CREATE VIEW games AS SELECT * FROM read_parquet('" + str(DATA / "games.parquet") + "')")
-    res = con.execute("""
+    # finals-based precedents across ALL played games
+    fin = con.execute("""
+        SELECT game_id, (home_score > away_score)::int AS home_won,
+               abs(home_score - away_score) AS blowout,
+               home_score + away_score AS total_pts,
+               (home_score = away_score)::int AS tie_game
+        FROM games
+    """).fetchdf()
+    # flow-based shapes only where PBP exists
+    flow_shape = con.execute("""
         WITH seq AS (
             SELECT game_id, margin, seq,
                    lag(margin) OVER (PARTITION BY game_id ORDER BY seq) AS prev
@@ -557,51 +750,37 @@ def cmd_precedents(args, log=print):
         ),
         g AS (
             SELECT game_id,
+                   -min(margin) AS max_deficit,
                    min(margin) AS min_margin,
-                   max(margin) AS max_margin,
-                   max(margin) - min(margin) AS swing,
                    last(margin ORDER BY seq) AS final_margin,
-                   count(*) AS ev,
-                   -- lead changes: count margin sign flips (ignoring 0 crossings edge)
                    sum(CASE WHEN margin > 0 AND prev <= 0 THEN 1
                             WHEN margin < 0 AND prev >= 0 THEN 1 ELSE 0 END) AS lead_changes
             FROM seq GROUP BY game_id
-        ),
-        q4 AS (
-            SELECT game_id, margin, row_number() OVER (PARTITION BY game_id ORDER BY seq) rn
-            FROM flow WHERE period = 4 AND margin != 0
-        ),
-        q4first AS (SELECT game_id, margin FROM q4 WHERE rn = 1)
-        SELECT game_id,
-               -min_margin AS comeback_15,
-               CASE WHEN final_margin > 0 THEN 1 ELSE 0 END AS home_won,
-               abs(final_margin) AS blowout,
-               lead_changes,
-               abs(final_margin - q4first.margin) AS q4_swing
-        FROM g JOIN q4first USING (game_id)
+        )
+        SELECT game_id, max_deficit, lead_changes
+        FROM g
     """).fetchdf()
+    import pandas as pd
+    res = fin.merge(flow_shape, on="game_id", how="left")
     res.to_parquet(DATA / "allprecedents.parquet")
-    # leaderboard tables
+
     boards = []
     def top(df, name, col, ascending=False):
-        df = df.sort_values(col, ascending=ascending).head(25).reset_index(drop=True)
+        df = df.dropna(subset=[col]).sort_values(col, ascending=ascending).head(25).reset_index(drop=True)
         df["precedent"] = name
         df["rank"] = df.index + 1
         return df
-    come = res[res.home_won == 1]
-    boards.append(top(come, "comeback_15", "comeback_15"))
-    boards.append(top(come[come.q4_swing > 0], "comeback_4q", "comeback_15"))
-    boards.append(top(res, "lead_changes_max", "lead_changes"))
     boards.append(top(res, "blowout_max", "blowout"))
-    boards.append(top(res, "clutch_swing", "q4_swing"))
-    import pandas as pd
+    boards.append(top(res, "highest_scoring", "total_pts"))
+    boards.append(top(res, "lead_changes_max", "lead_changes"))
+    boards.append(top(res[res.home_won == 1], "comeback_15", "max_deficit"))
     out = pd.concat(boards, ignore_index=True)
-    out = out.merge(con.execute("SELECT game_id, game_date, home_team_id, away_team_id, home_score, away_score FROM games").fetchdf(),
+    out = out.merge(con.execute("SELECT game_id, game_date, home_team_id, away_team_id, home_score, away_score, season_id FROM games").fetchdf(),
                     on="game_id", how="left")
     out.to_parquet(DATA / "precedents.parquet")
     log("precedents:", len(out), "rows")
-    for name in ["comeback_15", "lead_changes_max", "blowout_max"]:
-        r = out[out.precedent == name].head(3)
+    for name in ["blowout_max", "comeback_15", "lead_changes_max", "highest_scoring"]:
+        r = out[out.precedent == name].head(2)
         for _, x in r.iterrows():
             log(f"  {name}: {x['game_date']} {x['home_team_id']}-{x['away_team_id']} {x['home_score']}-{x['away_score']} value={x[name]}")
 

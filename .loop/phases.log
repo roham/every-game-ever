@@ -10,3 +10,24 @@
 2026-08-07T06:41:50Z STALL #3 heartbeat age=777s phase=P1 event=state initialized
 2026-08-07T06:41:50Z RESUME spawn #0
 2026-08-07T06:41:50Z RESUME finished rc=127
+2026-08-07T06:46:04Z ege.py committed; 2-season acceptance build running in bg
+2026-08-07T07:05:58Z STALL #1 heartbeat age=654s phase=P1 event=resume requested 2026-08-07T06:41:50Z
+2026-08-07T07:06:58Z STALL #2 heartbeat age=714s phase=P1 event=resume requested 2026-08-07T06:41:50Z
+2026-08-07T07:07:59Z STALL #3 heartbeat age=774s phase=P1 event=resume requested 2026-08-07T06:41:50Z
+2026-08-07T07:07:59Z RESUME spawn #1
+2026-08-07T07:07:59Z RESUME finished rc=127
+2026-08-07T07:36:08Z STALL #1 heartbeat age=614s phase=P1 event=resume requested 2026-08-07T07:07:59Z
+2026-08-07T07:37:08Z STALL #2 heartbeat age=674s phase=P1 event=resume requested 2026-08-07T07:07:59Z
+2026-08-07T07:38:09Z STALL #3 heartbeat age=734s phase=P1 event=resume requested 2026-08-07T07:07:59Z
+2026-08-07T07:38:09Z RESUME spawn #2
+2026-08-07T07:38:09Z RESUME finished rc=127
+2026-08-07T07:48:12Z STALL #1 heartbeat age=603s phase=P1 event=resume requested 2026-08-07T07:38:09Z
+2026-08-07T07:49:13Z STALL #2 heartbeat age=663s phase=P1 event=resume requested 2026-08-07T07:38:09Z
+2026-08-07T07:50:13Z STALL #3 heartbeat age=724s phase=P1 event=resume requested 2026-08-07T07:38:09Z
+2026-08-07T07:50:13Z RESUME spawn #3
+2026-08-07T07:50:13Z RESUME finished rc=127
+2026-08-07T08:02:17Z STALL #1 heartbeat age=639s phase=P1 event=resume requested 2026-08-07T07:50:13Z
+2026-08-07T08:03:17Z STALL #2 heartbeat age=699s phase=P1 event=resume requested 2026-08-07T07:50:13Z
+2026-08-07T08:04:18Z STALL #3 heartbeat age=759s phase=P1 event=resume requested 2026-08-07T07:50:13Z
+2026-08-07T08:04:18Z RESUME spawn #4
+2026-08-07T08:04:18Z RESUME finished rc=127
