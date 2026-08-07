@@ -919,6 +919,7 @@ def cmd_precedents(args, log=print):
     """).fetchdf()
     import pandas as pd
     res = fin.merge(flow_shape, on="game_id", how="left")
+    res = res[res["home_score"].notna()]  # boards only claim games with a real final
     res.to_parquet(DATA / "allprecedents.parquet")
 
     boards = []
