@@ -107,7 +107,7 @@ export class Replay {
       if (!this.playing) return;
       const dt = ts - this.lastTs;
       this.lastTs = ts;
-      this.t += (dt * 1000) / this.scale;   // dt ms -> game seconds (scale ms per game-sec)
+      this.t += dt / this.scale;            // scale = real ms per game-second
       this.draw();
       this.raf = requestAnimationFrame(loop);
     };
