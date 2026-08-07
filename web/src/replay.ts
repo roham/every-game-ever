@@ -89,8 +89,10 @@ export class Replay {
     this.canvas = canvas;
     this.frame = frame;
     this.opts = opts;
-    const total = Math.min(999_999_999, ...events.map((e) => secFromStart(e.period, e.clock_remaining_s))) as number;
-    this.scale = opts.speed === "1x" ? 1000 : opts.speed === "2x" ? 500 : opts.speed === "8x" ? 125 : 45_000 / Math.max(1, total);
+    const evSec = (e: FlowEvent): number =>
+      e.clock_remaining_s == null ? 0 : secFromStart(e.period, e.clock_remaining_s);
+    const total = Math.max(1, ...events.map(evSec));
+    this.scale = opts.speed === "1x" ? 1000 : opts.speed === "2x" ? 500 : opts.speed === "8x" ? 125 : 45_000 / total;
     if (opts.seekClock) this.t = secFromStart(opts.seekClock.period, opts.seekClock.clock);
     if (opts.showWp) {
       this.wpLoaded = loadWp().then(() => this.draw());
