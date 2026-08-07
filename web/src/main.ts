@@ -131,12 +131,14 @@ async function viewGame(gameId: string, seek?: { period: number; clock: number }
   let speed: "45s" | "1x" | "2x" | "8x" = "45s";
   let showWp = false;
   let replay: Replay | null = null;
+  activeGameId = gameId;
   const isPlaying = () => replay !== null && replay.playing;
   const build = () => {
     const last = flow[flow.length - 1];
     const maxT = last ? secFromStart(last.period, last.clock_remaining_s) : 0;
     replay?.stop();
     btnPlay.textContent = "▶ Play";
+    activeReplay = null;
     replay = new Replay(flow, meta, canvas, frame, {
       speed, showWp, homeAbbr: hAbbr, awayAbbr: aAbbr, seekClock: seek,
       onTick: (_e, t) => {
@@ -145,10 +147,16 @@ async function viewGame(gameId: string, seek?: { period: number; clock: number }
           const ev = replay!.eventAt(t);
           const clock = ev?.clock_remaining_s != null ? Math.round(ev.clock_remaining_s) : 0;
           const period = ev?.period ?? 1;
-          location.hash = `#/game/${escapeId(gameId)}/Q${period}/${clock}`;
+          const now = Date.now();
+          if (now - lastHashWrite > 400) {
+            lastHashWrite = now;
+            const next = `#/game/${escapeId(gameId)}/Q${period}/${clock}`;
+            if (location.hash !== next) location.hash = next;
+          }
         }
       },
     });
+    activeReplay = replay;
     replay.draw();
   };
   build();
@@ -192,11 +200,22 @@ async function viewPrecedents(): Promise<() => void> {
 // ── router ─────────────────────────────────────────────────────────────
 
 let cleanup: (() => void) | null = null;
+let activeGameId: string | null = null;
+let activeReplay: Replay | null = null;
+let lastHashWrite = 0;
 
+// playhead-driven hash updates must SEEK the open replay, never rebuild it
 async function route(): Promise<void> {
+  const hash = location.hash || "#/";
+  const perm = parsePermalink(hash);
+  if (activeGameId && perm.gameId === activeGameId && perm.seek && activeReplay) {
+    activeReplay.seekToClock(perm.seek.period, perm.seek.clock);
+    return;
+  }
   cleanup?.();
   cleanup = null;
-  const hash = location.hash || "#/";
+  activeGameId = null;
+  activeReplay = null;
   try {
     if (hash.startsWith("#/precedents")) {
       cleanup = await viewPrecedents();
@@ -207,7 +226,6 @@ async function route(): Promise<void> {
       cleanup = await viewGame(dateRoute.gameId, dateRoute.seek);
       return;
     }
-    const perm = parsePermalink(hash);
     if (perm.gameId) {
       cleanup = await viewGame(perm.gameId, perm.seek);
       return;

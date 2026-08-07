@@ -124,6 +124,14 @@ export class Replay {
     this.draw();
   }
 
+  seekToClock(period: number, clock: number): void {
+    const sec = secFromStart(period, clock);
+    if (Math.abs(sec - this.t) > 2) {
+      this.t = Math.max(0, sec);
+      this.draw();
+    }
+  }
+
   eventAt(t: number): FlowEvent | null {
     let ev: FlowEvent | null = null;
     for (let i = 0; i < this.events.length; i++) {
