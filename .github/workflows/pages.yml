@@ -20,12 +20,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Download dataset release
+      - name: Download dataset release (latest)
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          gh release download v0.1.0 --pattern '*.tar.gz' --dir /tmp/ege-data --repo ${{ github.repository }}
-          mkdir -p data/current && tar -xzf /tmp/ege-data/every-game-ever-v0.1.0.tar.gz -C data/current
+          TAG=$(gh release list --limit 1 --json tagName -q '.[0].tagName' --repo ${{ github.repository }})
+          gh release download "$TAG" --pattern '*.tar.gz' --dir /tmp/ege-data --repo ${{ github.repository }}
+          mkdir -p data/current && tar -xzf /tmp/ege-data/every-game-ever-*.tar.gz -C data/current
+          echo "dataset from $TAG" >> $GITHUB_STEP_SUMMARY
 
       - uses: actions/setup-node@v4
         with:
