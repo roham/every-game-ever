@@ -614,7 +614,7 @@ def cmd_build(args, log=print):
 
     log("fetching teams…")
     teams_rows = fetch_all(url, key, "nba_reference", "nba_teams",
-                           "team_id,abbreviation,current_name,bbref_slug,nba_stats_team_id,"
+                           "team_id,abbreviation,current_name,bbref_slug,nba_stats_team_id,arena_name,"
                            "first_season_id,last_season_id,is_active")
     team_map = {t["team_id"]: t for t in teams_rows}
     t = pa.table({
@@ -623,10 +623,31 @@ def cmd_build(args, log=print):
         "current_name": [t.get("current_name") for t in teams_rows],
         "bbref_slug": [t.get("bbref_slug") for t in teams_rows],
         "nba_stats_team_id": [t.get("nba_stats_team_id") for t in teams_rows],
+        "arena_name": [t.get("arena_name") for t in teams_rows],
+        "display_name": [t.get("display_name") for t in teams_rows],
         "first_season_id": [t.get("first_season_id") for t in teams_rows],
         "last_season_id": [t.get("last_season_id") for t in teams_rows],
     })
     pq.write_table(t, DATA / "teams.parquet")
+    # resolve t_nba_* rows via venue <-> arena cross-reference
+    team_to_venue = {}
+    for g in games.values():
+        v = g.get("venue_name")
+        for side in ("home_team_id", "away_team_id"):
+            tid = g.get(side) or ""
+            if v and tid.startswith("t_nba_"):
+                team_to_venue.setdefault(tid, v)
+    arena_to_team = {}
+    for t in teams_rows:
+        if t.get("arena_name") and t.get("current_name"):
+            arena_to_team.setdefault(t["arena_name"], t["current_name"])
+    for t in teams_rows:
+        t["display_name"] = t.get("current_name") or t.get("bbref_slug") or t["team_id"]
+    for t in teams_rows:
+        if (t["team_id"] or "").startswith("t_nba_") and not t.get("current_name"):
+            named = arena_to_team.get(team_to_venue.get(t["team_id"]))
+            if named:
+                t["display_name"] = named
     log(f"teams: {len(teams_rows)}")
 
     log("fetching players…")
@@ -700,6 +721,8 @@ def cmd_build(args, log=print):
             "current_name": [t.get("current_name") for t in team_meta],
             "bbref_slug": [t.get("bbref_slug") for t in team_meta],
             "nba_stats_team_id": [t.get("nba_stats_team_id") for t in team_meta],
+            "arena_name": [t.get("arena_name") for t in team_meta],
+            "display_name": [t.get("display_name") for t in team_meta],
             "first_season_id": [t.get("first_season_id") for t in team_meta],
             "last_season_id": [t.get("last_season_id") for t in team_meta],
         })
