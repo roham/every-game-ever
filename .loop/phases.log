@@ -48,3 +48,4 @@
 2026-08-07T09:16:23Z SUPERVISOR UP pid=41973
 2026-08-07T09:17:29Z v0.1.3: boards integrity (no null-final rows)
 2026-08-07T09:18:18Z content cycle 3: ERAS.md + repo metadata
+2026-08-07T09:21:32Z v0.1.4: wp quality (windows+smoothing); live stakes now meaningful

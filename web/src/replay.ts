@@ -54,7 +54,8 @@ async function loadWp(): Promise<void> {
 export function wpAt(era: string, period: number, sec: number, margin: number): { prob: number; n: number; inherited: string } | null {
   if (!wpCache) return null;
   const bucket = Math.round(sec / 24) * 24;
-  const m = Math.max(-30, Math.min(30, margin));
+  // pipeline buckets margins into 3-point windows
+  const m = Math.max(-30, Math.min(30, Math.round(margin / 3) * 3));
   return wpCache.get(`${era}|${period}|${bucket}|${m}`) ?? null;
 }
 
