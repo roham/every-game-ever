@@ -1,0 +1,10 @@
+# build artifacts
+data/
+web/dist/
+web/node_modules/
+.venv/
+__pycache__/
+*.pyc
+.loop/heartbeat
+.loop/resume-output-*.log
+.DS_Store

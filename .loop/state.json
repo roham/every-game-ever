@@ -1,0 +1,21 @@
+{
+  "project": "every-game-ever",
+  "worker": "live",
+  "phase": "P1",
+  "iteration": 0,
+  "heartbeat_ts": null,
+  "stall_count": 0,
+  "resume_spawns": 0,
+  "budget_hours": 24,
+  "started_at": null,
+  "budget_end_at": null,
+  "mid_report_written": false,
+  "final_report_written": false,
+  "phases": {
+    "P1": {"status": "pending", "note": "dataset pipeline"},
+    "P2": {"status": "pending", "note": "win-probability + precedents"},
+    "P3": {"status": "pending", "note": "web client"},
+    "P4": {"status": "pending", "note": "public release + deploy"}
+  },
+  "last_event": "state initialized"
+}
