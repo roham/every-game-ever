@@ -77,6 +77,21 @@ async function viewGame(gameId: string, seek?: { period: number; clock: number }
     return () => { app.innerHTML = ""; };
   }
   const meta = metaRows[0]!;
+  if (!flow.length) {
+    const m = meta.home_score - meta.away_score;
+    app.innerHTML = `
+      <div id="game-view">
+        <div class="game-meta">${meta.game_date} · ${meta.season_id}${meta.overtime_periods ? " · OT" : ""}</div>
+        <div class="scoreboard">
+          <div class="h"><span class="team-name">${meta.home_team_id}</span>${meta.home_score}</div>
+          <div class="clock">${m === 0 ? "tie" : m > 0 ? "H" : "A"} by ${Math.abs(m)}</div>
+          <div class="a"><span class="team-name">${meta.away_team_id}</span>${meta.away_score}</div>
+        </div>
+        <div class="caption">No play-by-play survives for this era — but the record does. <a href="#/precedents">Judge it against history.</a></div>
+        <div class="era-badge">final only</div>
+      </div>`;
+    return () => { app.innerHTML = ""; };
+  }
   app.innerHTML = `
     <div id="game-view">
       <canvas id="replay-canvas"></canvas>

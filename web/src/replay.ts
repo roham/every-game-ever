@@ -40,22 +40,22 @@ let wpCache: Map<string, { prob: number; n: number; inherited: string }> | null 
 
 async function loadWp(): Promise<void> {
   if (wpCache) return;
-  const rows = await q<{ era: string; sec_bucket: number; margin_bucket: number; prob_home: number; n: number; inherited: string }>(
-    `SELECT era, sec_bucket, margin_bucket, prob_home, n, inherited FROM '${"data/wp.parquet"}'`,
+  const rows = await q<{ era: string; period: number; sec_bucket: number; margin_bucket: number; prob_home: number; n: number; inherited: string }>(
+    `SELECT era, period, sec_bucket, margin_bucket, prob_home, n, inherited FROM '${"data/wp.parquet"}'`,
   );
   wpCache = new Map();
   for (const r of rows) {
-    wpCache.set(`${r.era}|${r.sec_bucket}|${r.margin_bucket}`, {
+    wpCache.set(`${r.era}|${r.period}|${r.sec_bucket}|${r.margin_bucket}`, {
       prob: r.prob_home, n: r.n, inherited: r.inherited,
     });
   }
 }
 
-export function wpAt(era: string, sec: number, margin: number): { prob: number; n: number; inherited: string } | null {
+export function wpAt(era: string, period: number, sec: number, margin: number): { prob: number; n: number; inherited: string } | null {
   if (!wpCache) return null;
   const bucket = Math.round(sec / 24) * 24;
   const m = Math.max(-30, Math.min(30, margin));
-  return wpCache.get(`${era}|${bucket}|${m}`) ?? null;
+  return wpCache.get(`${era}|${period}|${bucket}|${m}`) ?? null;
 }
 
 export interface ReplayOptions {
@@ -177,7 +177,8 @@ export class Replay {
       ctx.beginPath();
       let started = false;
       for (let s = 0; s <= Math.min(this.t, maxT); s += 24) {
-        const wq = wpAt(era, s, this.eventAt(s)?.margin ?? 0);
+        const evS = this.eventAt(s);
+        const wq = evS ? wpAt(era, evS.period, s, evS.margin) : null;
         if (!wq) continue;
         const x = xAt(s);
         const y = h - 18 - wq.prob * (h / 2 - 30);
@@ -214,7 +215,7 @@ export class Replay {
       <div class="game-meta">${period} · ${clock} · ${this.meta.game_date}</div>
       <div class="scoreboard">
         <div class="h"><span class="team-name">${this.meta.home_team_id}</span>${ev ? ev.home_score : this.meta.home_score}</div>
-        <div class="clock">${this.opts.showWp && ev ? Math.round(((wpAt(eraOf(this.meta.season_id), secFromStart(ev.period, ev.clock_remaining_s), ev.margin)?.prob ?? 0) * 100)) + "% home" : "·"}</div>
+        <div class="clock">${this.opts.showWp && ev ? Math.round(((wpAt(eraOf(this.meta.season_id), ev.period, secFromStart(ev.period, ev.clock_remaining_s), ev.margin)?.prob ?? 0) * 100)) + "% home" : "·"}</div>
         <div class="a"><span class="team-name">${this.meta.away_team_id}</span>${ev ? ev.away_score : this.meta.away_score}</div>
       </div>
       <div class="caption">${this.caption(ev)}</div>`;
@@ -224,7 +225,7 @@ export class Replay {
   private caption(ev: FlowEvent | null): string {
     if (!ev) return "…";
     const wp = this.opts.showWp
-      ? wpAt(eraOf(this.meta.season_id), secFromStart(ev.period, ev.clock_remaining_s), ev.margin)
+      ? wpAt(eraOf(this.meta.season_id), ev.period, secFromStart(ev.period, ev.clock_remaining_s), ev.margin)
       : null;
     if (!wp) return "";
     const trail = ev.margin < 0 ? "trailing team" : (ev.margin > 0 ? "home team" : "tied");

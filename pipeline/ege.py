@@ -335,7 +335,8 @@ def build_season(seas: str, games: dict[str, dict], slug_of_qid: dict,
                         buckets.append((b, cur["margin"]))
                 for b, m in buckets:
                     wpin.append({"game_id": gid, "season_id": seas,
-                                 "era": era_for(seas), "sec_bucket": b,
+                                 "era": era_for(seas), "period": cur["period"] if cur else 1,
+                                 "sec_bucket": b,
                                  "margin": max(-30, min(30, m))})
         for r in rs:
             q = r.get("primary_player_qid")
@@ -377,45 +378,63 @@ def build_season(seas: str, games: dict[str, dict], slug_of_qid: dict,
     return out
 
 
-def _rescue_hoopr(url, key, games, slug_of_qid, log) -> dict:
+def _rescue_hoopr(url, key, games, slug_of_qid, log, force=False) -> dict:
     """Games whose real PBP exists in nba_plays (g_2022_hoopR_*) but whose
     nba_games rows are unscored/missing: derive finals from the last play and
     emit flow for them, so the 2022-23 replay layer is complete."""
     out: dict[str, dict] = {}
-    if (FLOW_DIR / "2022-23.parquet").exists():
-        log("hoopR rescue: already done (flow/2022-23.parquet exists)")
-        return out
+    cache = DATA / "raw" / "hoopr-plays.parquet"
     rows: list[dict] = []
-    cursor = ""
-    while True:
-        gt = f"&game_id=gt.{cursor}" if cursor else ""
-        req = urllib.request.Request(
-            url + f"/rest/v1/nba_plays?select={PLAYS_SELECT}"
-                  f"&game_id=like.g_2022_hoopR_%25&order=game_id{gt}&limit=1000",
-            headers={"apikey": key, "Authorization": f"Bearer {key}",
-                     "Accept-Profile": "nba_reference"},
-        )
-        last = None
-        pg = None
-        for attempt in range(RETRIES):
-            try:
-                with urllib.request.urlopen(req, timeout=60) as r:
-                    pg = json.loads(r.read().decode())
+    if cache.exists() and not force:
+        rows = pq.read_table(cache).to_pylist()
+        log(f"hoopR plays from cache: {len(rows)}")
+    else:
+        cursor = ""
+        while True:
+            gt = f"&game_id=gt.{cursor}" if cursor else ""
+            req = urllib.request.Request(
+                url + f"/rest/v1/nba_plays?select={PLAYS_SELECT}"
+                      f"&game_id=like.g_2022_hoopR_%25&order=game_id{gt}&limit=1000",
+                headers={"apikey": key, "Authorization": f"Bearer {key}",
+                         "Accept-Profile": "nba_reference"},
+            )
+            last = None
+            pg = None
+            for attempt in range(RETRIES):
+                try:
+                    with urllib.request.urlopen(req, timeout=60) as r:
+                        pg = json.loads(r.read().decode())
+                    break
+                except Exception as e:  # noqa: BLE001
+                    last = e
+                    time.sleep(0.4 * (2 ** attempt) + random.random() * 0.2)
+            if pg is None:
+                raise RuntimeError(f"hoopR fetch @{cursor}: {last}")
+            if not pg:
                 break
-            except Exception as e:  # noqa: BLE001
-                last = e
-                time.sleep(0.4 * (2 ** attempt) + random.random() * 0.2)
-        if pg is None:
-            raise RuntimeError(f"hoopR fetch @{cursor}: {last}")
-        if not pg:
-            break
-        rows.extend(pg)
-        if len(pg) < 1000:
-            break
-        cursor = pg[-1]["game_id"]
-        if len(rows) % 100000 == 0:
-            log(f"  hoopR plays: {len(rows)}")
-    log(f"hoopR plays fetched: {len(rows)}")
+            rows.extend(pg)
+            if len(pg) < 1000:
+                break
+            cursor = pg[-1]["game_id"]
+            if len(rows) % 100000 == 0:
+                log(f"  hoopR plays: {len(rows)}")
+        log(f"hoopR plays fetched: {len(rows)}")
+        cache.parent.mkdir(parents=True, exist_ok=True)
+        t = pa.table({k: [r.get(k) for r in rows] for k in
+                      ("game_id", "period", "clock_seconds_remaining",
+                       "home_score_after", "away_score_after", "primary_player_qid")})
+        pq.write_table(t, cache)
+    req = urllib.request.Request(
+        url + "/rest/v1/nba_plays?select=play_id&game_id=like.g_2022_hoopR_%25",
+        headers={"apikey": key, "Authorization": f"Bearer {key}",
+                 "Accept-Profile": "nba_reference", "Range": "0-0", "Prefer": "count=exact"})
+    try:
+        with urllib.request.urlopen(req, timeout=60) as r:
+            exact = r.headers.get("content-range", "/?").split("/")[-1]
+        if exact.isdigit() and int(exact) != len(rows):
+            log(f"WARNING hoopR completeness: fetched {len(rows)} of {exact}")
+    except Exception as e:  # noqa: BLE001
+        log(f"hoopR count probe failed: {e}")
     by_game: dict[str, list[dict]] = {}
     for r in rows:
         if r["game_id"] in games:
@@ -445,7 +464,8 @@ def _rescue_hoopr(url, key, games, slug_of_qid, log) -> dict:
                     ei += 1
                 if cur is not None:
                     wpin_rows.append({"game_id": gid, "season_id": season,
-                                      "era": era_for(season), "sec_bucket": b,
+                                      "era": era_for(season), "period": cur["period"],
+                                      "sec_bucket": b,
                                       "margin": max(-30, min(30, cur["margin"]))})
         for r in rs:
             q = r.get("primary_player_qid")
@@ -476,6 +496,7 @@ def _rescue_hoopr(url, key, games, slug_of_qid, log) -> dict:
         t = pa.table({"game_id": [w["game_id"] for w in wpin_rows],
                       "season_id": [w["season_id"] for w in wpin_rows],
                       "era": [w["era"] for w in wpin_rows],
+                      "period": [w["period"] for w in wpin_rows],
                       "sec_bucket": [w["sec_bucket"] for w in wpin_rows],
                       "margin": [w["margin"] for w in wpin_rows]})
         pq.write_table(t, WPIN_DIR / "2022-23.parquet")
@@ -502,6 +523,22 @@ def cmd_build(args, log=print):
              if g.get("home_score") is not None and g.get("away_score") is not None}
     log(f"games played: {len(games)}")
 
+    log("fetching teams…")
+    teams_rows = fetch_all(url, key, "nba_reference", "nba_teams",
+                           "team_id,abbreviation,current_name,bbref_slug,"
+                           "first_season_id,last_season_id,is_active")
+    team_map = {t["team_id"]: t for t in teams_rows}
+    t = pa.table({
+        "team_id": [t["team_id"] for t in teams_rows],
+        "abbreviation": [t.get("abbreviation") for t in teams_rows],
+        "current_name": [t.get("current_name") for t in teams_rows],
+        "bbref_slug": [t.get("bbref_slug") for t in teams_rows],
+        "first_season_id": [t.get("first_season_id") for t in teams_rows],
+        "last_season_id": [t.get("last_season_id") for t in teams_rows],
+    })
+    pq.write_table(t, DATA / "teams.parquet")
+    log(f"teams: {len(teams_rows)}")
+
     log("fetching players…")
     players = fetch_all(url, key, "nba_reference", "nba_players", PLAYERS_SELECT, log=log)
     slug_of_qid = {p["qid"]: p["bbref_slug"] for p in players if p.get("qid")}
@@ -518,9 +555,10 @@ def cmd_build(args, log=print):
     if mpath.exists() and args.resume:
         manifest = json.loads(mpath.read_text())
 
+    total_seasons = len(seas)
     for i, seas in enumerate(seas, 1):
         if (FLOW_DIR / f"{seas}.parquet").exists() and not args.force:
-            log(f"[{i}/{len(seas)}] {seas}: done (skip)")
+            log(f"[{i}/{total_seasons}] {seas}: done (skip)")
             continue
         t0 = time.time()
         try:
@@ -537,10 +575,10 @@ def cmd_build(args, log=print):
             **out, "seconds": round(time.time() - t0, 1),
         }
         mpath.write_text(json.dumps(manifest, indent=2))
-        log(f"[{i}/{len(seas)}] {seas}: done in {time.time() - t0:.0f}s {out}")
+        log(f"[{i}/{total_seasons}] {seas}: done in {time.time()-t0:.0f}s {out}")
 
     log("hoopR rescue: rebuild scored games from real PBP where game rows are unscored…")
-    rescued = _rescue_hoopr(url, key, games, slug_of_qid, log)
+    rescued = _rescue_hoopr(url, key, games, slug_of_qid, log, force=args.force)
     if rescued:
         games.update(rescued)
         log(f"rescue added {len(rescued)} played games from hoopR plays")
@@ -550,7 +588,8 @@ def cmd_build(args, log=print):
     for g in games.values():
         rows.append({
             "game_id": g["game_id"], "game_date": g["game_date"],
-            "season_id": season_of(g["game_date"]),
+            "season_id": season_of(g["game_date"]) if g.get("game_date")
+                          else g.get("season_id"),
             "source_season_id": g["season_id"],
             "game_type": g["game_type"],
             "home_team_id": g["home_team_id"], "away_team_id": g["away_team_id"],
@@ -562,20 +601,17 @@ def cmd_build(args, log=print):
     t = pa.table({k: [r[k] for r in rows] for k in rows[0]})
     pq.write_table(t, DATA / "games.parquet")
 
-    team_rows = {}
-    for g in games.values():
-        s = season_of(g["game_date"])
-        for side in ("home", "away"):
-            tid, name = g[f"{side}_team_id"], None
-            team_rows.setdefault(tid, {"team_id": tid, "name": name,
-                                       "first_season": s,
-                                       "last_season": s})
-            tr = team_rows[tid]
-            tr["first_season"] = min(tr["first_season"], s)
-            tr["last_season"] = max(tr["last_season"], s)
-    t = pa.table({k: [r[k] for r in team_rows.values()] for k in
-                  ("team_id", "name", "first_season", "last_season")})
-    pq.write_table(t, DATA / "teams.parquet")
+    team_meta = teams_rows
+    if team_meta:
+        t = pa.table({
+            "team_id": [t["team_id"] for t in team_meta],
+            "abbreviation": [t.get("abbreviation") for t in team_meta],
+            "current_name": [t.get("current_name") for t in team_meta],
+            "bbref_slug": [t.get("bbref_slug") for t in team_meta],
+            "first_season_id": [t.get("first_season_id") for t in team_meta],
+            "last_season_id": [t.get("last_season_id") for t in team_meta],
+        })
+        pq.write_table(t, DATA / "teams.parquet")
 
     if qid_of_slug:
         pub = []
@@ -644,6 +680,8 @@ def cmd_check(args, log=print):
     if args.license:
         banned_hits = []
         for f in sorted(DATA.rglob("*.parquet")):
+            if "raw" in f.parts:
+                continue  # internal fetch cache, never shipped
             try:
                 t = pq.read_table(f)
             except Exception:  # noqa: BLE001
@@ -673,7 +711,7 @@ def cmd_stats(args, log=print):
     log("flow events:", con.execute("SELECT count(*) FROM flow").fetchone()[0])
     log("games with pbp:", con.execute("SELECT count(DISTINCT game_id) FROM flow").fetchone()[0])
     log("seasons:", con.execute("SELECT count(DISTINCT season_id) FROM flow").fetchone()[0])
-    for seas in ["BAA_1946-47", "NBA_1975-76", "NBA_1995-96", "NBA_2015-16", "NBA_2025-26", "NBA_2026-27", "NBA_2040-41"]:
+    for seas in ["1946-47", "1975-76", "1995-96", "2015-16", "2022-23", "2025-26"]:
         n = con.execute("SELECT count(*) FROM flow WHERE season_id = ?", [seas]).fetchone()[0]
         log(f"  {seas}: flow rows {n}")
 
@@ -686,25 +724,25 @@ def cmd_wp(args, log=print):
                 f"FROM read_parquet('{DATA / 'games.parquet'}')")
     con.execute("""
         CREATE OR REPLACE TABLE agg AS
-        SELECT w.era, w.sec_bucket,
+        SELECT w.era, w.period, w.sec_bucket,
                CASE WHEN w.margin < -30 THEN -30 WHEN w.margin > 30 THEN 30 ELSE w.margin END AS margin_bucket,
                count(*) AS n, sum(g.home_won::int) AS wins
         FROM wpin w JOIN games g USING (game_id)
-        GROUP BY 1, 2, 3
+        GROUP BY 1, 2, 3, 4
     """)
     # fill small buckets: era-level then global
     con.execute("""
         CREATE OR REPLACE TABLE era_agg AS
-        SELECT sec_bucket, margin_bucket, sum(n) n, sum(wins) wins
-        FROM agg GROUP BY 1, 2
+        SELECT period, sec_bucket, margin_bucket, sum(n) n, sum(wins) wins
+        FROM agg GROUP BY 1, 2, 3
     """)
     con.execute("""
         CREATE OR REPLACE TABLE global_agg AS
-        SELECT sec_bucket, sum(n) n, sum(wins) wins
-        FROM agg GROUP BY 1
+        SELECT period, sec_bucket, sum(n) n, sum(wins) wins
+        FROM agg GROUP BY 1, 2
     """)
     out = con.execute("""
-        SELECT a.era, a.sec_bucket, a.margin_bucket,
+        SELECT a.era, a.period, a.sec_bucket, a.margin_bucket,
                CASE WHEN a.n >= 20 THEN a.n
                     WHEN e.n >= 20 THEN e.n ELSE g.n END AS n,
                CASE WHEN a.n >= 20 THEN a.wins
@@ -712,8 +750,8 @@ def cmd_wp(args, log=print):
                CASE WHEN a.n >= 20 THEN 'era'
                     WHEN e.n >= 20 THEN 'era-all' ELSE 'global' END AS inherited
         FROM agg a
-        JOIN era_agg e USING (sec_bucket, margin_bucket)
-        JOIN global_agg g USING (sec_bucket)
+        JOIN era_agg e USING (period, sec_bucket, margin_bucket)
+        JOIN global_agg g USING (period, sec_bucket)
     """).fetchdf()
     out["prob_home"] = (out["wins"] / out["n"]).round(4)
     out.to_parquet(DATA / "wp.parquet")
@@ -739,7 +777,7 @@ def cmd_precedents(args, log=print):
                abs(home_score - away_score) AS blowout,
                home_score + away_score AS total_pts,
                (home_score = away_score)::int AS tie_game
-        FROM games
+        FROM games WHERE game_type != 'preseason'
     """).fetchdf()
     # flow-based shapes only where PBP exists
     flow_shape = con.execute("""
@@ -779,10 +817,13 @@ def cmd_precedents(args, log=print):
                     on="game_id", how="left")
     out.to_parquet(DATA / "precedents.parquet")
     log("precedents:", len(out), "rows")
-    for name in ["blowout_max", "comeback_15", "lead_changes_max", "highest_scoring"]:
+    value_col = {"blowout_max": "blowout", "comeback_15": "max_deficit",
+                 "lead_changes_max": "lead_changes", "highest_scoring": "total_pts"}
+    for name, col in value_col.items():
         r = out[out.precedent == name].head(2)
         for _, x in r.iterrows():
-            log(f"  {name}: {x['game_date']} {x['home_team_id']}-{x['away_team_id']} {x['home_score']}-{x['away_score']} value={x[name]}")
+            log(f"  {name}: {x['game_date']} {x['home_team_id']}-{x['away_team_id']} "
+                f"{x['home_score']}-{x['away_score']} value={x.get(col)}")
 
 
 def cmd_release(args, log=print):

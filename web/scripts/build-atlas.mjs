@@ -51,7 +51,7 @@ for (const { season_id } of seasons) {
   const maxLen = 200;
   const games = [];
   for (const g of rows) {
-    const m = byGame.get(g.game_id) ?? [];
+    let m = byGame.get(g.game_id) ?? [];
     let down = m;
     if (m.length > maxLen) {
       down = [];
@@ -59,8 +59,12 @@ for (const { season_id } of seasons) {
         down.push(m[Math.min(m.length - 1, Math.floor((i / maxLen) * m.length))]);
       }
     }
-    if (!down.length) continue;
-    games.push({ id: g.game_id, d: g.d, h: g.h, a: g.a, hs: g.home_score, as: g.away_score, m: down });
+    if (!down.length) {
+      // no PBP: honest flat line at the final margin (blowout texture)
+      const fin = Math.max(-30, Math.min(30, (g.home_score ?? 0) - (g.away_score ?? 0)));
+      down = [fin, fin];
+    }
+    games.push({ id: g.game_id, d: g.d ?? "", h: g.h ?? "", a: g.a ?? "", hs: g.home_score, as: g.away_score, m: down, r: byGame.has(g.game_id) ? 1 : 0 });
   }
   fs.writeFileSync(path.join(ATLAS_DIR, `${season_id}.json`), JSON.stringify({ season: season_id, games }));
   index.seasons.push(season_id);

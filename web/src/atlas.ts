@@ -7,6 +7,7 @@ export interface AtlasGame {
   hs: number;
   as: number;
   m: number[];      // downsampled margins (home - away), chronological
+  r?: number;       // 1 = real play-by-play replay available
 }
 export interface AtlasSeason {
   season: string;
@@ -105,7 +106,7 @@ export function renderAtlas(
       const i = Math.min(s.games.length - 1, Math.max(0, Math.floor((x / rect.width) * s.games.length)));
       const g = s.games[i];
       label.textContent =
-        `${s.season.replace(/^(NBA|BAA|ABA)_/, "")} · ${g.d} ${g.h}-${g.a} ${g.hs}-${g.as}`;
+        `${s.season.replace(/^(NBA|BAA|ABA)_/, "")} · ${g.d} ${g.h}-${g.a} ${g.hs}-${g.as}${g.r ? " · replay" : ""}`;
       label.style.color = "#fff";
     });
     row.addEventListener("mouseleave", () => {
