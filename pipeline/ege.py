@@ -633,10 +633,11 @@ def cmd_build(args, log=print):
     team_to_venue = {}
     for g in games.values():
         v = g.get("venue_name")
-        for side in ("home_team_id", "away_team_id"):
-            tid = g.get(side) or ""
-            if v and tid.startswith("t_nba_"):
-                team_to_venue.setdefault(tid, v)
+        tid = g.get("home_team_id") or ""
+        if v and tid.startswith("t_nba_"):
+            # only HOME games identify a team's arena; away teams play at
+            # the opponent's venue and must NOT be named from it
+            team_to_venue.setdefault(tid, v)
     arena_to_team = {}
     for t in teams_rows:
         if t.get("arena_name") and t.get("current_name"):

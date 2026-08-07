@@ -7,11 +7,13 @@ we say so.
 ## The biggest regular-season blowout in the record
 
 ```
-2021-12-02   152 - 79   (+73)
+2021-12-02   Memphis 152 - 79 Oklahoma City   (+73)
 ```
 
 No other regular-season game in the shipped record approaches it. The
 closest challengers are 1991-12-17 (+68) and 1972-03-19 (+63).
+(Team names on the t_nba id convention are arena-derived from the
+covered games: 21 of 30 teams named, 9 honest "??".)
 
 ## The modern scoring high-water mark
 
