@@ -13,7 +13,13 @@ let booting: Promise<AnyConn> | null = null;
 export const DATA = "data";
 
 // duckdb-wasm httpfs needs absolute URLs and has no glob support.
-export const P = (p: string): string => new URL(p, window.location.origin).href;
+// Resolve against the page DIRECTORY (subpath-safe: GitHub Pages hosts the
+// site under /every-game-ever/, localhost under /).
+export const P = (p: string): string => {
+  const base = window.location.href.split("#")[0] || window.location.href;
+  const dir = base.endsWith("/") ? base : base + "/";
+  return new URL(p, dir).href;
+};
 export const FLOW_FILES = [P("data/flow/2022-23.parquet"), P("data/flow/2025-26.parquet")];
 export const PLAYER_GAME_FILES = [P("data/player_games/2022-23.parquet"), P("data/player_games/2025-26.parquet")];
 
