@@ -18,13 +18,14 @@ covered games: 21 of 30 teams named, 9 honest "??".)
 ## The modern scoring high-water mark
 
 ```
-2023-02-25   175 - 176   (351 combined, regulation)
+2023-02-25   LA 175 - 176 Sacramento   (351 combined, in 2OT)
 ```
 
-Per the play-by-play record we ship: a 2022-23 regulation game that
-touched 351 points. (The era table agrees: 2022-23 averages **229.6
-points per game** — the fastest modern season in the record, next to
-1969-70's 232.7.)
+Per the play-by-play record we ship: 2022-23, 351 points, gone to
+overtime (25 events past the 4th). The same game also owns the most
+lead changes in the play-by-play record (36). The era table agrees on
+the pace: 2022-23 averages **229.6 points per game** — the fastest
+modern season in the record, next to 1969-70's 232.7.
 
 ## The most lead changes in the play-by-play era
 
