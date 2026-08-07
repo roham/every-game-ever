@@ -1,6 +1,6 @@
 {
   "project": "every-game-ever",
-  "worker": "headless",
+  "worker": "live",
   "phase": "polish",
   "iteration": 1,
   "heartbeat_ts": null,

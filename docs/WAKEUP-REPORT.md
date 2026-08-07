@@ -1,9 +1,37 @@
-2026-08-07T06:25:32Z loop scaffolded (engine + specs P1-P4 + design)
-2026-08-07T06:26:36Z budget initialized: 86400 seconds
-2026-08-07T06:26:36Z SUPERVISOR UP pid=29715
-2026-08-07T06:27:29Z SUPERVISOR UP pid=30756
-2026-08-07T06:28:03Z SUPERVISOR UP pid=31445
-2026-08-07T06:28:45Z SUPERVISOR UP pid=32236
+# Every Game Ever — MID LOOP REPORT (autonomous)
+
+- Generated: 2026-08-07 09:16:02 UTC
+- Started: 2026-08-07 06:26:36 UTC
+- Budget: 24.0h — ends 2026-08-08 06:26:36 UTC
+- Phase: polish · Worker: headless · Resume spawns: 5
+
+## Phase status
+- **P1** (dataset pipeline): complete — 45,263 games / 60 seasons
+- **P2** (win-probability + precedents): complete — wp 7,197 buckets; precedents 4 boards
+- **P3** (web client): complete — live + visually verified
+- **P4** (public release + deploy): complete — v0.1.0 release + GitHub Pages live
+
+## Recent commits
+```
+ee40853 [EGE-LOOP] content cycle 2: GREATEST-2022-23 (12 verified games w/ live links), STORIES corrected (175-176 = SAC-LAC 2OT), README links
+59fa280 [EGE-LOOP] polish: abbr derivation (Team-*, t_-unnamed) + release v0.1.2
+b651f20 [EGE-LOOP] polish: release v0.1.1; Pages workflow tracks latest release
+ab6a81c [EGE-LOOP] polish: wp sanity at true Q4 10:00 (elapsed 2280)
+cf90f64 [EGE-LOOP] polish: wp sanity elapsed-time semantics (Q4 10:00 = sec 3000)
+f7d8f65 [EGE-LOOP] polish: check() pd.isna for null-scored games
+fe6adea [EGE-LOOP] polish: home-only arena bridge → MEM 152-79 OKL verified on board; 21/30 t_nba named; stories updated
+b0d9a4e [EGE-LOOP] polish: NaN-proof tmap → t_nba boards resolve to real names (MEM 152-79 OKC 2021-12-02 verified)
+aeaaf25 [EGE-LOOP] polish: arena cross-ref names for t_nba ids (boards + atlas tooltips), CONTRIBUTING, display_name pipeline
+2265158 [EGE-LOOP] polish: og meta + og image; live end-of-game verified (117-104 Q4 0:28)
+32c1c69 [EGE-LOOP] polish: STORIES.md (record-mined), state update
+50f919e [EGE-LOOP] polish: recover truncated 2022-23 game ends (in()-refetch, 107K→175K events), flow_complete flag + honest null finals for 73 source-incomplete games; era 229.6 avg verified
+d7c24b5 [EGE-LOOP] P4: fix P() subpath resolution for GitHub Pages (deep-link data paths)
+e93ca4a [EGE-LOOP] P4: Pages workflow (ci downloads release bundle → builds atlas → deploy)
+df2566c [EGE-LOOP] P4: final README/schema/duckdb-queries/docs + release bundle v0.1.0
+```
+
+## Loop log (tail 40)
+```
 2026-08-07T06:28:53Z supervisor live (pid detached, budget 24h)
 2026-08-07T06:39:49Z STALL #1 heartbeat age=656s phase=P1 event=state initialized
 2026-08-07T06:40:50Z STALL #2 heartbeat age=716s phase=P1 event=state initialized
@@ -44,3 +72,9 @@
 2026-08-07T09:09:48Z QA sweep: check+license+tsc green post polish
 2026-08-07T09:12:15Z v0.1.1 released (1.2M); Pages now tracks latest
 2026-08-07T09:15:44Z content cycle 2: 12-game listicle w/ live replay links; STORIES fact-corrected
+```
+
+## Next actions for Roham
+- Read the README + open the deployed site (if any URL below).
+- Review phase acceptance evidence in .loop/phases.log.
+- Ask Dexter for anything you want changed; the loop parks after budget.

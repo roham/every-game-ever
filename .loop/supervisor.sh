@@ -17,7 +17,7 @@ STATE="$ROOT/.loop/state.json"
 HEARTBEAT="$ROOT/.loop/heartbeat"
 LOG="$ROOT/.loop/phases.log"
 RESUME_PROMPT="$ROOT/.loop/resume-prompt.md"
-STALL_SECONDS=600          # heartbeat older than this = stalled
+STALL_SECONDS=1800         # heartbeat older than this = stalled (long builds run 25m+)
 MAX_STALL=3                # stalls before a headless resume is spawned
 MAX_SPAWNS=25              # absolute resume-session cap per budget cycle
 TICK_SECONDS=60
