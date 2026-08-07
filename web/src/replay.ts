@@ -234,9 +234,10 @@ export class Replay {
       : null;
     if (!wp) return "";
     const trail = ev.margin < 0 ? "trailing team" : (ev.margin > 0 ? "home team" : "tied");
-    const pct = Math.round((1 - wp.prob) * 1000) / 10;
     const wins = Math.round(wp.prob * wp.n);
-    return `<b>${ev.margin <= 0 ? Math.abs(ev.margin) : ev.margin} ${ev.margin === 0 ? "— tied" : ev.margin < 0 ? "down" : "up"}</b> — this exact spot has happened <b>${wp.n.toLocaleString()} times</b>; the ${trail} won <b>${wins.toLocaleString()}</b> (${pct}%).`;
+    const pct = Math.round((wins / wp.n) * 1000) / 10;
+    const other = Math.round(((wp.n - wins) / wp.n) * 1000) / 10;
+    return `<b>${ev.margin <= 0 ? Math.abs(ev.margin) : ev.margin} ${ev.margin === 0 ? "— tied" : ev.margin < 0 ? "down" : "up"}</b> — this exact spot has happened <b>${wp.n.toLocaleString()} times</b>; the ${trail} won <b>${wins.toLocaleString()}</b> (${pct}%), the other side ${other}% of the time.`;
   }
 
   destroy(): void {
