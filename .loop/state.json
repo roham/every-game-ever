@@ -2,7 +2,7 @@
   "project": "every-game-ever",
   "worker": "live",
   "phase": "polish",
-  "iteration": 2,
+  "iteration": 3,
   "heartbeat_ts": null,
   "stall_count": 0,
   "resume_spawns": 5,
@@ -33,5 +33,5 @@
       "note2": "v0.1.0 release + GitHub Pages live"
     }
   },
-  "last_event": "cadence: wp spot-checks pass, stakes E2E verified live, roadmap documented"
+  "last_event": "cadence: pace math fixed (dt/scale), OT permalinks verified live (175-174 OT2 1:21), mobile replay ok"
 }
