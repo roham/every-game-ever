@@ -9,7 +9,7 @@ Verified 2026-08-07 directly against `nba_reference` (Supabase
 |---|---|---|
 | Game rows (nba_games) | 76,050 total rows; **44,087 played** (scored) | full |
 | Played games coverage | 59 seasons, 1946-47 → 2025-26 (gaps: several seasons missing — e.g. 2005-06, 2022-23 rows unscored) | partial |
-| **Real play-by-play (nba_plays)** | **553,944 plays, one season: 2022-23** (hoopR-sourced, `g_2022_hoopR_*` ids), plus 48 additional games under 2025-26 dates | single season |
+| **Real play-by-play (nba_plays)** | **~553K plays, one season: 2022-23** (hoopR-sourced, `g_2022_hoopR_*` ids; keyset gap recovered via in()-refetch → 175,029 flow events), plus 48 additional games under 2025-26 dates | single season |
 | Placeholder "plays" | ~11.6M rows under `g_19xx_shuf_*` / `g_20xx_shuf_*` ids with NULL scores — synthetic schedule rows, NOT real PBP | excluded |
 | Players | 5,769, all qid-resolved | full |
 
@@ -18,8 +18,11 @@ Verified 2026-08-07 directly against `nba_reference` (Supabase
 1. **games.parquet** — all 44,087 played games: date, teams, final, OT,
    attendance, type. Complete history of the league's box-score record.
 2. **flow/<season>.parquet** — true intra-game score flow for **2022-23
-   (+ the 48 rescued games)**: every scoring event with clock. This is the
-   full-replay layer, honestly labeled.
+   (+ the 48 rescued games)**: every scoring event with clock. 1,103 of the
+   1,176 rescued games run to a real ending (final event in Q4, ≤60s
+   left); 73 games' play-by-play ends early *in the source* — those games
+   carry `flow_complete=false` and **no claimed final score** in
+   games.parquet (honesty over fake finals).
 3. **era.parquet** — season aggregates across ALL 59 seasons, computed
    from finals: scoring pace, average margin, OT rates, close-game share.
 4. **wp.parquet** — empirical win-probability, computed from the real-PBP

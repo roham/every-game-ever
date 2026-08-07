@@ -491,17 +491,75 @@ def _rescue_hoopr(url, key, games, slug_of_qid, log, force=False) -> dict:
             q = r.get("primary_player_qid")
             if q and q in slug_of_qid:
                 pg_rows.append({"bbref_slug": slug_of_qid[q], "game_id": gid})
-        meta = meta_of_gid.get(gid)
+            meta = meta_of_gid.get(gid)
+        # completeness normalized AFTER the flow file is written (post-pass)
         out[gid] = {
             "game_id": gid, "game_date": meta.get("game_date") if meta else None,
             "season_id": season, "source_season_id": "NBA_2022-23",
             "game_type": meta.get("game_type") if meta else "regular",
             "home_team_id": meta.get("home_team_id") if meta else None,
             "away_team_id": meta.get("away_team_id") if meta else None,
-            "home_score": last["home_score"], "away_score": last["away_score"],
+            "home_score": last["home_score"],
+            "away_score": last["away_score"],
+            "flow_complete": False,  # normalized post-write
             "playoff_round": None, "overtime_periods": meta.get("overtime_periods") if meta else None,
             "attendance": None, "venue_name": None,
         }
+    # keyset pagination dropped some games' END segments; re-fetch via in.()
+    # (proven complete) the games whose flow does not reach a real ending
+    import duckdb as _ddb
+    _c = _ddb.connect()
+    def _last_state(gid):
+        rows = _c.execute(
+            "SELECT period, clock_remaining_s FROM read_parquet('"
+            + str(FLOW_DIR / "2022-23.parquet") + "') WHERE game_id = ? "
+            "ORDER BY seq DESC LIMIT 1", [gid]).fetchone()
+        return rows
+    def _complete(rows):
+        return rows and rows[0] >= 4 and (rows[1] is None or rows[1] <= 60)
+    partial = []
+    for gid in list(by_game.keys()) + list(out.keys()):
+        if not _complete(_last_state(gid)):
+            partial.append(gid)
+    refeteched: dict[str, list[dict]] = {}
+    if partial:
+        log(f"hoopR refetch {len(partial)} incomplete games via in.()…")
+        for i in range(0, len(partial), URL_CHUNK):
+            chunk = partial[i:i + URL_CHUNK]
+            for r in fetch_plays_for_games(url, key, chunk, log):
+                refeteched.setdefault(r["game_id"], []).append(r)
+    if refeteched:
+        extra_flow: list[dict] = []
+        extra_wpin: list[dict] = []
+        for gid, rs in refeteched.items():
+            evs = derive_flow(gid, rs)
+            if not evs:
+                continue
+            for e in evs:
+                e["season_id"] = "2022-23"
+            extra_flow.extend(evs)
+            last = evs[-1]
+            max_sec = sec_from_start(last["period"], last["clock_remaining_s"])
+            if max_sec < 999_999_999:
+                cur = None
+                ei = 0
+                for b in range(0, max_sec + 24, 24):
+                    while ei < len(evs) and sec_from_start(evs[ei]["period"],
+                                                           evs[ei]["clock_remaining_s"]) <= b:
+                        cur = evs[ei]
+                        ei += 1
+                    if cur is not None:
+                        extra_wpin.append({"game_id": gid, "season_id": "2022-23",
+                                           "era": era_for("2022-23"), "period": cur["period"],
+                                           "sec_bucket": b,
+                                           "margin": max(-30, min(30, cur["margin"]))})
+            # update the game's finals from the refetched flow
+            if gid in out:
+                out[gid]["home_score"] = last["home_score"]
+                out[gid]["away_score"] = last["away_score"]
+        flow_rows = [e for e in flow_rows if e["game_id"] not in refeteched] + extra_flow
+        flow_rows.sort(key=lambda e: (e["game_id"], e["seq"]))
+        wpin_rows = [w for w in wpin_rows if w["game_id"] not in refeteched] + extra_wpin
     if flow_rows:
         t = pa.table({
             "game_id": [e["game_id"] for e in flow_rows],
@@ -515,6 +573,15 @@ def _rescue_hoopr(url, key, games, slug_of_qid, log, force=False) -> dict:
             "seq": [e["seq"] for e in flow_rows],
         })
         pq.write_table(t, FLOW_DIR / "2022-23.parquet")
+    if out and flow_rows:
+        for gid in out:
+            st2 = _last_state(gid)
+            complete = _complete(st2)
+            out[gid]["flow_complete"] = complete
+            if not complete:
+                out[gid]["home_score"] = None
+                out[gid]["away_score"] = None
+    if wpin_rows:
         t = pa.table({"game_id": [w["game_id"] for w in wpin_rows],
                       "season_id": [w["season_id"] for w in wpin_rows],
                       "era": [w["era"] for w in wpin_rows],
@@ -528,7 +595,7 @@ def _rescue_hoopr(url, key, games, slug_of_qid, log, force=False) -> dict:
                           "game_id": [u[1] for u in sorted(uniq)],
                           "season_id": ["2022-23"] * len(uniq)})
             pq.write_table(t, DATA / "player_games" / "2022-23.parquet")
-        log(f"hoopR flow: {len(flow_rows)} events, {len(out)} games")
+        log(f"hoopR flow: {len(flow_rows)} events, {len(out)} games, refetched {len(refeteched)}")
     return out
 
 
@@ -620,6 +687,7 @@ def cmd_build(args, log=print):
             "playoff_round": g.get("playoff_round"),
             "overtime_periods": g.get("overtime_periods"),
             "attendance": g.get("attendance"), "venue_name": g.get("venue_name"),
+            "flow_complete": g.get("flow_complete", False),
         })
     t = pa.table({k: [r[k] for r in rows] for k in rows[0]})
     pq.write_table(t, DATA / "games.parquet")
@@ -686,6 +754,8 @@ def cmd_check(args, log=print):
     mism = 0
     checked = 0
     for _, g in sample.iterrows():
+        if g.get("home_score") is None:
+            continue  # flow-incomplete games carry no claimed final
         last = con.execute("SELECT home_score, away_score FROM flow WHERE game_id = ? "
                            "ORDER BY seq DESC LIMIT 1", [g["game_id"]]).fetchone()
         checked += 1
