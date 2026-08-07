@@ -34,7 +34,8 @@ finals-derived precedent intelligence over all of it).
 Five queries that make it worth opening DuckDB: see
 [docs/duckdb-queries.md](docs/duckdb-queries.md). And the
 record talking about itself: [docs/STORIES.md](docs/STORIES.md) and
-[docs/GREATEST-2022-23.md](docs/GREATEST-2022-23.md).
+[docs/GREATEST-2022-23.md](docs/GREATEST-2022-23.md), and
+eras as fingerprints: [docs/ERAS.md](docs/ERAS.md).
 
 ## Run it
 
