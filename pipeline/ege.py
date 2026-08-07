@@ -950,8 +950,14 @@ def cmd_precedents(args, log=print):
         ab = ab if isinstance(ab, str) and ab else (slug if isinstance(slug, str) and slug else "")
         ab = (ab or "").upper()
         if not ab and isinstance(name, str) and name:
-            words = name.split()
-            ab = (words[0][:3] if words else name[:3]).upper()
+            if name.startswith("t_"):
+                ab = ""  # unnamed convention ids stay "??"
+            else:
+                words = name.split()
+                if words and words[0] == "Team" and len(words) > 1:
+                    ab = words[1][:3].upper()
+                else:
+                    ab = (words[0][:3] if words else name[:3]).upper()
         ab = ab or "??"
         tmap[str(t["team_id"])] = ab
         st = t.get("nba_stats_team_id")

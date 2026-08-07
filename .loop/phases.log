@@ -42,3 +42,4 @@
 2026-08-07T09:05:31Z polish: display names via arena cross-ref; CONTRIBUTING
 2026-08-07T09:06:53Z polish: NaN-proof tmap; blowout board now names teams
 2026-08-07T09:09:48Z QA sweep: check+license+tsc green post polish
+2026-08-07T09:12:15Z v0.1.1 released (1.2M); Pages now tracks latest
