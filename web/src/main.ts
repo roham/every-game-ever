@@ -136,6 +136,7 @@ async function viewGame(gameId: string, seek?: { period: number; clock: number }
     const last = flow[flow.length - 1];
     const maxT = last ? secFromStart(last.period, last.clock_remaining_s) : 0;
     replay?.stop();
+    btnPlay.textContent = "▶ Play";
     replay = new Replay(flow, meta, canvas, frame, {
       speed, showWp, homeAbbr: hAbbr, awayAbbr: aAbbr, seekClock: seek,
       onTick: (_e, t) => {
