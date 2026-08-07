@@ -1,8 +1,8 @@
 {
   "project": "every-game-ever",
   "worker": "headless",
-  "phase": "P1",
-  "iteration": 0,
+  "phase": "polish",
+  "iteration": 1,
   "heartbeat_ts": null,
   "stall_count": 0,
   "resume_spawns": 5,
@@ -13,21 +13,25 @@
   "final_report_written": false,
   "phases": {
     "P1": {
-      "status": "pending",
-      "note": "dataset pipeline"
+      "status": "complete",
+      "note": "dataset pipeline",
+      "note2": "45,263 games / 60 seasons"
     },
     "P2": {
-      "status": "pending",
-      "note": "win-probability + precedents"
+      "status": "complete",
+      "note": "win-probability + precedents",
+      "note2": "wp 7,197 buckets; precedents 4 boards"
     },
     "P3": {
-      "status": "pending",
-      "note": "web client"
+      "status": "complete",
+      "note": "web client",
+      "note2": "live + visually verified"
     },
     "P4": {
-      "status": "pending",
-      "note": "public release + deploy"
+      "status": "complete",
+      "note": "public release + deploy",
+      "note2": "v0.1.0 release + GitHub Pages live"
     }
   },
-  "last_event": "resume requested 2026-08-07T08:04:18Z"
+  "last_event": "polish iteration 1: completion recovery, stories, docs"
 }
