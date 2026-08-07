@@ -1,41 +1,61 @@
-// Lazy DuckDB-WASM wrapper over static Parquet. Boots only when needed.
-import * as duckdb from "@duckdb/duckdb-wasm";
+// Lazy DuckDB-WASM over static Parquet. Boots only when needed.
+// The WASM lib loads from jsdelivr at runtime (bundler-free; verified path —
+// vite's bundling of the lib produced broken instantiations).
+import type * as DuckModule from "@duckdb/duckdb-wasm";
 
-let db: duckdb.AsyncDuckDB | null = null;
-let conn: duckdb.AsyncDuckDBConnection | null = null;
-let booting: Promise<duckdb.AsyncDuckDBConnection> | null = null;
+const DDB_URL = "https://cdn.jsdelivr.net/npm/@duckdb/duckdb-wasm@1.29.0/+esm";
 
-export const DATA = "data"; // served from web/public/data
+type DuckLib = typeof DuckModule;
+type AnyConn = { query(text: string, ...args: unknown[]): Promise<unknown> };
+let conn: AnyConn | null = null;
+let booting: Promise<AnyConn> | null = null;
 
-export async function getConn(): Promise<duckdb.AsyncDuckDBConnection> {
+export const DATA = "data";
+
+// duckdb-wasm httpfs needs absolute URLs and has no glob support.
+export const P = (p: string): string => new URL(p, window.location.origin).href;
+export const FLOW_FILES = [P("data/flow/2022-23.parquet"), P("data/flow/2025-26.parquet")];
+export const PLAYER_GAME_FILES = [P("data/player_games/2022-23.parquet"), P("data/player_games/2025-26.parquet")];
+
+async function boot(): Promise<AnyConn> {
+  // Dynamic-import exception: the module specifier is a runtime CDN URL.
+  // Static bundling of duckdb-wasm breaks its wasm instantiation (verified).
+  const duckdb = (await import(/* @vite-ignore */ DDB_URL)) as DuckLib;
+  const bundles = duckdb.getJsDelivrBundles();
+  const bundle = await duckdb.selectBundle(bundles);
+  const worker_url = URL.createObjectURL(
+    new Blob([`importScripts("${bundle.mainWorker!}");`], { type: "text/javascript" }),
+  );
+  const worker = new Worker(worker_url);
+  const db = new duckdb.AsyncDuckDB(new duckdb.ConsoleLogger(), worker);
+  await db.instantiate(bundle.mainModule, bundle.pthreadWorker);
+  URL.revokeObjectURL(worker_url);
+  return db.connect() as Promise<AnyConn>;
+}
+
+export async function getConn(): Promise<AnyConn> {
   if (conn) return conn;
   if (booting) return booting;
-  booting = (async () => {
-    const JSDELIVR_BUNDLES = duckdb.getJsDelivrBundles();
-    const bundle = await duckdb.selectBundle(JSDELIVR_BUNDLES);
-    const worker_url = URL.createObjectURL(
-      new Blob([`importScripts("${bundle.mainWorker!}");`], { type: "text/javascript" }),
-    );
-    const worker = new Worker(worker_url);
-    const logger = new duckdb.ConsoleLogger();
-    db = new duckdb.AsyncDuckDB(logger, worker);
-    await db.instantiate(bundle.mainModule, bundle.pthreadWorker);
-    URL.revokeObjectURL(worker_url);
-    conn = await db.connect();
-    return conn;
-  })();
+  booting = boot();
   return booting;
 }
 
 export async function q<T = Record<string, unknown>>(sql: string, ...params: unknown[]): Promise<T[]> {
   const c = await getConn();
-  const run = c.query as unknown as (text: string, ...args: unknown[]) => Promise<Awaited<ReturnType<typeof c.query>>>;
-  const r = await (run(sql, ...params) as Promise<Awaited<ReturnType<typeof c.query>>>);
+  const r = (await c.query(sql, ...params)) as {
+    schema: { fields: { name: string }[] };
+    numRows: number;
+    getChildAt(i: number): { get(i: number): unknown } | null;
+  };
   const rows: T[] = [];
   const cols = r.schema.fields.map((f) => f.name);
   for (let i = 0; i < r.numRows; i++) {
     const row: Record<string, unknown> = {};
-    for (const [j, col] of cols.entries()) row[col] = r.getChildAt(j)?.get(i) ?? null;
+    for (const [j, col] of cols.entries()) {
+      const v = r.getChildAt(j)?.get(i);
+      // duckdb-wasm returns INTs as BigInt; coerce to keep client math sane.
+      row[col] = typeof v === "bigint" ? Number(v) : v ?? null;
+    }
     rows.push(row as T);
   }
   return rows;

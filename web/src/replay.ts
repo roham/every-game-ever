@@ -1,5 +1,5 @@
 // The Time Machine — replay any game from its flow, with stakes.
-import { q } from "./db";
+import { q, P } from "./db";
 
 export interface FlowEvent {
   game_id: string;
@@ -41,7 +41,7 @@ let wpCache: Map<string, { prob: number; n: number; inherited: string }> | null 
 async function loadWp(): Promise<void> {
   if (wpCache) return;
   const rows = await q<{ era: string; period: number; sec_bucket: number; margin_bucket: number; prob_home: number; n: number; inherited: string }>(
-    `SELECT era, period, sec_bucket, margin_bucket, prob_home, n, inherited FROM '${"data/wp.parquet"}'`,
+    `SELECT era, period, sec_bucket, margin_bucket, prob_home, n, inherited FROM '${P("data/wp.parquet")}'`,
   );
   wpCache = new Map();
   for (const r of rows) {
@@ -61,6 +61,8 @@ export function wpAt(era: string, period: number, sec: number, margin: number): 
 export interface ReplayOptions {
   speed: "45s" | "1x" | "2x" | "8x";
   showWp: boolean;
+  homeAbbr: string;
+  awayAbbr: string;
   seekClock?: { period: number; clock: number }; // moment permalink target
   onTick?: (e: FlowEvent | null, t: number) => void;
 }
@@ -214,9 +216,9 @@ export class Replay {
     this.frame.innerHTML = `
       <div class="game-meta">${period} · ${clock} · ${this.meta.game_date}</div>
       <div class="scoreboard">
-        <div class="h"><span class="team-name">${this.meta.home_team_id}</span>${ev ? ev.home_score : this.meta.home_score}</div>
-        <div class="clock">${this.opts.showWp && ev ? Math.round(((wpAt(eraOf(this.meta.season_id), ev.period, secFromStart(ev.period, ev.clock_remaining_s), ev.margin)?.prob ?? 0) * 100)) + "% home" : "·"}</div>
-        <div class="a"><span class="team-name">${this.meta.away_team_id}</span>${ev ? ev.away_score : this.meta.away_score}</div>
+        <div class="h"><span class="team-name">${this.opts.homeAbbr}</span>${ev ? ev.home_score : this.meta.home_score}</div>
+        <div class="clock">${this.opts.showWp && ev ? (() => { const w = wpAt(eraOf(this.meta.season_id), ev.period, secFromStart(ev.period, ev.clock_remaining_s), ev.margin); return w ? Math.round(w.prob * 100) + "% home" : "·"; })() : "·"}</div>
+        <div class="a"><span class="team-name">${this.opts.awayAbbr}</span>${ev ? ev.away_score : this.meta.away_score}</div>
       </div>
       <div class="caption">${this.caption(ev)}</div>`;
     this.opts.onTick?.(ev, this.t);

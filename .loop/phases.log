@@ -32,3 +32,4 @@
 2026-08-07T08:04:18Z RESUME spawn #4
 2026-08-07T08:04:18Z RESUME finished rc=127
 2026-08-07T08:07:38Z P1 build rerun (keyset rescue) async; web P3 scaffold committed
+2026-08-07T08:18:30Z P1+P2 verified: 45,263 games, 1,224 replay games, wp 6,473 buckets, precedents 100 rows

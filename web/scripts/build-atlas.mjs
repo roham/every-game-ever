@@ -28,7 +28,18 @@ const q = (sql, ...params) =>
 const gamesPath = path.join(DATA, "games.parquet");
 const dir = `${DATA}/flow/*.parquet`;
 
-const seasons = await q(`SELECT DISTINCT season_id FROM read_parquet('${dir}') ORDER BY season_id`);
+const teamsPath = path.join(DATA, "teams.parquet");
+let teamAbbr = {};
+if (fs.existsSync(teamsPath)) {
+  teamAbbr = Object.fromEntries(
+    (await q(`SELECT team_id, abbreviation, bbref_slug, current_name FROM read_parquet('${teamsPath}')`))
+      .map((t) => [String(t.team_id), t.abbreviation || (t.bbref_slug ?? "").toUpperCase() ||
+        (t.current_name ?? "").replace(/[^A-Za-z]/g, "").slice(0, 3).toUpperCase() || null]),
+  );
+}
+const abbr = (id) => (id && teamAbbr[String(id)]) || (id ? String(id).replace(/^t_espn_/, "T").replace(/^t_nba_/, "").replace(/^t_/, "").slice(0, 3).toUpperCase() : "?");
+
+const seasons = await q(`SELECT DISTINCT season_id FROM read_parquet('${gamesPath}') ORDER BY season_id`);
 
 const index = { seasons: [], counts: {} };
 for (const { season_id } of seasons) {
@@ -51,7 +62,8 @@ for (const { season_id } of seasons) {
   const maxLen = 200;
   const games = [];
   for (const g of rows) {
-    let m = byGame.get(g.game_id) ?? [];
+    const rawM = byGame.get(g.game_id) ?? [];
+    const m = rawM.map((v) => Number(v));
     let down = m;
     if (m.length > maxLen) {
       down = [];
@@ -61,18 +73,19 @@ for (const { season_id } of seasons) {
     }
     if (!down.length) {
       // no PBP: honest flat line at the final margin (blowout texture)
-      const fin = Math.max(-30, Math.min(30, (g.home_score ?? 0) - (g.away_score ?? 0)));
+      const fin = Math.max(-30, Math.min(30, Number(g.home_score ?? 0) - Number(g.away_score ?? 0)));
       down = [fin, fin];
     }
-    games.push({ id: g.game_id, d: g.d ?? "", h: g.h ?? "", a: g.a ?? "", hs: g.home_score, as: g.away_score, m: down, r: byGame.has(g.game_id) ? 1 : 0 });
+    games.push({ id: g.game_id, d: g.d ?? "", h: abbr(g.h), a: abbr(g.a), hs: Number(g.home_score), as: Number(g.away_score), m: down, r: byGame.has(g.game_id) ? 1 : 0 });
   }
-  fs.writeFileSync(path.join(ATLAS_DIR, `${season_id}.json`), JSON.stringify({ season: season_id, games }));
+  const sjson = (x) => JSON.stringify(x, (_k, v) => (typeof v === "bigint" ? Number(v) : v));
+  fs.writeFileSync(path.join(ATLAS_DIR, `${season_id}.json`), sjson({ season: season_id, games }));
   index.seasons.push(season_id);
   index.counts[season_id] = games.length;
   console.log(`${season_id}: ${games.length} games`);
 }
 
-fs.writeFileSync(path.join(ATLAS_DIR, "index.json"), JSON.stringify(index));
+fs.writeFileSync(path.join(ATLAS_DIR, "index.json"), JSON.stringify(index, (_k, v) => (typeof v === "bigint" ? Number(v) : v)));
 
 // stage parquet for runtime (duckdb-wasm range queries)
 const copy = [

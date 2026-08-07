@@ -440,6 +440,26 @@ def _rescue_hoopr(url, key, games, slug_of_qid, log, force=False) -> dict:
         if r["game_id"] in games:
             continue
         by_game.setdefault(r["game_id"], []).append(r)
+    # backfill team ids + dates: unscored nba_games rows share the hoopR
+    # game_id and carry teams + date
+    gids = list(by_game.keys())
+    meta_of_gid: dict[str, dict] = {}
+    for i in range(0, len(gids), URL_CHUNK):
+        chunk = gids[i:i + URL_CHUNK]
+        qs = ",".join(chunk)
+        req = urllib.request.Request(
+            url + "/rest/v1/nba_games?select=game_id,home_team_id,away_team_id,"
+                  f"game_date,game_type,overtime_periods&game_id=in.({qs})&limit=1000",
+            headers={"apikey": key, "Authorization": f"Bearer {key}",
+                     "Accept-Profile": "nba_reference"},
+        )
+        try:
+            with urllib.request.urlopen(req, timeout=60) as r:
+                for row in json.loads(r.read().decode()):
+                    meta_of_gid[row.get("game_id")] = row
+        except Exception as e:  # noqa: BLE001
+            log(f"hoopR meta backfill chunk failed: {e}")
+    log(f"hoopR meta backfill: {len(meta_of_gid)}/{len(gids)} games matched")
     flow_rows: list[dict] = []
     wpin_rows: list[dict] = []
     pg_rows: list[dict] = []
@@ -471,13 +491,15 @@ def _rescue_hoopr(url, key, games, slug_of_qid, log, force=False) -> dict:
             q = r.get("primary_player_qid")
             if q and q in slug_of_qid:
                 pg_rows.append({"bbref_slug": slug_of_qid[q], "game_id": gid})
+        meta = meta_of_gid.get(gid)
         out[gid] = {
-            "game_id": gid, "game_date": None,
+            "game_id": gid, "game_date": meta.get("game_date") if meta else None,
             "season_id": season, "source_season_id": "NBA_2022-23",
-            "game_type": "regular",
-            "home_team_id": None, "away_team_id": None,
+            "game_type": meta.get("game_type") if meta else "regular",
+            "home_team_id": meta.get("home_team_id") if meta else None,
+            "away_team_id": meta.get("away_team_id") if meta else None,
             "home_score": last["home_score"], "away_score": last["away_score"],
-            "playoff_round": None, "overtime_periods": None,
+            "playoff_round": None, "overtime_periods": meta.get("overtime_periods") if meta else None,
             "attendance": None, "venue_name": None,
         }
     if flow_rows:
@@ -525,7 +547,7 @@ def cmd_build(args, log=print):
 
     log("fetching teams…")
     teams_rows = fetch_all(url, key, "nba_reference", "nba_teams",
-                           "team_id,abbreviation,current_name,bbref_slug,"
+                           "team_id,abbreviation,current_name,bbref_slug,nba_stats_team_id,"
                            "first_season_id,last_season_id,is_active")
     team_map = {t["team_id"]: t for t in teams_rows}
     t = pa.table({
@@ -533,6 +555,7 @@ def cmd_build(args, log=print):
         "abbreviation": [t.get("abbreviation") for t in teams_rows],
         "current_name": [t.get("current_name") for t in teams_rows],
         "bbref_slug": [t.get("bbref_slug") for t in teams_rows],
+        "nba_stats_team_id": [t.get("nba_stats_team_id") for t in teams_rows],
         "first_season_id": [t.get("first_season_id") for t in teams_rows],
         "last_season_id": [t.get("last_season_id") for t in teams_rows],
     })
@@ -608,6 +631,7 @@ def cmd_build(args, log=print):
             "abbreviation": [t.get("abbreviation") for t in team_meta],
             "current_name": [t.get("current_name") for t in team_meta],
             "bbref_slug": [t.get("bbref_slug") for t in team_meta],
+            "nba_stats_team_id": [t.get("nba_stats_team_id") for t in team_meta],
             "first_season_id": [t.get("first_season_id") for t in team_meta],
             "last_season_id": [t.get("last_season_id") for t in team_meta],
         })
@@ -807,6 +831,7 @@ def cmd_precedents(args, log=print):
         df = df.dropna(subset=[col]).sort_values(col, ascending=ascending).head(25).reset_index(drop=True)
         df["precedent"] = name
         df["rank"] = df.index + 1
+        df["value"] = df[col]
         return df
     boards.append(top(res, "blowout_max", "blowout"))
     boards.append(top(res, "highest_scoring", "total_pts"))
@@ -815,6 +840,36 @@ def cmd_precedents(args, log=print):
     out = pd.concat(boards, ignore_index=True)
     out = out.merge(con.execute("SELECT game_id, game_date, home_team_id, away_team_id, home_score, away_score, season_id FROM games").fetchdf(),
                     on="game_id", how="left")
+    # bake readable team abbreviations
+    teams = con.execute("SELECT team_id, abbreviation, bbref_slug, current_name FROM read_parquet('"
+                        + str(DATA / "teams.parquet") + "')").fetchdf()
+    import math
+    tmap = {}
+    stat_abbr: dict[str, str] = {}
+    for _, t in teams.iterrows():
+        ab = t.get("abbreviation")
+        slug = t.get("bbref_slug")
+        name = t.get("current_name")
+        ab = ab if isinstance(ab, str) and ab else (slug if isinstance(slug, str) and slug else "")
+        ab = (ab or "").upper()
+        if not ab and isinstance(name, str) and name:
+            ab = name.replace(" ", "")[:3].upper()
+        ab = ab or "??"
+        tmap[str(t["team_id"])] = ab
+        st = t.get("nba_stats_team_id")
+        if st is not None and str(st).isdigit():
+            stat_abbr[str(st)] = ab
+    # t_nba_<stats_id> rows carry no fields of their own; resolve via stat id
+    def abbr_of(x):
+        s = str(x)
+        if s in tmap and tmap[s] != "??":
+            return tmap[s]
+        if s.startswith("t_nba_"):
+            return stat_abbr.get(s[6:], "??")
+        return tmap.get(s, "??")
+    tmap_fn = abbr_of
+    out["home_abbr"] = out["home_team_id"].map(tmap_fn)
+    out["away_abbr"] = out["away_team_id"].map(tmap_fn)
     out.to_parquet(DATA / "precedents.parquet")
     log("precedents:", len(out), "rows")
     value_col = {"blowout_max": "blowout", "comeback_15": "max_deficit",

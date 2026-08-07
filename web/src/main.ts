@@ -2,7 +2,8 @@ import { loadIndex, loadSeason, renderAtlas, type AtlasGame, type AtlasSeason } 
 import { Replay, type FlowEvent, type GameMeta, secFromStart } from "./replay";
 import { searchPlayers, gamesForPlayer } from "./players";
 import { loadBoards, renderPrecedents } from "./precedents";
-import { q } from "./db";
+import { q, P, FLOW_FILES } from "./db";
+import { teamAbbr } from "./teams";
 
 const app = document.getElementById("app")!;
 const status = document.getElementById("status")!;
@@ -14,6 +15,15 @@ function setStatus(s: string): void {
 
 function escapeId(s: string): string {
   return s.replace(/[^a-zA-Z0-9_-]/g, "");
+}
+
+// duckdb-wasm query() binds no params → inline only safe literals.
+function safeId(s: string): string {
+  if (!/^[a-zA-Z0-9_-]{1,64}$/.test(s)) throw new Error(`unsafe id: ${s}`);
+  return s;
+}
+function safe(...vals: string[]): void {
+  vals.forEach(safeId);
 }
 
 // ── views ──────────────────────────────────────────────────────────────
@@ -54,9 +64,9 @@ async function gameFromDateTeams(route: string): Promise<{ gameId: string; seek?
   // #/YYYY-MM-DD/HOME-AWAY[/Q4/37]
   const m = route.match(/^#\/(\d{4}-\d{2}-\d{2})\/([A-Za-z0-9_-]+)-([A-Za-z0-9_-]+)(?:\/(Q\d+|OT\d+)\/(\d+))?$/);
   if (!m) return null;
+  safe(m[1], m[2], m[3]);
   const rows = await q<{ game_id: string }>(
-    `SELECT game_id FROM '${"data/games.parquet"}' WHERE game_date = ? AND home_team_id = ? AND away_team_id = ? LIMIT 1`,
-    m[1], m[2], m[3],
+    `SELECT game_id FROM '${P("data/games.parquet")}' WHERE game_date = '${m[1]}' AND home_team_id = '${m[2]}' AND away_team_id = '${m[3]}' LIMIT 1`,
   );
   if (!rows.length) return null;
   const seek = m[4] && m[5] != null
@@ -69,23 +79,24 @@ async function gameFromDateTeams(route: string): Promise<{ gameId: string; seek?
 async function viewGame(gameId: string, seek?: { period: number; clock: number }): Promise<() => void> {
   setStatus("loading game…");
   const [metaRows, flow] = await Promise.all([
-    q<GameMeta>(`SELECT * FROM '${"data/games.parquet"}' WHERE game_id = ? LIMIT 1`, gameId),
-    q<FlowEvent>(`SELECT * FROM '${"data/flow/*.parquet"}' WHERE game_id = ? ORDER BY seq`, gameId),
+    q<GameMeta>(`SELECT * FROM '${P("data/games.parquet")}' WHERE game_id = '${safeId(gameId)}' LIMIT 1`),
+    q<FlowEvent>(`SELECT * FROM read_parquet(${JSON.stringify(FLOW_FILES)}) WHERE game_id = '${safeId(gameId)}' ORDER BY seq`),
   ]);
   if (!metaRows.length) {
     app.innerHTML = `<div id="precedents-view"><h2>Game not found</h2><p><a href="#/">back to the Atlas</a></p></div>`;
     return () => { app.innerHTML = ""; };
   }
   const meta = metaRows[0]!;
+  const [hAbbr, aAbbr] = await Promise.all([teamAbbr(meta.home_team_id), teamAbbr(meta.away_team_id)]);
   if (!flow.length) {
     const m = meta.home_score - meta.away_score;
     app.innerHTML = `
       <div id="game-view">
         <div class="game-meta">${meta.game_date} · ${meta.season_id}${meta.overtime_periods ? " · OT" : ""}</div>
         <div class="scoreboard">
-          <div class="h"><span class="team-name">${meta.home_team_id}</span>${meta.home_score}</div>
+          <div class="h"><span class="team-name">${hAbbr}</span>${meta.home_score}</div>
           <div class="clock">${m === 0 ? "tie" : m > 0 ? "H" : "A"} by ${Math.abs(m)}</div>
-          <div class="a"><span class="team-name">${meta.away_team_id}</span>${meta.away_score}</div>
+          <div class="a"><span class="team-name">${aAbbr}</span>${meta.away_score}</div>
         </div>
         <div class="caption">No play-by-play survives for this era — but the record does. <a href="#/precedents">Judge it against history.</a></div>
         <div class="era-badge">final only</div>
@@ -126,7 +137,7 @@ async function viewGame(gameId: string, seek?: { period: number; clock: number }
     const maxT = last ? secFromStart(last.period, last.clock_remaining_s) : 0;
     replay?.stop();
     replay = new Replay(flow, meta, canvas, frame, {
-      speed, showWp, seekClock: seek,
+      speed, showWp, homeAbbr: hAbbr, awayAbbr: aAbbr, seekClock: seek,
       onTick: (_e, t) => {
         scrub.value = String(Math.round((t / Math.max(1, maxT)) * 1000));
         if (flow.length) {
@@ -217,12 +228,18 @@ search.addEventListener("input", async () => {
   const term = search.value.trim();
   if (term.length < 2) { await route(); return; }
   glowTimer = window.setTimeout(async () => {
-    const hits = await searchPlayers(term);
-    if (!hits.length) { await route(); return; }
-    const slug = hits[0]!.bbref_slug;
-    const games = await gamesForPlayer(slug);
-    setStatus(`career glow: ${hits[0]!.full_name || hits[0]!.common_name || slug} — ${games.size} games`);
-    cleanup?.();
-    cleanup = await viewAtlas(games);
+    try {
+      const hits = await searchPlayers(term);
+      if (!hits.length) { await route(); return; }
+      const slug = hits[0]!.bbref_slug;
+      const games = await gamesForPlayer(slug);
+      cleanup?.();
+      cleanup = await viewAtlas(games);
+      setStatus(`career glow: ${hits[0]!.full_name || hits[0]!.common_name || slug} — ${games.size} games`);
+    } catch (e) {
+      cleanup?.();
+      cleanup = await viewAtlas();
+      setStatus(`player game records aren't in this season's play-by-play (2022-23 PBP carries no player ids) — ${String(e).slice(0, 80)}`);
+    }
   }, 350);
 });
