@@ -5,3 +5,8 @@
 2026-08-07T06:28:03Z SUPERVISOR UP pid=31445
 2026-08-07T06:28:45Z SUPERVISOR UP pid=32236
 2026-08-07T06:28:53Z supervisor live (pid detached, budget 24h)
+2026-08-07T06:39:49Z STALL #1 heartbeat age=656s phase=P1 event=state initialized
+2026-08-07T06:40:50Z STALL #2 heartbeat age=716s phase=P1 event=state initialized
+2026-08-07T06:41:50Z STALL #3 heartbeat age=777s phase=P1 event=state initialized
+2026-08-07T06:41:50Z RESUME spawn #0
+2026-08-07T06:41:50Z RESUME finished rc=127
