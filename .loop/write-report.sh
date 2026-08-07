@@ -34,6 +34,12 @@ if os.path.isfile(logf):
     out.append("\n".join(open(logf).read().splitlines()[-40:]))
     out.append("```")
     out.append("")
+import os as _os
+fut = _os.path.join(root, "docs", "FUTURE.md")
+if _os.path.isfile(fut):
+    out.append("## Roadmap (docs/FUTURE.md)")
+    out.append(open(fut).read()[:1200])
+    out.append("")
 out.append("## Next actions for Roham")
 out.append("- Read the README + open the deployed site (if any URL below).")
 out.append("- Review phase acceptance evidence in .loop/phases.log.")
