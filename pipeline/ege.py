@@ -934,7 +934,7 @@ def cmd_precedents(args, log=print):
     out = out.merge(con.execute("SELECT game_id, game_date, home_team_id, away_team_id, home_score, away_score, season_id FROM games").fetchdf(),
                     on="game_id", how="left")
     # bake readable team abbreviations
-    teams = con.execute("SELECT team_id, abbreviation, bbref_slug, current_name FROM read_parquet('"
+    teams = con.execute("SELECT team_id, abbreviation, bbref_slug, current_name, display_name FROM read_parquet('"
                         + str(DATA / "teams.parquet") + "')").fetchdf()
     import math
     tmap = {}
@@ -943,10 +943,13 @@ def cmd_precedents(args, log=print):
         ab = t.get("abbreviation")
         slug = t.get("bbref_slug")
         name = t.get("current_name")
+        if not isinstance(name, str):
+            name = t.get("display_name")
         ab = ab if isinstance(ab, str) and ab else (slug if isinstance(slug, str) and slug else "")
         ab = (ab or "").upper()
         if not ab and isinstance(name, str) and name:
-            ab = name.replace(" ", "")[:3].upper()
+            words = name.split()
+            ab = (words[0][:3] if words else name[:3]).upper()
         ab = ab or "??"
         tmap[str(t["team_id"])] = ab
         st = t.get("nba_stats_team_id")
