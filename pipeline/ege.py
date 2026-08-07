@@ -878,7 +878,7 @@ def cmd_wp(args, log=print):
     # sanity checks
     chk = con.execute("""
         WITH s AS (SELECT prob_home, margin_bucket, sec_bucket FROM read_parquet('"""
-                     + str(DATA / "wp.parquet") + """') WHERE era = '14-now' AND period = 4 AND sec_bucket = 3000)
+                     + str(DATA / "wp.parquet") + """') WHERE era = '14-now' AND period = 4 AND sec_bucket = 2280)
         SELECT prob_home FROM s WHERE margin_bucket = -10 UNION ALL
         SELECT prob_home FROM s WHERE margin_bucket = 10
     """).fetchall()
