@@ -52,3 +52,1227 @@
 2026-08-07T09:33:17Z stakes E2E perfect on live; FUTURE.md roadmap; report embeds roadmap
 2026-08-07T09:34:25Z entering cadence: hourly QA + heartbeats; mid-report 18:26Z; final 06:26Z
 2026-08-07T09:35:02Z cadence began: product complete+live; tour doc; reports scheduled
+2026-08-07T09:48:59Z cadence: OT permalinks verified; pacing fixed (dt/scale)
+2026-08-07T10:19:44Z STALL #1 heartbeat age=1847s phase=polish event=cadence: pace math fixed (dt/scale), OT permalinks verified live (175-174 OT2 1:21), mobile replay ok
+2026-08-07T10:20:44Z STALL #2 heartbeat age=1907s phase=polish event=cadence: pace math fixed (dt/scale), OT permalinks verified live (175-174 OT2 1:21), mobile replay ok
+2026-08-07T10:21:45Z STALL #3 heartbeat age=1967s phase=polish event=cadence: pace math fixed (dt/scale), OT permalinks verified live (175-174 OT2 1:21), mobile replay ok
+2026-08-07T10:21:45Z RESUME spawn #5
+2026-08-07T10:21:45Z RESUME finished rc=127
+2026-08-07T10:51:55Z STALL #1 heartbeat age=1809s phase=polish event=resume requested 2026-08-07T10:21:45Z
+2026-08-07T10:52:55Z STALL #2 heartbeat age=1870s phase=polish event=resume requested 2026-08-07T10:21:45Z
+2026-08-07T10:53:55Z STALL #3 heartbeat age=1930s phase=polish event=resume requested 2026-08-07T10:21:45Z
+2026-08-07T10:53:56Z RESUME spawn #6
+2026-08-07T10:53:56Z RESUME finished rc=127
+2026-08-07T11:24:05Z STALL #1 heartbeat age=1809s phase=polish event=resume requested 2026-08-07T10:53:55Z
+2026-08-07T11:25:06Z STALL #2 heartbeat age=1870s phase=polish event=resume requested 2026-08-07T10:53:55Z
+2026-08-07T11:26:06Z STALL #3 heartbeat age=1930s phase=polish event=resume requested 2026-08-07T10:53:55Z
+2026-08-07T11:26:06Z RESUME spawn #7
+2026-08-07T11:26:06Z RESUME finished rc=127
+2026-08-07T11:56:16Z STALL #1 heartbeat age=1810s phase=polish event=resume requested 2026-08-07T11:26:06Z
+2026-08-07T11:57:16Z STALL #2 heartbeat age=1870s phase=polish event=resume requested 2026-08-07T11:26:06Z
+2026-08-07T11:58:17Z STALL #3 heartbeat age=1930s phase=polish event=resume requested 2026-08-07T11:26:06Z
+2026-08-07T11:58:17Z RESUME spawn #8
+2026-08-07T11:58:17Z RESUME finished rc=127
+2026-08-07T12:28:27Z STALL #1 heartbeat age=1810s phase=polish event=resume requested 2026-08-07T11:58:17Z
+2026-08-07T12:29:27Z STALL #2 heartbeat age=1870s phase=polish event=resume requested 2026-08-07T11:58:17Z
+2026-08-07T12:30:28Z STALL #3 heartbeat age=1930s phase=polish event=resume requested 2026-08-07T11:58:17Z
+2026-08-07T12:30:28Z RESUME spawn #9
+2026-08-07T12:30:28Z RESUME finished rc=127
+2026-08-07T13:00:38Z STALL #1 heartbeat age=1809s phase=polish event=resume requested 2026-08-07T12:30:28Z
+2026-08-07T13:01:38Z STALL #2 heartbeat age=1870s phase=polish event=resume requested 2026-08-07T12:30:28Z
+2026-08-07T13:02:39Z STALL #3 heartbeat age=1930s phase=polish event=resume requested 2026-08-07T12:30:28Z
+2026-08-07T13:02:39Z RESUME spawn #10
+2026-08-07T13:02:39Z RESUME finished rc=127
+2026-08-07T13:32:49Z STALL #1 heartbeat age=1809s phase=polish event=resume requested 2026-08-07T13:02:39Z
+2026-08-07T13:33:49Z STALL #2 heartbeat age=1870s phase=polish event=resume requested 2026-08-07T13:02:39Z
+2026-08-07T13:34:49Z STALL #3 heartbeat age=1930s phase=polish event=resume requested 2026-08-07T13:02:39Z
+2026-08-07T13:34:49Z RESUME spawn #11
+2026-08-07T13:34:50Z RESUME finished rc=127
+2026-08-07T14:04:59Z STALL #1 heartbeat age=1809s phase=polish event=resume requested 2026-08-07T13:34:49Z
+2026-08-07T14:06:00Z STALL #2 heartbeat age=1869s phase=polish event=resume requested 2026-08-07T13:34:49Z
+2026-08-07T14:07:00Z STALL #3 heartbeat age=1930s phase=polish event=resume requested 2026-08-07T13:34:49Z
+2026-08-07T14:07:00Z RESUME spawn #12
+2026-08-07T14:07:00Z RESUME finished rc=127
+2026-08-07T14:37:10Z STALL #1 heartbeat age=1810s phase=polish event=resume requested 2026-08-07T14:07:00Z
+2026-08-07T14:38:10Z STALL #2 heartbeat age=1870s phase=polish event=resume requested 2026-08-07T14:07:00Z
+2026-08-07T14:39:11Z STALL #3 heartbeat age=1931s phase=polish event=resume requested 2026-08-07T14:07:00Z
+2026-08-07T14:39:11Z RESUME spawn #13
+2026-08-07T14:39:11Z RESUME finished rc=127
+2026-08-07T15:09:21Z STALL #1 heartbeat age=1809s phase=polish event=resume requested 2026-08-07T14:39:11Z
+2026-08-07T15:10:21Z STALL #2 heartbeat age=1870s phase=polish event=resume requested 2026-08-07T14:39:11Z
+2026-08-07T15:11:21Z STALL #3 heartbeat age=1930s phase=polish event=resume requested 2026-08-07T14:39:11Z
+2026-08-07T15:11:22Z RESUME spawn #14
+2026-08-07T15:11:22Z RESUME finished rc=127
+2026-08-07T15:41:32Z STALL #1 heartbeat age=1809s phase=polish event=resume requested 2026-08-07T15:11:22Z
+2026-08-07T15:42:32Z STALL #2 heartbeat age=1870s phase=polish event=resume requested 2026-08-07T15:11:22Z
+2026-08-07T15:43:32Z STALL #3 heartbeat age=1930s phase=polish event=resume requested 2026-08-07T15:11:22Z
+2026-08-07T15:43:33Z RESUME spawn #15
+2026-08-07T15:43:33Z RESUME finished rc=127
+2026-08-07T16:13:42Z STALL #1 heartbeat age=1809s phase=polish event=resume requested 2026-08-07T15:43:32Z
+2026-08-07T16:14:43Z STALL #2 heartbeat age=1869s phase=polish event=resume requested 2026-08-07T15:43:32Z
+2026-08-07T16:15:43Z STALL #3 heartbeat age=1930s phase=polish event=resume requested 2026-08-07T15:43:32Z
+2026-08-07T16:15:43Z RESUME spawn #16
+2026-08-07T16:15:43Z RESUME finished rc=127
+2026-08-07T16:45:53Z STALL #1 heartbeat age=1810s phase=polish event=resume requested 2026-08-07T16:15:43Z
+2026-08-07T16:46:53Z STALL #2 heartbeat age=1870s phase=polish event=resume requested 2026-08-07T16:15:43Z
+2026-08-07T16:47:54Z STALL #3 heartbeat age=1930s phase=polish event=resume requested 2026-08-07T16:15:43Z
+2026-08-07T16:47:54Z RESUME spawn #17
+2026-08-07T16:47:54Z RESUME finished rc=127
+2026-08-07T17:18:04Z STALL #1 heartbeat age=1809s phase=polish event=resume requested 2026-08-07T16:47:54Z
+2026-08-07T17:19:04Z STALL #2 heartbeat age=1870s phase=polish event=resume requested 2026-08-07T16:47:54Z
+2026-08-07T17:20:04Z STALL #3 heartbeat age=1930s phase=polish event=resume requested 2026-08-07T16:47:54Z
+2026-08-07T17:20:04Z RESUME spawn #18
+2026-08-07T17:20:04Z RESUME finished rc=127
+2026-08-07T17:50:14Z STALL #1 heartbeat age=1810s phase=polish event=resume requested 2026-08-07T17:20:04Z
+2026-08-07T17:51:15Z STALL #2 heartbeat age=1870s phase=polish event=resume requested 2026-08-07T17:20:04Z
+2026-08-07T17:52:15Z STALL #3 heartbeat age=1931s phase=polish event=resume requested 2026-08-07T17:20:04Z
+2026-08-07T17:52:15Z RESUME spawn #19
+2026-08-07T17:52:15Z RESUME finished rc=127
+2026-08-07T18:22:25Z STALL #1 heartbeat age=1810s phase=polish event=resume requested 2026-08-07T17:52:15Z
+2026-08-07T18:23:26Z STALL #2 heartbeat age=1871s phase=polish event=resume requested 2026-08-07T17:52:15Z
+2026-08-07T18:24:26Z STALL #3 heartbeat age=1931s phase=polish event=resume requested 2026-08-07T17:52:15Z
+2026-08-07T18:24:26Z RESUME spawn #20
+2026-08-07T18:24:26Z RESUME finished rc=127
+2026-08-07T18:27:28Z MID report written at 12.01399631500244h
+2026-08-07T18:54:34Z STALL #1 heartbeat age=1808s phase=polish event=resume requested 2026-08-07T18:24:26Z
+2026-08-07T18:55:34Z STALL #2 heartbeat age=1868s phase=polish event=resume requested 2026-08-07T18:24:26Z
+2026-08-07T18:56:35Z STALL #3 heartbeat age=1928s phase=polish event=resume requested 2026-08-07T18:24:26Z
+2026-08-07T18:56:35Z RESUME spawn #21
+2026-08-07T18:56:35Z RESUME finished rc=127
+2026-08-07T19:26:42Z STALL #1 heartbeat age=1807s phase=polish event=resume requested 2026-08-07T18:56:35Z
+2026-08-07T19:27:42Z STALL #2 heartbeat age=1867s phase=polish event=resume requested 2026-08-07T18:56:35Z
+2026-08-07T19:28:43Z STALL #3 heartbeat age=1927s phase=polish event=resume requested 2026-08-07T18:56:35Z
+2026-08-07T19:28:43Z RESUME spawn #22
+2026-08-07T19:28:43Z RESUME finished rc=127
+2026-08-07T19:58:50Z STALL #1 heartbeat age=1806s phase=polish event=resume requested 2026-08-07T19:28:43Z
+2026-08-07T19:59:50Z STALL #2 heartbeat age=1867s phase=polish event=resume requested 2026-08-07T19:28:43Z
+2026-08-07T20:00:50Z STALL #3 heartbeat age=1927s phase=polish event=resume requested 2026-08-07T19:28:43Z
+2026-08-07T20:00:50Z RESUME spawn #23
+2026-08-07T20:00:50Z RESUME finished rc=127
+2026-08-07T20:30:57Z STALL #1 heartbeat age=1806s phase=polish event=resume requested 2026-08-07T20:00:50Z
+2026-08-07T20:31:58Z STALL #2 heartbeat age=1867s phase=polish event=resume requested 2026-08-07T20:00:50Z
+2026-08-07T20:32:58Z STALL #3 heartbeat age=1927s phase=polish event=resume requested 2026-08-07T20:00:50Z
+2026-08-07T20:32:58Z RESUME spawn #24
+2026-08-07T20:32:58Z RESUME finished rc=127
+2026-08-07T21:03:05Z STALL #1 heartbeat age=1807s phase=polish event=resume requested 2026-08-07T20:32:58Z
+2026-08-07T21:04:05Z STALL #2 heartbeat age=1867s phase=polish event=resume requested 2026-08-07T20:32:58Z
+2026-08-07T21:05:06Z STALL #3 heartbeat age=1928s phase=polish event=resume requested 2026-08-07T20:32:58Z
+2026-08-07T21:05:06Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T21:06:06Z STALL #4 heartbeat age=1988s phase=polish event=resume requested 2026-08-07T21:05:06Z
+2026-08-07T21:06:06Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T21:07:06Z STALL #5 heartbeat age=2048s phase=polish event=resume requested 2026-08-07T21:06:06Z
+2026-08-07T21:07:07Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T21:08:07Z STALL #6 heartbeat age=2109s phase=polish event=resume requested 2026-08-07T21:07:07Z
+2026-08-07T21:08:07Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T21:09:07Z STALL #7 heartbeat age=2169s phase=polish event=resume requested 2026-08-07T21:08:07Z
+2026-08-07T21:09:07Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T21:10:08Z STALL #8 heartbeat age=2229s phase=polish event=resume requested 2026-08-07T21:09:07Z
+2026-08-07T21:10:08Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T21:11:08Z STALL #9 heartbeat age=2290s phase=polish event=resume requested 2026-08-07T21:10:08Z
+2026-08-07T21:11:08Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T21:12:08Z STALL #10 heartbeat age=2350s phase=polish event=resume requested 2026-08-07T21:11:08Z
+2026-08-07T21:12:08Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T21:13:09Z STALL #11 heartbeat age=2410s phase=polish event=resume requested 2026-08-07T21:12:08Z
+2026-08-07T21:13:09Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T21:14:09Z STALL #12 heartbeat age=2471s phase=polish event=resume requested 2026-08-07T21:13:09Z
+2026-08-07T21:14:09Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T21:15:09Z STALL #13 heartbeat age=2531s phase=polish event=resume requested 2026-08-07T21:14:09Z
+2026-08-07T21:15:09Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T21:16:10Z STALL #14 heartbeat age=2591s phase=polish event=resume requested 2026-08-07T21:15:09Z
+2026-08-07T21:16:10Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T21:17:10Z STALL #15 heartbeat age=2652s phase=polish event=resume requested 2026-08-07T21:16:10Z
+2026-08-07T21:17:10Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T21:18:10Z STALL #16 heartbeat age=2712s phase=polish event=resume requested 2026-08-07T21:17:10Z
+2026-08-07T21:18:10Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T21:19:11Z STALL #17 heartbeat age=2772s phase=polish event=resume requested 2026-08-07T21:18:10Z
+2026-08-07T21:19:11Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T21:20:11Z STALL #18 heartbeat age=2833s phase=polish event=resume requested 2026-08-07T21:19:11Z
+2026-08-07T21:20:11Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T21:21:11Z STALL #19 heartbeat age=2893s phase=polish event=resume requested 2026-08-07T21:20:11Z
+2026-08-07T21:21:11Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T21:22:12Z STALL #20 heartbeat age=2953s phase=polish event=resume requested 2026-08-07T21:21:11Z
+2026-08-07T21:22:12Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T21:23:12Z STALL #21 heartbeat age=3014s phase=polish event=resume requested 2026-08-07T21:22:12Z
+2026-08-07T21:23:12Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T21:24:12Z STALL #22 heartbeat age=3074s phase=polish event=resume requested 2026-08-07T21:23:12Z
+2026-08-07T21:24:12Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T21:25:13Z STALL #23 heartbeat age=3134s phase=polish event=resume requested 2026-08-07T21:24:12Z
+2026-08-07T21:25:13Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T21:26:13Z STALL #24 heartbeat age=3195s phase=polish event=resume requested 2026-08-07T21:25:13Z
+2026-08-07T21:26:13Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T21:27:13Z STALL #25 heartbeat age=3255s phase=polish event=resume requested 2026-08-07T21:26:13Z
+2026-08-07T21:27:13Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T21:28:14Z STALL #26 heartbeat age=3315s phase=polish event=resume requested 2026-08-07T21:27:13Z
+2026-08-07T21:28:14Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T21:29:14Z STALL #27 heartbeat age=3376s phase=polish event=resume requested 2026-08-07T21:28:14Z
+2026-08-07T21:29:14Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T21:30:14Z STALL #28 heartbeat age=3436s phase=polish event=resume requested 2026-08-07T21:29:14Z
+2026-08-07T21:30:14Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T21:31:15Z STALL #29 heartbeat age=3496s phase=polish event=resume requested 2026-08-07T21:30:14Z
+2026-08-07T21:31:15Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T21:32:15Z STALL #30 heartbeat age=3557s phase=polish event=resume requested 2026-08-07T21:31:15Z
+2026-08-07T21:32:15Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T21:33:15Z STALL #31 heartbeat age=3617s phase=polish event=resume requested 2026-08-07T21:32:15Z
+2026-08-07T21:33:15Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T21:34:16Z STALL #32 heartbeat age=3677s phase=polish event=resume requested 2026-08-07T21:33:15Z
+2026-08-07T21:34:16Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T21:35:16Z STALL #33 heartbeat age=3738s phase=polish event=resume requested 2026-08-07T21:34:16Z
+2026-08-07T21:35:16Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T21:36:16Z STALL #34 heartbeat age=3798s phase=polish event=resume requested 2026-08-07T21:35:16Z
+2026-08-07T21:36:16Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T21:37:17Z STALL #35 heartbeat age=3858s phase=polish event=resume requested 2026-08-07T21:36:16Z
+2026-08-07T21:37:17Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T21:38:17Z STALL #36 heartbeat age=3919s phase=polish event=resume requested 2026-08-07T21:37:17Z
+2026-08-07T21:38:17Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T21:39:17Z STALL #37 heartbeat age=3979s phase=polish event=resume requested 2026-08-07T21:38:17Z
+2026-08-07T21:39:17Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T21:40:18Z STALL #38 heartbeat age=4040s phase=polish event=resume requested 2026-08-07T21:39:17Z
+2026-08-07T21:40:18Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T21:41:18Z STALL #39 heartbeat age=4100s phase=polish event=resume requested 2026-08-07T21:40:18Z
+2026-08-07T21:41:18Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T21:42:19Z STALL #40 heartbeat age=4160s phase=polish event=resume requested 2026-08-07T21:41:18Z
+2026-08-07T21:42:19Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T21:43:19Z STALL #41 heartbeat age=4221s phase=polish event=resume requested 2026-08-07T21:42:19Z
+2026-08-07T21:43:19Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T21:44:19Z STALL #42 heartbeat age=4281s phase=polish event=resume requested 2026-08-07T21:43:19Z
+2026-08-07T21:44:19Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T21:45:20Z STALL #43 heartbeat age=4341s phase=polish event=resume requested 2026-08-07T21:44:19Z
+2026-08-07T21:45:20Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T21:46:20Z STALL #44 heartbeat age=4402s phase=polish event=resume requested 2026-08-07T21:45:20Z
+2026-08-07T21:46:20Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T21:47:20Z STALL #45 heartbeat age=4462s phase=polish event=resume requested 2026-08-07T21:46:20Z
+2026-08-07T21:47:20Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T21:48:21Z STALL #46 heartbeat age=4522s phase=polish event=resume requested 2026-08-07T21:47:20Z
+2026-08-07T21:48:21Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T21:49:21Z STALL #47 heartbeat age=4583s phase=polish event=resume requested 2026-08-07T21:48:21Z
+2026-08-07T21:49:21Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T21:50:21Z STALL #48 heartbeat age=4643s phase=polish event=resume requested 2026-08-07T21:49:21Z
+2026-08-07T21:50:21Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T21:51:22Z STALL #49 heartbeat age=4703s phase=polish event=resume requested 2026-08-07T21:50:21Z
+2026-08-07T21:51:22Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T21:52:22Z STALL #50 heartbeat age=4764s phase=polish event=resume requested 2026-08-07T21:51:22Z
+2026-08-07T21:52:22Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T21:53:22Z STALL #51 heartbeat age=4824s phase=polish event=resume requested 2026-08-07T21:52:22Z
+2026-08-07T21:53:22Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T21:54:23Z STALL #52 heartbeat age=4884s phase=polish event=resume requested 2026-08-07T21:53:22Z
+2026-08-07T21:54:23Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T21:55:23Z STALL #53 heartbeat age=4945s phase=polish event=resume requested 2026-08-07T21:54:23Z
+2026-08-07T21:55:23Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T21:56:23Z STALL #54 heartbeat age=5005s phase=polish event=resume requested 2026-08-07T21:55:23Z
+2026-08-07T21:56:23Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T21:57:24Z STALL #55 heartbeat age=5065s phase=polish event=resume requested 2026-08-07T21:56:23Z
+2026-08-07T21:57:24Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T21:58:24Z STALL #56 heartbeat age=5126s phase=polish event=resume requested 2026-08-07T21:57:24Z
+2026-08-07T21:58:24Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T21:59:24Z STALL #57 heartbeat age=5186s phase=polish event=resume requested 2026-08-07T21:58:24Z
+2026-08-07T21:59:24Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T22:00:25Z STALL #58 heartbeat age=5247s phase=polish event=resume requested 2026-08-07T21:59:24Z
+2026-08-07T22:00:25Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T22:01:25Z STALL #59 heartbeat age=5307s phase=polish event=resume requested 2026-08-07T22:00:25Z
+2026-08-07T22:01:25Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T22:02:25Z STALL #60 heartbeat age=5367s phase=polish event=resume requested 2026-08-07T22:01:25Z
+2026-08-07T22:02:26Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T22:03:26Z STALL #61 heartbeat age=5428s phase=polish event=resume requested 2026-08-07T22:02:26Z
+2026-08-07T22:03:26Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T22:04:26Z STALL #62 heartbeat age=5488s phase=polish event=resume requested 2026-08-07T22:03:26Z
+2026-08-07T22:04:26Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T22:05:27Z STALL #63 heartbeat age=5548s phase=polish event=resume requested 2026-08-07T22:04:26Z
+2026-08-07T22:05:27Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T22:06:27Z STALL #64 heartbeat age=5609s phase=polish event=resume requested 2026-08-07T22:05:27Z
+2026-08-07T22:06:27Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T22:07:27Z STALL #65 heartbeat age=5669s phase=polish event=resume requested 2026-08-07T22:06:27Z
+2026-08-07T22:07:27Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T22:08:28Z STALL #66 heartbeat age=5729s phase=polish event=resume requested 2026-08-07T22:07:27Z
+2026-08-07T22:08:28Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T22:09:28Z STALL #67 heartbeat age=5790s phase=polish event=resume requested 2026-08-07T22:08:28Z
+2026-08-07T22:09:28Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T22:10:28Z STALL #68 heartbeat age=5850s phase=polish event=resume requested 2026-08-07T22:09:28Z
+2026-08-07T22:10:28Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T22:11:29Z STALL #69 heartbeat age=5910s phase=polish event=resume requested 2026-08-07T22:10:28Z
+2026-08-07T22:11:29Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T22:12:29Z STALL #70 heartbeat age=5971s phase=polish event=resume requested 2026-08-07T22:11:29Z
+2026-08-07T22:12:29Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T22:13:29Z STALL #71 heartbeat age=6031s phase=polish event=resume requested 2026-08-07T22:12:29Z
+2026-08-07T22:13:29Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T22:14:30Z STALL #72 heartbeat age=6091s phase=polish event=resume requested 2026-08-07T22:13:29Z
+2026-08-07T22:14:30Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T22:15:30Z STALL #73 heartbeat age=6152s phase=polish event=resume requested 2026-08-07T22:14:30Z
+2026-08-07T22:15:30Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T22:16:30Z STALL #74 heartbeat age=6212s phase=polish event=resume requested 2026-08-07T22:15:30Z
+2026-08-07T22:16:31Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T22:17:31Z STALL #75 heartbeat age=6273s phase=polish event=resume requested 2026-08-07T22:16:30Z
+2026-08-07T22:17:31Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T22:18:31Z STALL #76 heartbeat age=6333s phase=polish event=resume requested 2026-08-07T22:17:31Z
+2026-08-07T22:18:31Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T22:19:31Z STALL #77 heartbeat age=6393s phase=polish event=resume requested 2026-08-07T22:18:31Z
+2026-08-07T22:19:32Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T22:20:32Z STALL #78 heartbeat age=6454s phase=polish event=resume requested 2026-08-07T22:19:32Z
+2026-08-07T22:20:32Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T22:21:32Z STALL #79 heartbeat age=6514s phase=polish event=resume requested 2026-08-07T22:20:32Z
+2026-08-07T22:21:32Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T22:22:33Z STALL #80 heartbeat age=6574s phase=polish event=resume requested 2026-08-07T22:21:32Z
+2026-08-07T22:22:33Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T22:23:33Z STALL #81 heartbeat age=6635s phase=polish event=resume requested 2026-08-07T22:22:33Z
+2026-08-07T22:23:33Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T22:24:33Z STALL #82 heartbeat age=6695s phase=polish event=resume requested 2026-08-07T22:23:33Z
+2026-08-07T22:24:33Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T22:25:34Z STALL #83 heartbeat age=6755s phase=polish event=resume requested 2026-08-07T22:24:33Z
+2026-08-07T22:25:34Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T22:26:34Z STALL #84 heartbeat age=6816s phase=polish event=resume requested 2026-08-07T22:25:34Z
+2026-08-07T22:26:34Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T22:27:34Z STALL #85 heartbeat age=6876s phase=polish event=resume requested 2026-08-07T22:26:34Z
+2026-08-07T22:27:34Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T22:28:35Z STALL #86 heartbeat age=6936s phase=polish event=resume requested 2026-08-07T22:27:34Z
+2026-08-07T22:28:35Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T22:29:35Z STALL #87 heartbeat age=6997s phase=polish event=resume requested 2026-08-07T22:28:35Z
+2026-08-07T22:29:35Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T22:30:35Z STALL #88 heartbeat age=7057s phase=polish event=resume requested 2026-08-07T22:29:35Z
+2026-08-07T22:30:36Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T22:31:36Z STALL #89 heartbeat age=7118s phase=polish event=resume requested 2026-08-07T22:30:35Z
+2026-08-07T22:31:36Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T22:32:36Z STALL #90 heartbeat age=7178s phase=polish event=resume requested 2026-08-07T22:31:36Z
+2026-08-07T22:32:36Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T22:33:36Z STALL #91 heartbeat age=7238s phase=polish event=resume requested 2026-08-07T22:32:36Z
+2026-08-07T22:33:37Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T22:34:37Z STALL #92 heartbeat age=7299s phase=polish event=resume requested 2026-08-07T22:33:37Z
+2026-08-07T22:34:37Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T22:35:37Z STALL #93 heartbeat age=7359s phase=polish event=resume requested 2026-08-07T22:34:37Z
+2026-08-07T22:35:37Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T22:36:38Z STALL #94 heartbeat age=7419s phase=polish event=resume requested 2026-08-07T22:35:37Z
+2026-08-07T22:36:38Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T22:37:38Z STALL #95 heartbeat age=7480s phase=polish event=resume requested 2026-08-07T22:36:38Z
+2026-08-07T22:37:38Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T22:38:38Z STALL #96 heartbeat age=7540s phase=polish event=resume requested 2026-08-07T22:37:38Z
+2026-08-07T22:38:38Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T22:39:39Z STALL #97 heartbeat age=7600s phase=polish event=resume requested 2026-08-07T22:38:38Z
+2026-08-07T22:39:39Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T22:40:39Z STALL #98 heartbeat age=7661s phase=polish event=resume requested 2026-08-07T22:39:39Z
+2026-08-07T22:40:39Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T22:41:39Z STALL #99 heartbeat age=7721s phase=polish event=resume requested 2026-08-07T22:40:39Z
+2026-08-07T22:41:39Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T22:42:40Z STALL #100 heartbeat age=7781s phase=polish event=resume requested 2026-08-07T22:41:39Z
+2026-08-07T22:42:40Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T22:43:40Z STALL #101 heartbeat age=7842s phase=polish event=resume requested 2026-08-07T22:42:40Z
+2026-08-07T22:43:40Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T22:44:40Z STALL #102 heartbeat age=7902s phase=polish event=resume requested 2026-08-07T22:43:40Z
+2026-08-07T22:44:40Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T22:45:41Z STALL #103 heartbeat age=7962s phase=polish event=resume requested 2026-08-07T22:44:40Z
+2026-08-07T22:45:41Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T22:46:41Z STALL #104 heartbeat age=8023s phase=polish event=resume requested 2026-08-07T22:45:41Z
+2026-08-07T22:46:41Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T22:47:41Z STALL #105 heartbeat age=8083s phase=polish event=resume requested 2026-08-07T22:46:41Z
+2026-08-07T22:47:41Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T22:48:41Z STALL #106 heartbeat age=8143s phase=polish event=resume requested 2026-08-07T22:47:41Z
+2026-08-07T22:48:42Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T22:49:42Z STALL #107 heartbeat age=8204s phase=polish event=resume requested 2026-08-07T22:48:41Z
+2026-08-07T22:49:42Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T22:50:42Z STALL #108 heartbeat age=8264s phase=polish event=resume requested 2026-08-07T22:49:42Z
+2026-08-07T22:50:42Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T22:51:42Z STALL #109 heartbeat age=8324s phase=polish event=resume requested 2026-08-07T22:50:42Z
+2026-08-07T22:51:42Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T22:52:43Z STALL #110 heartbeat age=8385s phase=polish event=resume requested 2026-08-07T22:51:42Z
+2026-08-07T22:52:43Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T22:53:43Z STALL #111 heartbeat age=8445s phase=polish event=resume requested 2026-08-07T22:52:43Z
+2026-08-07T22:53:43Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T22:54:43Z STALL #112 heartbeat age=8505s phase=polish event=resume requested 2026-08-07T22:53:43Z
+2026-08-07T22:54:43Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T22:55:44Z STALL #113 heartbeat age=8565s phase=polish event=resume requested 2026-08-07T22:54:43Z
+2026-08-07T22:55:44Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T22:56:44Z STALL #114 heartbeat age=8626s phase=polish event=resume requested 2026-08-07T22:55:44Z
+2026-08-07T22:56:44Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T22:57:44Z STALL #115 heartbeat age=8686s phase=polish event=resume requested 2026-08-07T22:56:44Z
+2026-08-07T22:57:44Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T22:58:45Z STALL #116 heartbeat age=8746s phase=polish event=resume requested 2026-08-07T22:57:44Z
+2026-08-07T22:58:45Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T22:59:45Z STALL #117 heartbeat age=8807s phase=polish event=resume requested 2026-08-07T22:58:45Z
+2026-08-07T22:59:45Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T23:00:45Z STALL #118 heartbeat age=8867s phase=polish event=resume requested 2026-08-07T22:59:45Z
+2026-08-07T23:00:45Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T23:01:46Z STALL #119 heartbeat age=8927s phase=polish event=resume requested 2026-08-07T23:00:45Z
+2026-08-07T23:01:46Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T23:02:46Z STALL #120 heartbeat age=8988s phase=polish event=resume requested 2026-08-07T23:01:46Z
+2026-08-07T23:02:46Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T23:03:46Z STALL #121 heartbeat age=9048s phase=polish event=resume requested 2026-08-07T23:02:46Z
+2026-08-07T23:03:46Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T23:04:47Z STALL #122 heartbeat age=9109s phase=polish event=resume requested 2026-08-07T23:03:46Z
+2026-08-07T23:04:47Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T23:05:47Z STALL #123 heartbeat age=9169s phase=polish event=resume requested 2026-08-07T23:04:47Z
+2026-08-07T23:05:47Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T23:06:48Z STALL #124 heartbeat age=9229s phase=polish event=resume requested 2026-08-07T23:05:47Z
+2026-08-07T23:06:48Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T23:07:48Z STALL #125 heartbeat age=9290s phase=polish event=resume requested 2026-08-07T23:06:48Z
+2026-08-07T23:07:48Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T23:08:48Z STALL #126 heartbeat age=9350s phase=polish event=resume requested 2026-08-07T23:07:48Z
+2026-08-07T23:08:48Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T23:09:49Z STALL #127 heartbeat age=9410s phase=polish event=resume requested 2026-08-07T23:08:48Z
+2026-08-07T23:09:49Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T23:10:49Z STALL #128 heartbeat age=9471s phase=polish event=resume requested 2026-08-07T23:09:49Z
+2026-08-07T23:10:49Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T23:11:49Z STALL #129 heartbeat age=9531s phase=polish event=resume requested 2026-08-07T23:10:49Z
+2026-08-07T23:11:49Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T23:12:50Z STALL #130 heartbeat age=9591s phase=polish event=resume requested 2026-08-07T23:11:49Z
+2026-08-07T23:12:50Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T23:13:50Z STALL #131 heartbeat age=9652s phase=polish event=resume requested 2026-08-07T23:12:50Z
+2026-08-07T23:13:50Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T23:14:50Z STALL #132 heartbeat age=9712s phase=polish event=resume requested 2026-08-07T23:13:50Z
+2026-08-07T23:14:50Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T23:15:51Z STALL #133 heartbeat age=9772s phase=polish event=resume requested 2026-08-07T23:14:50Z
+2026-08-07T23:15:51Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T23:16:51Z STALL #134 heartbeat age=9833s phase=polish event=resume requested 2026-08-07T23:15:51Z
+2026-08-07T23:16:51Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T23:17:51Z STALL #135 heartbeat age=9893s phase=polish event=resume requested 2026-08-07T23:16:51Z
+2026-08-07T23:17:51Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T23:18:52Z STALL #136 heartbeat age=9953s phase=polish event=resume requested 2026-08-07T23:17:51Z
+2026-08-07T23:18:52Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T23:19:52Z STALL #137 heartbeat age=10014s phase=polish event=resume requested 2026-08-07T23:18:52Z
+2026-08-07T23:19:52Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T23:20:52Z STALL #138 heartbeat age=10074s phase=polish event=resume requested 2026-08-07T23:19:52Z
+2026-08-07T23:20:52Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T23:21:53Z STALL #139 heartbeat age=10134s phase=polish event=resume requested 2026-08-07T23:20:52Z
+2026-08-07T23:21:53Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T23:22:53Z STALL #140 heartbeat age=10195s phase=polish event=resume requested 2026-08-07T23:21:53Z
+2026-08-07T23:22:53Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T23:23:53Z STALL #141 heartbeat age=10255s phase=polish event=resume requested 2026-08-07T23:22:53Z
+2026-08-07T23:23:53Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T23:24:54Z STALL #142 heartbeat age=10316s phase=polish event=resume requested 2026-08-07T23:23:53Z
+2026-08-07T23:24:54Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T23:25:54Z STALL #143 heartbeat age=10376s phase=polish event=resume requested 2026-08-07T23:24:54Z
+2026-08-07T23:25:54Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T23:26:54Z STALL #144 heartbeat age=10436s phase=polish event=resume requested 2026-08-07T23:25:54Z
+2026-08-07T23:26:55Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T23:27:55Z STALL #145 heartbeat age=10497s phase=polish event=resume requested 2026-08-07T23:26:54Z
+2026-08-07T23:27:55Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T23:28:55Z STALL #146 heartbeat age=10557s phase=polish event=resume requested 2026-08-07T23:27:55Z
+2026-08-07T23:28:55Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T23:29:56Z STALL #147 heartbeat age=10617s phase=polish event=resume requested 2026-08-07T23:28:55Z
+2026-08-07T23:29:56Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T23:30:56Z STALL #148 heartbeat age=10678s phase=polish event=resume requested 2026-08-07T23:29:56Z
+2026-08-07T23:30:56Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T23:31:56Z STALL #149 heartbeat age=10738s phase=polish event=resume requested 2026-08-07T23:30:56Z
+2026-08-07T23:31:56Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T23:32:57Z STALL #150 heartbeat age=10798s phase=polish event=resume requested 2026-08-07T23:31:56Z
+2026-08-07T23:32:57Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T23:33:57Z STALL #151 heartbeat age=10859s phase=polish event=resume requested 2026-08-07T23:32:57Z
+2026-08-07T23:33:57Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T23:34:57Z STALL #152 heartbeat age=10919s phase=polish event=resume requested 2026-08-07T23:33:57Z
+2026-08-07T23:34:57Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T23:35:58Z STALL #153 heartbeat age=10979s phase=polish event=resume requested 2026-08-07T23:34:57Z
+2026-08-07T23:35:58Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T23:36:58Z STALL #154 heartbeat age=11040s phase=polish event=resume requested 2026-08-07T23:35:58Z
+2026-08-07T23:36:58Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T23:37:58Z STALL #155 heartbeat age=11100s phase=polish event=resume requested 2026-08-07T23:36:58Z
+2026-08-07T23:37:59Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T23:38:59Z STALL #156 heartbeat age=11161s phase=polish event=resume requested 2026-08-07T23:37:58Z
+2026-08-07T23:38:59Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T23:39:59Z STALL #157 heartbeat age=11221s phase=polish event=resume requested 2026-08-07T23:38:59Z
+2026-08-07T23:39:59Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T23:41:00Z STALL #158 heartbeat age=11281s phase=polish event=resume requested 2026-08-07T23:39:59Z
+2026-08-07T23:41:00Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T23:42:00Z STALL #159 heartbeat age=11342s phase=polish event=resume requested 2026-08-07T23:41:00Z
+2026-08-07T23:42:00Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T23:43:00Z STALL #160 heartbeat age=11402s phase=polish event=resume requested 2026-08-07T23:42:00Z
+2026-08-07T23:43:00Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T23:44:01Z STALL #161 heartbeat age=11462s phase=polish event=resume requested 2026-08-07T23:43:00Z
+2026-08-07T23:44:01Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T23:45:01Z STALL #162 heartbeat age=11523s phase=polish event=resume requested 2026-08-07T23:44:01Z
+2026-08-07T23:45:01Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T23:46:01Z STALL #163 heartbeat age=11583s phase=polish event=resume requested 2026-08-07T23:45:01Z
+2026-08-07T23:46:01Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T23:47:02Z STALL #164 heartbeat age=11643s phase=polish event=resume requested 2026-08-07T23:46:01Z
+2026-08-07T23:47:02Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T23:48:02Z STALL #165 heartbeat age=11704s phase=polish event=resume requested 2026-08-07T23:47:02Z
+2026-08-07T23:48:02Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T23:49:02Z STALL #166 heartbeat age=11764s phase=polish event=resume requested 2026-08-07T23:48:02Z
+2026-08-07T23:49:02Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T23:50:03Z STALL #167 heartbeat age=11824s phase=polish event=resume requested 2026-08-07T23:49:02Z
+2026-08-07T23:50:03Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T23:51:03Z STALL #168 heartbeat age=11885s phase=polish event=resume requested 2026-08-07T23:50:03Z
+2026-08-07T23:51:03Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T23:52:03Z STALL #169 heartbeat age=11945s phase=polish event=resume requested 2026-08-07T23:51:03Z
+2026-08-07T23:52:04Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T23:53:04Z STALL #170 heartbeat age=12006s phase=polish event=resume requested 2026-08-07T23:52:03Z
+2026-08-07T23:53:04Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T23:54:04Z STALL #171 heartbeat age=12066s phase=polish event=resume requested 2026-08-07T23:53:04Z
+2026-08-07T23:54:04Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T23:55:04Z STALL #172 heartbeat age=12126s phase=polish event=resume requested 2026-08-07T23:54:04Z
+2026-08-07T23:55:05Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T23:56:05Z STALL #173 heartbeat age=12187s phase=polish event=resume requested 2026-08-07T23:55:05Z
+2026-08-07T23:56:05Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T23:57:05Z STALL #174 heartbeat age=12247s phase=polish event=resume requested 2026-08-07T23:56:05Z
+2026-08-07T23:57:05Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T23:58:06Z STALL #175 heartbeat age=12307s phase=polish event=resume requested 2026-08-07T23:57:05Z
+2026-08-07T23:58:06Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-07T23:59:06Z STALL #176 heartbeat age=12368s phase=polish event=resume requested 2026-08-07T23:58:06Z
+2026-08-07T23:59:06Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T00:00:06Z STALL #177 heartbeat age=12428s phase=polish event=resume requested 2026-08-07T23:59:06Z
+2026-08-08T00:00:06Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T00:01:07Z STALL #178 heartbeat age=12488s phase=polish event=resume requested 2026-08-08T00:00:06Z
+2026-08-08T00:01:07Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T00:02:07Z STALL #179 heartbeat age=12549s phase=polish event=resume requested 2026-08-08T00:01:07Z
+2026-08-08T00:02:07Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T00:03:07Z STALL #180 heartbeat age=12609s phase=polish event=resume requested 2026-08-08T00:02:07Z
+2026-08-08T00:03:07Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T00:04:08Z STALL #181 heartbeat age=12669s phase=polish event=resume requested 2026-08-08T00:03:07Z
+2026-08-08T00:04:08Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T00:05:08Z STALL #182 heartbeat age=12730s phase=polish event=resume requested 2026-08-08T00:04:08Z
+2026-08-08T00:05:08Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T00:06:08Z STALL #183 heartbeat age=12790s phase=polish event=resume requested 2026-08-08T00:05:08Z
+2026-08-08T00:06:09Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T00:07:09Z STALL #184 heartbeat age=12851s phase=polish event=resume requested 2026-08-08T00:06:09Z
+2026-08-08T00:07:09Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T00:08:09Z STALL #185 heartbeat age=12911s phase=polish event=resume requested 2026-08-08T00:07:09Z
+2026-08-08T00:08:09Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T00:09:10Z STALL #186 heartbeat age=12971s phase=polish event=resume requested 2026-08-08T00:08:09Z
+2026-08-08T00:09:10Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T00:10:10Z STALL #187 heartbeat age=13032s phase=polish event=resume requested 2026-08-08T00:09:10Z
+2026-08-08T00:10:10Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T00:11:10Z STALL #188 heartbeat age=13092s phase=polish event=resume requested 2026-08-08T00:10:10Z
+2026-08-08T00:11:10Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T00:12:11Z STALL #189 heartbeat age=13152s phase=polish event=resume requested 2026-08-08T00:11:10Z
+2026-08-08T00:12:11Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T00:13:11Z STALL #190 heartbeat age=13213s phase=polish event=resume requested 2026-08-08T00:12:11Z
+2026-08-08T00:13:11Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T00:14:11Z STALL #191 heartbeat age=13273s phase=polish event=resume requested 2026-08-08T00:13:11Z
+2026-08-08T00:14:11Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T00:15:12Z STALL #192 heartbeat age=13333s phase=polish event=resume requested 2026-08-08T00:14:11Z
+2026-08-08T00:15:12Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T00:16:12Z STALL #193 heartbeat age=13394s phase=polish event=resume requested 2026-08-08T00:15:12Z
+2026-08-08T00:16:12Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T00:17:12Z STALL #194 heartbeat age=13454s phase=polish event=resume requested 2026-08-08T00:16:12Z
+2026-08-08T00:17:12Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T00:18:13Z STALL #195 heartbeat age=13514s phase=polish event=resume requested 2026-08-08T00:17:12Z
+2026-08-08T00:18:13Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T00:19:13Z STALL #196 heartbeat age=13575s phase=polish event=resume requested 2026-08-08T00:18:13Z
+2026-08-08T00:19:13Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T00:20:13Z STALL #197 heartbeat age=13635s phase=polish event=resume requested 2026-08-08T00:19:13Z
+2026-08-08T00:20:13Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T00:21:14Z STALL #198 heartbeat age=13695s phase=polish event=resume requested 2026-08-08T00:20:13Z
+2026-08-08T00:21:14Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T00:22:14Z STALL #199 heartbeat age=13756s phase=polish event=resume requested 2026-08-08T00:21:14Z
+2026-08-08T00:22:14Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T00:23:14Z STALL #200 heartbeat age=13816s phase=polish event=resume requested 2026-08-08T00:22:14Z
+2026-08-08T00:23:14Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T00:24:15Z STALL #201 heartbeat age=13876s phase=polish event=resume requested 2026-08-08T00:23:14Z
+2026-08-08T00:24:15Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T00:25:15Z STALL #202 heartbeat age=13937s phase=polish event=resume requested 2026-08-08T00:24:15Z
+2026-08-08T00:25:15Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T00:26:15Z STALL #203 heartbeat age=13997s phase=polish event=resume requested 2026-08-08T00:25:15Z
+2026-08-08T00:26:15Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T00:27:16Z STALL #204 heartbeat age=14057s phase=polish event=resume requested 2026-08-08T00:26:15Z
+2026-08-08T00:27:16Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T00:28:16Z STALL #205 heartbeat age=14118s phase=polish event=resume requested 2026-08-08T00:27:16Z
+2026-08-08T00:28:16Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T00:29:16Z STALL #206 heartbeat age=14178s phase=polish event=resume requested 2026-08-08T00:28:16Z
+2026-08-08T00:29:16Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T00:30:17Z STALL #207 heartbeat age=14238s phase=polish event=resume requested 2026-08-08T00:29:16Z
+2026-08-08T00:30:17Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T00:31:17Z STALL #208 heartbeat age=14299s phase=polish event=resume requested 2026-08-08T00:30:17Z
+2026-08-08T00:31:17Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T00:32:17Z STALL #209 heartbeat age=14359s phase=polish event=resume requested 2026-08-08T00:31:17Z
+2026-08-08T00:32:17Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T00:33:18Z STALL #210 heartbeat age=14420s phase=polish event=resume requested 2026-08-08T00:32:17Z
+2026-08-08T00:33:18Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T00:34:18Z STALL #211 heartbeat age=14480s phase=polish event=resume requested 2026-08-08T00:33:18Z
+2026-08-08T00:34:18Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T00:35:18Z STALL #212 heartbeat age=14540s phase=polish event=resume requested 2026-08-08T00:34:18Z
+2026-08-08T00:35:19Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T00:36:19Z STALL #213 heartbeat age=14601s phase=polish event=resume requested 2026-08-08T00:35:19Z
+2026-08-08T00:36:19Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T00:37:19Z STALL #214 heartbeat age=14661s phase=polish event=resume requested 2026-08-08T00:36:19Z
+2026-08-08T00:37:19Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T00:38:20Z STALL #215 heartbeat age=14721s phase=polish event=resume requested 2026-08-08T00:37:19Z
+2026-08-08T00:38:20Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T00:39:20Z STALL #216 heartbeat age=14782s phase=polish event=resume requested 2026-08-08T00:38:20Z
+2026-08-08T00:39:20Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T00:40:20Z STALL #217 heartbeat age=14842s phase=polish event=resume requested 2026-08-08T00:39:20Z
+2026-08-08T00:40:20Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T00:41:21Z STALL #218 heartbeat age=14902s phase=polish event=resume requested 2026-08-08T00:40:20Z
+2026-08-08T00:41:21Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T00:42:21Z STALL #219 heartbeat age=14963s phase=polish event=resume requested 2026-08-08T00:41:21Z
+2026-08-08T00:42:21Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T00:43:21Z STALL #220 heartbeat age=15023s phase=polish event=resume requested 2026-08-08T00:42:21Z
+2026-08-08T00:43:21Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T00:44:22Z STALL #221 heartbeat age=15083s phase=polish event=resume requested 2026-08-08T00:43:21Z
+2026-08-08T00:44:22Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T00:45:22Z STALL #222 heartbeat age=15144s phase=polish event=resume requested 2026-08-08T00:44:22Z
+2026-08-08T00:45:22Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T00:46:22Z STALL #223 heartbeat age=15204s phase=polish event=resume requested 2026-08-08T00:45:22Z
+2026-08-08T00:46:23Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T00:47:23Z STALL #224 heartbeat age=15265s phase=polish event=resume requested 2026-08-08T00:46:22Z
+2026-08-08T00:47:23Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T00:48:23Z STALL #225 heartbeat age=15325s phase=polish event=resume requested 2026-08-08T00:47:23Z
+2026-08-08T00:48:23Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T00:49:23Z STALL #226 heartbeat age=15385s phase=polish event=resume requested 2026-08-08T00:48:23Z
+2026-08-08T00:49:24Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T00:50:24Z STALL #227 heartbeat age=15446s phase=polish event=resume requested 2026-08-08T00:49:24Z
+2026-08-08T00:50:24Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T00:51:24Z STALL #228 heartbeat age=15506s phase=polish event=resume requested 2026-08-08T00:50:24Z
+2026-08-08T00:51:24Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T00:52:25Z STALL #229 heartbeat age=15566s phase=polish event=resume requested 2026-08-08T00:51:24Z
+2026-08-08T00:52:25Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T00:53:25Z STALL #230 heartbeat age=15627s phase=polish event=resume requested 2026-08-08T00:52:25Z
+2026-08-08T00:53:25Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T00:54:25Z STALL #231 heartbeat age=15687s phase=polish event=resume requested 2026-08-08T00:53:25Z
+2026-08-08T00:54:25Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T00:55:26Z STALL #232 heartbeat age=15747s phase=polish event=resume requested 2026-08-08T00:54:25Z
+2026-08-08T00:55:26Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T00:56:26Z STALL #233 heartbeat age=15808s phase=polish event=resume requested 2026-08-08T00:55:26Z
+2026-08-08T00:56:26Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T00:57:26Z STALL #234 heartbeat age=15868s phase=polish event=resume requested 2026-08-08T00:56:26Z
+2026-08-08T00:57:26Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T00:58:27Z STALL #235 heartbeat age=15928s phase=polish event=resume requested 2026-08-08T00:57:26Z
+2026-08-08T00:58:27Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T00:59:27Z STALL #236 heartbeat age=15989s phase=polish event=resume requested 2026-08-08T00:58:27Z
+2026-08-08T00:59:27Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T01:00:27Z STALL #237 heartbeat age=16049s phase=polish event=resume requested 2026-08-08T00:59:27Z
+2026-08-08T01:00:27Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T01:01:28Z STALL #238 heartbeat age=16110s phase=polish event=resume requested 2026-08-08T01:00:27Z
+2026-08-08T01:01:28Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T01:02:28Z STALL #239 heartbeat age=16170s phase=polish event=resume requested 2026-08-08T01:01:28Z
+2026-08-08T01:02:28Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T01:03:28Z STALL #240 heartbeat age=16230s phase=polish event=resume requested 2026-08-08T01:02:28Z
+2026-08-08T01:03:29Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T01:04:29Z STALL #241 heartbeat age=16291s phase=polish event=resume requested 2026-08-08T01:03:28Z
+2026-08-08T01:04:29Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T01:05:29Z STALL #242 heartbeat age=16351s phase=polish event=resume requested 2026-08-08T01:04:29Z
+2026-08-08T01:05:29Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T01:06:29Z STALL #243 heartbeat age=16411s phase=polish event=resume requested 2026-08-08T01:05:29Z
+2026-08-08T01:06:30Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T01:07:30Z STALL #244 heartbeat age=16472s phase=polish event=resume requested 2026-08-08T01:06:30Z
+2026-08-08T01:07:30Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T01:08:30Z STALL #245 heartbeat age=16532s phase=polish event=resume requested 2026-08-08T01:07:30Z
+2026-08-08T01:08:30Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T01:09:31Z STALL #246 heartbeat age=16592s phase=polish event=resume requested 2026-08-08T01:08:30Z
+2026-08-08T01:09:31Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T01:10:31Z STALL #247 heartbeat age=16653s phase=polish event=resume requested 2026-08-08T01:09:31Z
+2026-08-08T01:10:31Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T01:11:31Z STALL #248 heartbeat age=16713s phase=polish event=resume requested 2026-08-08T01:10:31Z
+2026-08-08T01:11:31Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T01:12:32Z STALL #249 heartbeat age=16773s phase=polish event=resume requested 2026-08-08T01:11:31Z
+2026-08-08T01:12:32Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T01:13:32Z STALL #250 heartbeat age=16834s phase=polish event=resume requested 2026-08-08T01:12:32Z
+2026-08-08T01:13:32Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T01:14:32Z STALL #251 heartbeat age=16894s phase=polish event=resume requested 2026-08-08T01:13:32Z
+2026-08-08T01:14:32Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T01:15:33Z STALL #252 heartbeat age=16954s phase=polish event=resume requested 2026-08-08T01:14:32Z
+2026-08-08T01:15:33Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T01:16:33Z STALL #253 heartbeat age=17015s phase=polish event=resume requested 2026-08-08T01:15:33Z
+2026-08-08T01:16:33Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T01:17:33Z STALL #254 heartbeat age=17075s phase=polish event=resume requested 2026-08-08T01:16:33Z
+2026-08-08T01:17:34Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T01:18:34Z STALL #255 heartbeat age=17136s phase=polish event=resume requested 2026-08-08T01:17:33Z
+2026-08-08T01:18:34Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T01:19:34Z STALL #256 heartbeat age=17196s phase=polish event=resume requested 2026-08-08T01:18:34Z
+2026-08-08T01:19:34Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T01:20:34Z STALL #257 heartbeat age=17256s phase=polish event=resume requested 2026-08-08T01:19:34Z
+2026-08-08T01:20:34Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T01:21:35Z STALL #258 heartbeat age=17316s phase=polish event=resume requested 2026-08-08T01:20:34Z
+2026-08-08T01:21:35Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T01:22:35Z STALL #259 heartbeat age=17377s phase=polish event=resume requested 2026-08-08T01:21:35Z
+2026-08-08T01:22:35Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T01:23:35Z STALL #260 heartbeat age=17437s phase=polish event=resume requested 2026-08-08T01:22:35Z
+2026-08-08T01:23:36Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T01:24:36Z STALL #261 heartbeat age=17498s phase=polish event=resume requested 2026-08-08T01:23:36Z
+2026-08-08T01:24:36Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T01:25:36Z STALL #262 heartbeat age=17558s phase=polish event=resume requested 2026-08-08T01:24:36Z
+2026-08-08T01:25:36Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T01:26:36Z STALL #263 heartbeat age=17618s phase=polish event=resume requested 2026-08-08T01:25:36Z
+2026-08-08T01:26:37Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T01:27:37Z STALL #264 heartbeat age=17679s phase=polish event=resume requested 2026-08-08T01:26:36Z
+2026-08-08T01:27:37Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T01:28:37Z STALL #265 heartbeat age=17739s phase=polish event=resume requested 2026-08-08T01:27:37Z
+2026-08-08T01:28:37Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T01:29:38Z STALL #266 heartbeat age=17799s phase=polish event=resume requested 2026-08-08T01:28:37Z
+2026-08-08T01:29:38Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T01:30:38Z STALL #267 heartbeat age=17860s phase=polish event=resume requested 2026-08-08T01:29:38Z
+2026-08-08T01:30:38Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T01:31:38Z STALL #268 heartbeat age=17920s phase=polish event=resume requested 2026-08-08T01:30:38Z
+2026-08-08T01:31:38Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T01:32:39Z STALL #269 heartbeat age=17980s phase=polish event=resume requested 2026-08-08T01:31:38Z
+2026-08-08T01:32:39Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T01:33:39Z STALL #270 heartbeat age=18041s phase=polish event=resume requested 2026-08-08T01:32:39Z
+2026-08-08T01:33:39Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T01:34:39Z STALL #271 heartbeat age=18101s phase=polish event=resume requested 2026-08-08T01:33:39Z
+2026-08-08T01:34:39Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T01:35:40Z STALL #272 heartbeat age=18161s phase=polish event=resume requested 2026-08-08T01:34:39Z
+2026-08-08T01:35:40Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T01:36:40Z STALL #273 heartbeat age=18222s phase=polish event=resume requested 2026-08-08T01:35:40Z
+2026-08-08T01:36:40Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T01:37:40Z STALL #274 heartbeat age=18282s phase=polish event=resume requested 2026-08-08T01:36:40Z
+2026-08-08T01:37:40Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T01:38:41Z STALL #275 heartbeat age=18342s phase=polish event=resume requested 2026-08-08T01:37:40Z
+2026-08-08T01:38:41Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T01:39:41Z STALL #276 heartbeat age=18403s phase=polish event=resume requested 2026-08-08T01:38:41Z
+2026-08-08T01:39:41Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T01:40:41Z STALL #277 heartbeat age=18463s phase=polish event=resume requested 2026-08-08T01:39:41Z
+2026-08-08T01:40:41Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T01:41:42Z STALL #278 heartbeat age=18523s phase=polish event=resume requested 2026-08-08T01:40:41Z
+2026-08-08T01:41:42Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T01:42:42Z STALL #279 heartbeat age=18584s phase=polish event=resume requested 2026-08-08T01:41:42Z
+2026-08-08T01:42:42Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T01:43:42Z STALL #280 heartbeat age=18644s phase=polish event=resume requested 2026-08-08T01:42:42Z
+2026-08-08T01:43:43Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T01:44:43Z STALL #281 heartbeat age=18705s phase=polish event=resume requested 2026-08-08T01:43:42Z
+2026-08-08T01:44:43Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T01:45:43Z STALL #282 heartbeat age=18765s phase=polish event=resume requested 2026-08-08T01:44:43Z
+2026-08-08T01:45:43Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T01:46:43Z STALL #283 heartbeat age=18825s phase=polish event=resume requested 2026-08-08T01:45:43Z
+2026-08-08T01:46:44Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T01:47:44Z STALL #284 heartbeat age=18886s phase=polish event=resume requested 2026-08-08T01:46:44Z
+2026-08-08T01:47:44Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T01:48:44Z STALL #285 heartbeat age=18946s phase=polish event=resume requested 2026-08-08T01:47:44Z
+2026-08-08T01:48:44Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T01:49:45Z STALL #286 heartbeat age=19006s phase=polish event=resume requested 2026-08-08T01:48:44Z
+2026-08-08T01:49:45Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T01:50:45Z STALL #287 heartbeat age=19067s phase=polish event=resume requested 2026-08-08T01:49:45Z
+2026-08-08T01:50:45Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T01:51:45Z STALL #288 heartbeat age=19127s phase=polish event=resume requested 2026-08-08T01:50:45Z
+2026-08-08T01:51:45Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T01:52:46Z STALL #289 heartbeat age=19187s phase=polish event=resume requested 2026-08-08T01:51:45Z
+2026-08-08T01:52:46Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T01:53:46Z STALL #290 heartbeat age=19248s phase=polish event=resume requested 2026-08-08T01:52:46Z
+2026-08-08T01:53:46Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T01:54:46Z STALL #291 heartbeat age=19308s phase=polish event=resume requested 2026-08-08T01:53:46Z
+2026-08-08T01:54:46Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T01:55:47Z STALL #292 heartbeat age=19368s phase=polish event=resume requested 2026-08-08T01:54:46Z
+2026-08-08T01:55:47Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T01:56:47Z STALL #293 heartbeat age=19429s phase=polish event=resume requested 2026-08-08T01:55:47Z
+2026-08-08T01:56:47Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T01:57:47Z STALL #294 heartbeat age=19489s phase=polish event=resume requested 2026-08-08T01:56:47Z
+2026-08-08T01:57:47Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T01:58:48Z STALL #295 heartbeat age=19549s phase=polish event=resume requested 2026-08-08T01:57:47Z
+2026-08-08T01:58:48Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T01:59:48Z STALL #296 heartbeat age=19610s phase=polish event=resume requested 2026-08-08T01:58:48Z
+2026-08-08T01:59:48Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T02:00:48Z STALL #297 heartbeat age=19670s phase=polish event=resume requested 2026-08-08T01:59:48Z
+2026-08-08T02:00:48Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T02:01:49Z STALL #298 heartbeat age=19730s phase=polish event=resume requested 2026-08-08T02:00:48Z
+2026-08-08T02:01:49Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T02:02:49Z STALL #299 heartbeat age=19791s phase=polish event=resume requested 2026-08-08T02:01:49Z
+2026-08-08T02:02:49Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T02:03:49Z STALL #300 heartbeat age=19851s phase=polish event=resume requested 2026-08-08T02:02:49Z
+2026-08-08T02:03:50Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T02:04:50Z STALL #301 heartbeat age=19912s phase=polish event=resume requested 2026-08-08T02:03:49Z
+2026-08-08T02:04:50Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T02:05:50Z STALL #302 heartbeat age=19972s phase=polish event=resume requested 2026-08-08T02:04:50Z
+2026-08-08T02:05:50Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T02:06:50Z STALL #303 heartbeat age=20032s phase=polish event=resume requested 2026-08-08T02:05:50Z
+2026-08-08T02:06:51Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T02:07:51Z STALL #304 heartbeat age=20093s phase=polish event=resume requested 2026-08-08T02:06:51Z
+2026-08-08T02:07:51Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T02:08:51Z STALL #305 heartbeat age=20153s phase=polish event=resume requested 2026-08-08T02:07:51Z
+2026-08-08T02:08:51Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T02:09:52Z STALL #306 heartbeat age=20213s phase=polish event=resume requested 2026-08-08T02:08:51Z
+2026-08-08T02:09:52Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T02:10:52Z STALL #307 heartbeat age=20274s phase=polish event=resume requested 2026-08-08T02:09:52Z
+2026-08-08T02:10:52Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T02:11:52Z STALL #308 heartbeat age=20334s phase=polish event=resume requested 2026-08-08T02:10:52Z
+2026-08-08T02:11:52Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T02:12:53Z STALL #309 heartbeat age=20394s phase=polish event=resume requested 2026-08-08T02:11:52Z
+2026-08-08T02:12:53Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T02:13:53Z STALL #310 heartbeat age=20455s phase=polish event=resume requested 2026-08-08T02:12:53Z
+2026-08-08T02:13:53Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T02:14:53Z STALL #311 heartbeat age=20515s phase=polish event=resume requested 2026-08-08T02:13:53Z
+2026-08-08T02:14:53Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T02:15:54Z STALL #312 heartbeat age=20575s phase=polish event=resume requested 2026-08-08T02:14:53Z
+2026-08-08T02:15:54Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T02:16:54Z STALL #313 heartbeat age=20636s phase=polish event=resume requested 2026-08-08T02:15:54Z
+2026-08-08T02:16:54Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T02:17:54Z STALL #314 heartbeat age=20696s phase=polish event=resume requested 2026-08-08T02:16:54Z
+2026-08-08T02:17:54Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T02:18:55Z STALL #315 heartbeat age=20756s phase=polish event=resume requested 2026-08-08T02:17:54Z
+2026-08-08T02:18:55Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T02:19:55Z STALL #316 heartbeat age=20817s phase=polish event=resume requested 2026-08-08T02:18:55Z
+2026-08-08T02:19:55Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T02:20:55Z STALL #317 heartbeat age=20877s phase=polish event=resume requested 2026-08-08T02:19:55Z
+2026-08-08T02:20:55Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T02:21:56Z STALL #318 heartbeat age=20938s phase=polish event=resume requested 2026-08-08T02:20:55Z
+2026-08-08T02:21:56Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T02:22:56Z STALL #319 heartbeat age=20998s phase=polish event=resume requested 2026-08-08T02:21:56Z
+2026-08-08T02:22:56Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T02:23:56Z STALL #320 heartbeat age=21058s phase=polish event=resume requested 2026-08-08T02:22:56Z
+2026-08-08T02:23:57Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T02:24:57Z STALL #321 heartbeat age=21119s phase=polish event=resume requested 2026-08-08T02:23:56Z
+2026-08-08T02:24:57Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T02:25:57Z STALL #322 heartbeat age=21179s phase=polish event=resume requested 2026-08-08T02:24:57Z
+2026-08-08T02:25:57Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T02:26:58Z STALL #323 heartbeat age=21239s phase=polish event=resume requested 2026-08-08T02:25:57Z
+2026-08-08T02:26:58Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T02:27:58Z STALL #324 heartbeat age=21300s phase=polish event=resume requested 2026-08-08T02:26:58Z
+2026-08-08T02:27:58Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T02:28:58Z STALL #325 heartbeat age=21360s phase=polish event=resume requested 2026-08-08T02:27:58Z
+2026-08-08T02:28:58Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T02:29:59Z STALL #326 heartbeat age=21420s phase=polish event=resume requested 2026-08-08T02:28:58Z
+2026-08-08T02:29:59Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T02:30:59Z STALL #327 heartbeat age=21481s phase=polish event=resume requested 2026-08-08T02:29:59Z
+2026-08-08T02:30:59Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T02:31:59Z STALL #328 heartbeat age=21541s phase=polish event=resume requested 2026-08-08T02:30:59Z
+2026-08-08T02:31:59Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T02:33:00Z STALL #329 heartbeat age=21601s phase=polish event=resume requested 2026-08-08T02:31:59Z
+2026-08-08T02:33:00Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T02:34:00Z STALL #330 heartbeat age=21662s phase=polish event=resume requested 2026-08-08T02:33:00Z
+2026-08-08T02:34:00Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T02:35:00Z STALL #331 heartbeat age=21722s phase=polish event=resume requested 2026-08-08T02:34:00Z
+2026-08-08T02:35:00Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T02:36:01Z STALL #332 heartbeat age=21782s phase=polish event=resume requested 2026-08-08T02:35:00Z
+2026-08-08T02:36:01Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T02:37:01Z STALL #333 heartbeat age=21843s phase=polish event=resume requested 2026-08-08T02:36:01Z
+2026-08-08T02:37:01Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T02:38:01Z STALL #334 heartbeat age=21903s phase=polish event=resume requested 2026-08-08T02:37:01Z
+2026-08-08T02:38:01Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T02:39:02Z STALL #335 heartbeat age=21963s phase=polish event=resume requested 2026-08-08T02:38:01Z
+2026-08-08T02:39:02Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T02:40:02Z STALL #336 heartbeat age=22024s phase=polish event=resume requested 2026-08-08T02:39:02Z
+2026-08-08T02:40:02Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T02:41:02Z STALL #337 heartbeat age=22084s phase=polish event=resume requested 2026-08-08T02:40:02Z
+2026-08-08T02:41:02Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T02:42:03Z STALL #338 heartbeat age=22144s phase=polish event=resume requested 2026-08-08T02:41:02Z
+2026-08-08T02:42:03Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T02:43:03Z STALL #339 heartbeat age=22205s phase=polish event=resume requested 2026-08-08T02:42:03Z
+2026-08-08T02:43:03Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T02:44:03Z STALL #340 heartbeat age=22265s phase=polish event=resume requested 2026-08-08T02:43:03Z
+2026-08-08T02:44:03Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T02:45:04Z STALL #341 heartbeat age=22325s phase=polish event=resume requested 2026-08-08T02:44:03Z
+2026-08-08T02:45:04Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T02:46:04Z STALL #342 heartbeat age=22386s phase=polish event=resume requested 2026-08-08T02:45:04Z
+2026-08-08T02:46:04Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T02:47:04Z STALL #343 heartbeat age=22446s phase=polish event=resume requested 2026-08-08T02:46:04Z
+2026-08-08T02:47:04Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T02:48:05Z STALL #344 heartbeat age=22507s phase=polish event=resume requested 2026-08-08T02:47:04Z
+2026-08-08T02:48:05Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T02:49:05Z STALL #345 heartbeat age=22567s phase=polish event=resume requested 2026-08-08T02:48:05Z
+2026-08-08T02:49:05Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T02:50:05Z STALL #346 heartbeat age=22627s phase=polish event=resume requested 2026-08-08T02:49:05Z
+2026-08-08T02:50:06Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T02:51:06Z STALL #347 heartbeat age=22688s phase=polish event=resume requested 2026-08-08T02:50:05Z
+2026-08-08T02:51:06Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T02:52:06Z STALL #348 heartbeat age=22748s phase=polish event=resume requested 2026-08-08T02:51:06Z
+2026-08-08T02:52:06Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T02:53:06Z STALL #349 heartbeat age=22808s phase=polish event=resume requested 2026-08-08T02:52:06Z
+2026-08-08T02:53:07Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T02:54:07Z STALL #350 heartbeat age=22869s phase=polish event=resume requested 2026-08-08T02:53:06Z
+2026-08-08T02:54:07Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T02:55:07Z STALL #351 heartbeat age=22929s phase=polish event=resume requested 2026-08-08T02:54:07Z
+2026-08-08T02:55:07Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T02:56:07Z STALL #352 heartbeat age=22989s phase=polish event=resume requested 2026-08-08T02:55:07Z
+2026-08-08T02:56:08Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T02:57:08Z STALL #353 heartbeat age=23050s phase=polish event=resume requested 2026-08-08T02:56:08Z
+2026-08-08T02:57:08Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T02:58:08Z STALL #354 heartbeat age=23110s phase=polish event=resume requested 2026-08-08T02:57:08Z
+2026-08-08T02:58:08Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T02:59:09Z STALL #355 heartbeat age=23170s phase=polish event=resume requested 2026-08-08T02:58:08Z
+2026-08-08T02:59:09Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T03:00:09Z STALL #356 heartbeat age=23231s phase=polish event=resume requested 2026-08-08T02:59:09Z
+2026-08-08T03:00:09Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T03:01:09Z STALL #357 heartbeat age=23291s phase=polish event=resume requested 2026-08-08T03:00:09Z
+2026-08-08T03:01:09Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T03:02:10Z STALL #358 heartbeat age=23351s phase=polish event=resume requested 2026-08-08T03:01:09Z
+2026-08-08T03:02:10Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T03:03:10Z STALL #359 heartbeat age=23412s phase=polish event=resume requested 2026-08-08T03:02:10Z
+2026-08-08T03:03:10Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T03:04:10Z STALL #360 heartbeat age=23472s phase=polish event=resume requested 2026-08-08T03:03:10Z
+2026-08-08T03:04:10Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T03:05:11Z STALL #361 heartbeat age=23532s phase=polish event=resume requested 2026-08-08T03:04:10Z
+2026-08-08T03:05:11Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T03:06:11Z STALL #362 heartbeat age=23593s phase=polish event=resume requested 2026-08-08T03:05:11Z
+2026-08-08T03:06:11Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T03:07:11Z STALL #363 heartbeat age=23653s phase=polish event=resume requested 2026-08-08T03:06:11Z
+2026-08-08T03:07:11Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T03:08:12Z STALL #364 heartbeat age=23713s phase=polish event=resume requested 2026-08-08T03:07:11Z
+2026-08-08T03:08:12Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T03:09:12Z STALL #365 heartbeat age=23774s phase=polish event=resume requested 2026-08-08T03:08:12Z
+2026-08-08T03:09:12Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T03:10:12Z STALL #366 heartbeat age=23834s phase=polish event=resume requested 2026-08-08T03:09:12Z
+2026-08-08T03:10:13Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T03:11:13Z STALL #367 heartbeat age=23895s phase=polish event=resume requested 2026-08-08T03:10:13Z
+2026-08-08T03:11:13Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T03:12:13Z STALL #368 heartbeat age=23955s phase=polish event=resume requested 2026-08-08T03:11:13Z
+2026-08-08T03:12:13Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T03:13:14Z STALL #369 heartbeat age=24015s phase=polish event=resume requested 2026-08-08T03:12:13Z
+2026-08-08T03:13:14Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T03:14:14Z STALL #370 heartbeat age=24076s phase=polish event=resume requested 2026-08-08T03:13:14Z
+2026-08-08T03:14:14Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T03:15:14Z STALL #371 heartbeat age=24136s phase=polish event=resume requested 2026-08-08T03:14:14Z
+2026-08-08T03:15:14Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T03:16:15Z STALL #372 heartbeat age=24196s phase=polish event=resume requested 2026-08-08T03:15:14Z
+2026-08-08T03:16:15Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T03:17:15Z STALL #373 heartbeat age=24257s phase=polish event=resume requested 2026-08-08T03:16:15Z
+2026-08-08T03:17:15Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T03:18:15Z STALL #374 heartbeat age=24317s phase=polish event=resume requested 2026-08-08T03:17:15Z
+2026-08-08T03:18:15Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T03:19:15Z STALL #375 heartbeat age=24377s phase=polish event=resume requested 2026-08-08T03:18:15Z
+2026-08-08T03:19:16Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T03:20:16Z STALL #376 heartbeat age=24438s phase=polish event=resume requested 2026-08-08T03:19:15Z
+2026-08-08T03:20:16Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T03:21:16Z STALL #377 heartbeat age=24498s phase=polish event=resume requested 2026-08-08T03:20:16Z
+2026-08-08T03:21:16Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T03:22:17Z STALL #378 heartbeat age=24558s phase=polish event=resume requested 2026-08-08T03:21:16Z
+2026-08-08T03:22:17Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T03:23:17Z STALL #379 heartbeat age=24619s phase=polish event=resume requested 2026-08-08T03:22:17Z
+2026-08-08T03:23:17Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T03:24:17Z STALL #380 heartbeat age=24679s phase=polish event=resume requested 2026-08-08T03:23:17Z
+2026-08-08T03:24:17Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T03:25:18Z STALL #381 heartbeat age=24739s phase=polish event=resume requested 2026-08-08T03:24:17Z
+2026-08-08T03:25:18Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T03:26:18Z STALL #382 heartbeat age=24800s phase=polish event=resume requested 2026-08-08T03:25:18Z
+2026-08-08T03:26:18Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T03:27:18Z STALL #383 heartbeat age=24860s phase=polish event=resume requested 2026-08-08T03:26:18Z
+2026-08-08T03:27:18Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T03:28:19Z STALL #384 heartbeat age=24920s phase=polish event=resume requested 2026-08-08T03:27:18Z
+2026-08-08T03:28:19Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T03:29:19Z STALL #385 heartbeat age=24981s phase=polish event=resume requested 2026-08-08T03:28:19Z
+2026-08-08T03:29:19Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T03:30:19Z STALL #386 heartbeat age=25041s phase=polish event=resume requested 2026-08-08T03:29:19Z
+2026-08-08T03:30:20Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T03:31:20Z STALL #387 heartbeat age=25102s phase=polish event=resume requested 2026-08-08T03:30:19Z
+2026-08-08T03:31:20Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T03:32:20Z STALL #388 heartbeat age=25162s phase=polish event=resume requested 2026-08-08T03:31:20Z
+2026-08-08T03:32:20Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T03:33:21Z STALL #389 heartbeat age=25222s phase=polish event=resume requested 2026-08-08T03:32:20Z
+2026-08-08T03:33:21Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T03:34:21Z STALL #390 heartbeat age=25283s phase=polish event=resume requested 2026-08-08T03:33:21Z
+2026-08-08T03:34:21Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T03:35:21Z STALL #391 heartbeat age=25343s phase=polish event=resume requested 2026-08-08T03:34:21Z
+2026-08-08T03:35:21Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T03:36:22Z STALL #392 heartbeat age=25403s phase=polish event=resume requested 2026-08-08T03:35:21Z
+2026-08-08T03:36:22Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T03:37:22Z STALL #393 heartbeat age=25464s phase=polish event=resume requested 2026-08-08T03:36:22Z
+2026-08-08T03:37:22Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T03:38:22Z STALL #394 heartbeat age=25524s phase=polish event=resume requested 2026-08-08T03:37:22Z
+2026-08-08T03:38:22Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T03:39:23Z STALL #395 heartbeat age=25584s phase=polish event=resume requested 2026-08-08T03:38:22Z
+2026-08-08T03:39:23Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T03:40:23Z STALL #396 heartbeat age=25645s phase=polish event=resume requested 2026-08-08T03:39:23Z
+2026-08-08T03:40:23Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T03:41:23Z STALL #397 heartbeat age=25705s phase=polish event=resume requested 2026-08-08T03:40:23Z
+2026-08-08T03:41:24Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T03:42:24Z STALL #398 heartbeat age=25766s phase=polish event=resume requested 2026-08-08T03:41:24Z
+2026-08-08T03:42:24Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T03:43:24Z STALL #399 heartbeat age=25826s phase=polish event=resume requested 2026-08-08T03:42:24Z
+2026-08-08T03:43:24Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T03:44:24Z STALL #400 heartbeat age=25886s phase=polish event=resume requested 2026-08-08T03:43:24Z
+2026-08-08T03:44:25Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T03:45:25Z STALL #401 heartbeat age=25947s phase=polish event=resume requested 2026-08-08T03:44:25Z
+2026-08-08T03:45:25Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T03:46:25Z STALL #402 heartbeat age=26007s phase=polish event=resume requested 2026-08-08T03:45:25Z
+2026-08-08T03:46:25Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T03:47:25Z STALL #403 heartbeat age=26067s phase=polish event=resume requested 2026-08-08T03:46:25Z
+2026-08-08T03:47:26Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T03:48:26Z STALL #404 heartbeat age=26128s phase=polish event=resume requested 2026-08-08T03:47:26Z
+2026-08-08T03:48:26Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T03:49:26Z STALL #405 heartbeat age=26188s phase=polish event=resume requested 2026-08-08T03:48:26Z
+2026-08-08T03:49:26Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T03:50:26Z STALL #406 heartbeat age=26248s phase=polish event=resume requested 2026-08-08T03:49:26Z
+2026-08-08T03:50:26Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T03:51:27Z STALL #407 heartbeat age=26309s phase=polish event=resume requested 2026-08-08T03:50:26Z
+2026-08-08T03:51:27Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T03:52:27Z STALL #408 heartbeat age=26369s phase=polish event=resume requested 2026-08-08T03:51:27Z
+2026-08-08T03:52:27Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T03:53:27Z STALL #409 heartbeat age=26429s phase=polish event=resume requested 2026-08-08T03:52:27Z
+2026-08-08T03:53:28Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T03:54:28Z STALL #410 heartbeat age=26490s phase=polish event=resume requested 2026-08-08T03:53:28Z
+2026-08-08T03:54:28Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T03:55:28Z STALL #411 heartbeat age=26550s phase=polish event=resume requested 2026-08-08T03:54:28Z
+2026-08-08T03:55:28Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T03:56:28Z STALL #412 heartbeat age=26610s phase=polish event=resume requested 2026-08-08T03:55:28Z
+2026-08-08T03:56:29Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T03:57:29Z STALL #413 heartbeat age=26671s phase=polish event=resume requested 2026-08-08T03:56:29Z
+2026-08-08T03:57:29Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T03:58:29Z STALL #414 heartbeat age=26731s phase=polish event=resume requested 2026-08-08T03:57:29Z
+2026-08-08T03:58:29Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T03:59:29Z STALL #415 heartbeat age=26791s phase=polish event=resume requested 2026-08-08T03:58:29Z
+2026-08-08T03:59:29Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T04:00:30Z STALL #416 heartbeat age=26851s phase=polish event=resume requested 2026-08-08T03:59:29Z
+2026-08-08T04:00:30Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T04:01:30Z STALL #417 heartbeat age=26912s phase=polish event=resume requested 2026-08-08T04:00:30Z
+2026-08-08T04:01:30Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T04:02:30Z STALL #418 heartbeat age=26972s phase=polish event=resume requested 2026-08-08T04:01:30Z
+2026-08-08T04:02:31Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T04:03:31Z STALL #419 heartbeat age=27033s phase=polish event=resume requested 2026-08-08T04:02:31Z
+2026-08-08T04:03:31Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T04:04:31Z STALL #420 heartbeat age=27093s phase=polish event=resume requested 2026-08-08T04:03:31Z
+2026-08-08T04:04:31Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T04:05:32Z STALL #421 heartbeat age=27153s phase=polish event=resume requested 2026-08-08T04:04:31Z
+2026-08-08T04:05:32Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T04:06:32Z STALL #422 heartbeat age=27214s phase=polish event=resume requested 2026-08-08T04:05:32Z
+2026-08-08T04:06:32Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T04:07:32Z STALL #423 heartbeat age=27274s phase=polish event=resume requested 2026-08-08T04:06:32Z
+2026-08-08T04:07:32Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T04:08:33Z STALL #424 heartbeat age=27334s phase=polish event=resume requested 2026-08-08T04:07:32Z
+2026-08-08T04:08:33Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T04:09:33Z STALL #425 heartbeat age=27395s phase=polish event=resume requested 2026-08-08T04:08:33Z
+2026-08-08T04:09:33Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T04:10:33Z STALL #426 heartbeat age=27455s phase=polish event=resume requested 2026-08-08T04:09:33Z
+2026-08-08T04:10:33Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T04:11:34Z STALL #427 heartbeat age=27515s phase=polish event=resume requested 2026-08-08T04:10:33Z
+2026-08-08T04:11:34Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T04:12:34Z STALL #428 heartbeat age=27576s phase=polish event=resume requested 2026-08-08T04:11:34Z
+2026-08-08T04:12:34Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T04:13:34Z STALL #429 heartbeat age=27636s phase=polish event=resume requested 2026-08-08T04:12:34Z
+2026-08-08T04:13:34Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T04:14:35Z STALL #430 heartbeat age=27696s phase=polish event=resume requested 2026-08-08T04:13:34Z
+2026-08-08T04:14:35Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T04:15:35Z STALL #431 heartbeat age=27757s phase=polish event=resume requested 2026-08-08T04:14:35Z
+2026-08-08T04:15:35Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T04:16:35Z STALL #432 heartbeat age=27817s phase=polish event=resume requested 2026-08-08T04:15:35Z
+2026-08-08T04:16:35Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T04:17:36Z STALL #433 heartbeat age=27878s phase=polish event=resume requested 2026-08-08T04:16:35Z
+2026-08-08T04:17:36Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T04:18:36Z STALL #434 heartbeat age=27938s phase=polish event=resume requested 2026-08-08T04:17:36Z
+2026-08-08T04:18:36Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T04:19:36Z STALL #435 heartbeat age=27998s phase=polish event=resume requested 2026-08-08T04:18:36Z
+2026-08-08T04:19:37Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T04:20:37Z STALL #436 heartbeat age=28059s phase=polish event=resume requested 2026-08-08T04:19:37Z
+2026-08-08T04:20:37Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T04:21:37Z STALL #437 heartbeat age=28119s phase=polish event=resume requested 2026-08-08T04:20:37Z
+2026-08-08T04:21:37Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T04:22:37Z STALL #438 heartbeat age=28179s phase=polish event=resume requested 2026-08-08T04:21:37Z
+2026-08-08T04:22:38Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T04:23:38Z STALL #439 heartbeat age=28240s phase=polish event=resume requested 2026-08-08T04:22:38Z
+2026-08-08T04:23:38Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T04:24:38Z STALL #440 heartbeat age=28300s phase=polish event=resume requested 2026-08-08T04:23:38Z
+2026-08-08T04:24:38Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T04:25:38Z STALL #441 heartbeat age=28360s phase=polish event=resume requested 2026-08-08T04:24:38Z
+2026-08-08T04:25:39Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T04:26:39Z STALL #442 heartbeat age=28421s phase=polish event=resume requested 2026-08-08T04:25:39Z
+2026-08-08T04:26:39Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T04:27:39Z STALL #443 heartbeat age=28481s phase=polish event=resume requested 2026-08-08T04:26:39Z
+2026-08-08T04:27:39Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T04:28:40Z STALL #444 heartbeat age=28541s phase=polish event=resume requested 2026-08-08T04:27:39Z
+2026-08-08T04:28:40Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T04:29:40Z STALL #445 heartbeat age=28602s phase=polish event=resume requested 2026-08-08T04:28:40Z
+2026-08-08T04:29:40Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T04:30:40Z STALL #446 heartbeat age=28662s phase=polish event=resume requested 2026-08-08T04:29:40Z
+2026-08-08T04:30:40Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T04:31:41Z STALL #447 heartbeat age=28722s phase=polish event=resume requested 2026-08-08T04:30:40Z
+2026-08-08T04:31:41Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T04:32:41Z STALL #448 heartbeat age=28783s phase=polish event=resume requested 2026-08-08T04:31:41Z
+2026-08-08T04:32:41Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T04:33:41Z STALL #449 heartbeat age=28843s phase=polish event=resume requested 2026-08-08T04:32:41Z
+2026-08-08T04:33:41Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T04:34:42Z STALL #450 heartbeat age=28903s phase=polish event=resume requested 2026-08-08T04:33:41Z
+2026-08-08T04:34:42Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T04:35:42Z STALL #451 heartbeat age=28964s phase=polish event=resume requested 2026-08-08T04:34:42Z
+2026-08-08T04:35:42Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T04:36:42Z STALL #452 heartbeat age=29024s phase=polish event=resume requested 2026-08-08T04:35:42Z
+2026-08-08T04:36:42Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T04:37:43Z STALL #453 heartbeat age=29084s phase=polish event=resume requested 2026-08-08T04:36:42Z
+2026-08-08T04:37:43Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T04:38:43Z STALL #454 heartbeat age=29145s phase=polish event=resume requested 2026-08-08T04:37:43Z
+2026-08-08T04:38:43Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T04:39:43Z STALL #455 heartbeat age=29205s phase=polish event=resume requested 2026-08-08T04:38:43Z
+2026-08-08T04:39:43Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T04:40:44Z STALL #456 heartbeat age=29265s phase=polish event=resume requested 2026-08-08T04:39:43Z
+2026-08-08T04:40:44Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T04:41:44Z STALL #457 heartbeat age=29326s phase=polish event=resume requested 2026-08-08T04:40:44Z
+2026-08-08T04:41:44Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T04:42:44Z STALL #458 heartbeat age=29386s phase=polish event=resume requested 2026-08-08T04:41:44Z
+2026-08-08T04:42:44Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T04:43:45Z STALL #459 heartbeat age=29446s phase=polish event=resume requested 2026-08-08T04:42:44Z
+2026-08-08T04:43:45Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T04:44:45Z STALL #460 heartbeat age=29507s phase=polish event=resume requested 2026-08-08T04:43:45Z
+2026-08-08T04:44:45Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T04:45:45Z STALL #461 heartbeat age=29567s phase=polish event=resume requested 2026-08-08T04:44:45Z
+2026-08-08T04:45:45Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T04:46:46Z STALL #462 heartbeat age=29627s phase=polish event=resume requested 2026-08-08T04:45:45Z
+2026-08-08T04:46:46Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T04:47:46Z STALL #463 heartbeat age=29688s phase=polish event=resume requested 2026-08-08T04:46:46Z
+2026-08-08T04:47:46Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T04:48:46Z STALL #464 heartbeat age=29748s phase=polish event=resume requested 2026-08-08T04:47:46Z
+2026-08-08T04:48:46Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T04:49:47Z STALL #465 heartbeat age=29808s phase=polish event=resume requested 2026-08-08T04:48:46Z
+2026-08-08T04:49:47Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T04:50:47Z STALL #466 heartbeat age=29869s phase=polish event=resume requested 2026-08-08T04:49:47Z
+2026-08-08T04:50:47Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T04:51:47Z STALL #467 heartbeat age=29929s phase=polish event=resume requested 2026-08-08T04:50:47Z
+2026-08-08T04:51:47Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T04:52:48Z STALL #468 heartbeat age=29989s phase=polish event=resume requested 2026-08-08T04:51:47Z
+2026-08-08T04:52:48Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T04:53:48Z STALL #469 heartbeat age=30050s phase=polish event=resume requested 2026-08-08T04:52:48Z
+2026-08-08T04:53:48Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T04:54:48Z STALL #470 heartbeat age=30110s phase=polish event=resume requested 2026-08-08T04:53:48Z
+2026-08-08T04:54:49Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T04:55:49Z STALL #471 heartbeat age=30171s phase=polish event=resume requested 2026-08-08T04:54:48Z
+2026-08-08T04:55:49Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T04:56:49Z STALL #472 heartbeat age=30231s phase=polish event=resume requested 2026-08-08T04:55:49Z
+2026-08-08T04:56:49Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T04:57:49Z STALL #473 heartbeat age=30291s phase=polish event=resume requested 2026-08-08T04:56:49Z
+2026-08-08T04:57:50Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T04:58:50Z STALL #474 heartbeat age=30352s phase=polish event=resume requested 2026-08-08T04:57:49Z
+2026-08-08T04:58:50Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T04:59:50Z STALL #475 heartbeat age=30412s phase=polish event=resume requested 2026-08-08T04:58:50Z
+2026-08-08T04:59:50Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T05:00:51Z STALL #476 heartbeat age=30472s phase=polish event=resume requested 2026-08-08T04:59:50Z
+2026-08-08T05:00:51Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T05:01:51Z STALL #477 heartbeat age=30533s phase=polish event=resume requested 2026-08-08T05:00:51Z
+2026-08-08T05:01:51Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T05:02:51Z STALL #478 heartbeat age=30593s phase=polish event=resume requested 2026-08-08T05:01:51Z
+2026-08-08T05:02:51Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T05:03:52Z STALL #479 heartbeat age=30653s phase=polish event=resume requested 2026-08-08T05:02:51Z
+2026-08-08T05:03:52Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T05:04:52Z STALL #480 heartbeat age=30714s phase=polish event=resume requested 2026-08-08T05:03:52Z
+2026-08-08T05:04:52Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T05:05:52Z STALL #481 heartbeat age=30774s phase=polish event=resume requested 2026-08-08T05:04:52Z
+2026-08-08T05:05:52Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T05:06:53Z STALL #482 heartbeat age=30834s phase=polish event=resume requested 2026-08-08T05:05:52Z
+2026-08-08T05:06:53Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T05:07:53Z STALL #483 heartbeat age=30895s phase=polish event=resume requested 2026-08-08T05:06:53Z
+2026-08-08T05:07:53Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T05:08:53Z STALL #484 heartbeat age=30955s phase=polish event=resume requested 2026-08-08T05:07:53Z
+2026-08-08T05:08:53Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T05:09:54Z STALL #485 heartbeat age=31015s phase=polish event=resume requested 2026-08-08T05:08:53Z
+2026-08-08T05:09:54Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T05:10:54Z STALL #486 heartbeat age=31076s phase=polish event=resume requested 2026-08-08T05:09:54Z
+2026-08-08T05:10:54Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T05:11:54Z STALL #487 heartbeat age=31136s phase=polish event=resume requested 2026-08-08T05:10:54Z
+2026-08-08T05:11:54Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T05:12:55Z STALL #488 heartbeat age=31196s phase=polish event=resume requested 2026-08-08T05:11:54Z
+2026-08-08T05:12:55Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T05:13:55Z STALL #489 heartbeat age=31257s phase=polish event=resume requested 2026-08-08T05:12:55Z
+2026-08-08T05:13:55Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T05:14:55Z STALL #490 heartbeat age=31317s phase=polish event=resume requested 2026-08-08T05:13:55Z
+2026-08-08T05:14:55Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T05:15:56Z STALL #491 heartbeat age=31377s phase=polish event=resume requested 2026-08-08T05:14:55Z
+2026-08-08T05:15:56Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T05:16:56Z STALL #492 heartbeat age=31438s phase=polish event=resume requested 2026-08-08T05:15:56Z
+2026-08-08T05:16:56Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T05:17:56Z STALL #493 heartbeat age=31498s phase=polish event=resume requested 2026-08-08T05:16:56Z
+2026-08-08T05:17:56Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T05:18:57Z STALL #494 heartbeat age=31558s phase=polish event=resume requested 2026-08-08T05:17:56Z
+2026-08-08T05:18:57Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T05:19:57Z STALL #495 heartbeat age=31619s phase=polish event=resume requested 2026-08-08T05:18:57Z
+2026-08-08T05:19:57Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T05:20:57Z STALL #496 heartbeat age=31679s phase=polish event=resume requested 2026-08-08T05:19:57Z
+2026-08-08T05:20:57Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T05:21:58Z STALL #497 heartbeat age=31739s phase=polish event=resume requested 2026-08-08T05:20:57Z
+2026-08-08T05:21:58Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T05:22:58Z STALL #498 heartbeat age=31800s phase=polish event=resume requested 2026-08-08T05:21:58Z
+2026-08-08T05:22:58Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T05:23:58Z STALL #499 heartbeat age=31860s phase=polish event=resume requested 2026-08-08T05:22:58Z
+2026-08-08T05:23:58Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T05:24:59Z STALL #500 heartbeat age=31920s phase=polish event=resume requested 2026-08-08T05:23:58Z
+2026-08-08T05:24:59Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T05:25:59Z STALL #501 heartbeat age=31981s phase=polish event=resume requested 2026-08-08T05:24:59Z
+2026-08-08T05:25:59Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T05:26:59Z STALL #502 heartbeat age=32041s phase=polish event=resume requested 2026-08-08T05:25:59Z
+2026-08-08T05:26:59Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T05:28:00Z STALL #503 heartbeat age=32101s phase=polish event=resume requested 2026-08-08T05:26:59Z
+2026-08-08T05:28:00Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T05:29:00Z STALL #504 heartbeat age=32162s phase=polish event=resume requested 2026-08-08T05:28:00Z
+2026-08-08T05:29:00Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T05:30:00Z STALL #505 heartbeat age=32222s phase=polish event=resume requested 2026-08-08T05:29:00Z
+2026-08-08T05:30:00Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T05:31:01Z STALL #506 heartbeat age=32282s phase=polish event=resume requested 2026-08-08T05:30:00Z
+2026-08-08T05:31:01Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T05:32:01Z STALL #507 heartbeat age=32343s phase=polish event=resume requested 2026-08-08T05:31:01Z
+2026-08-08T05:32:01Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T05:33:01Z STALL #508 heartbeat age=32403s phase=polish event=resume requested 2026-08-08T05:32:01Z
+2026-08-08T05:33:02Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T05:34:02Z STALL #509 heartbeat age=32464s phase=polish event=resume requested 2026-08-08T05:33:01Z
+2026-08-08T05:34:02Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T05:35:02Z STALL #510 heartbeat age=32524s phase=polish event=resume requested 2026-08-08T05:34:02Z
+2026-08-08T05:35:02Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T05:36:03Z STALL #511 heartbeat age=32584s phase=polish event=resume requested 2026-08-08T05:35:02Z
+2026-08-08T05:36:03Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T05:37:03Z STALL #512 heartbeat age=32645s phase=polish event=resume requested 2026-08-08T05:36:03Z
+2026-08-08T05:37:03Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T05:38:03Z STALL #513 heartbeat age=32705s phase=polish event=resume requested 2026-08-08T05:37:03Z
+2026-08-08T05:38:03Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T05:39:04Z STALL #514 heartbeat age=32766s phase=polish event=resume requested 2026-08-08T05:38:03Z
+2026-08-08T05:39:04Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T05:40:04Z STALL #515 heartbeat age=32826s phase=polish event=resume requested 2026-08-08T05:39:04Z
+2026-08-08T05:40:04Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T05:41:04Z STALL #516 heartbeat age=32886s phase=polish event=resume requested 2026-08-08T05:40:04Z
+2026-08-08T05:41:05Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T05:42:05Z STALL #517 heartbeat age=32947s phase=polish event=resume requested 2026-08-08T05:41:04Z
+2026-08-08T05:42:05Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T05:43:05Z STALL #518 heartbeat age=33007s phase=polish event=resume requested 2026-08-08T05:42:05Z
+2026-08-08T05:43:05Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T05:44:05Z STALL #519 heartbeat age=33067s phase=polish event=resume requested 2026-08-08T05:43:05Z
+2026-08-08T05:44:06Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T05:45:06Z STALL #520 heartbeat age=33128s phase=polish event=resume requested 2026-08-08T05:44:06Z
+2026-08-08T05:45:06Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T05:46:06Z STALL #521 heartbeat age=33188s phase=polish event=resume requested 2026-08-08T05:45:06Z
+2026-08-08T05:46:06Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T05:47:07Z STALL #522 heartbeat age=33248s phase=polish event=resume requested 2026-08-08T05:46:06Z
+2026-08-08T05:47:07Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T05:48:07Z STALL #523 heartbeat age=33309s phase=polish event=resume requested 2026-08-08T05:47:07Z
+2026-08-08T05:48:07Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T05:49:07Z STALL #524 heartbeat age=33369s phase=polish event=resume requested 2026-08-08T05:48:07Z
+2026-08-08T05:49:07Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T05:50:08Z STALL #525 heartbeat age=33429s phase=polish event=resume requested 2026-08-08T05:49:07Z
+2026-08-08T05:50:08Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T05:51:08Z STALL #526 heartbeat age=33490s phase=polish event=resume requested 2026-08-08T05:50:08Z
+2026-08-08T05:51:08Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T05:52:08Z STALL #527 heartbeat age=33550s phase=polish event=resume requested 2026-08-08T05:51:08Z
+2026-08-08T05:52:08Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T05:53:09Z STALL #528 heartbeat age=33610s phase=polish event=resume requested 2026-08-08T05:52:08Z
+2026-08-08T05:53:09Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T05:54:09Z STALL #529 heartbeat age=33671s phase=polish event=resume requested 2026-08-08T05:53:09Z
+2026-08-08T05:54:09Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T05:55:09Z STALL #530 heartbeat age=33731s phase=polish event=resume requested 2026-08-08T05:54:09Z
+2026-08-08T05:55:09Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T05:56:10Z STALL #531 heartbeat age=33791s phase=polish event=resume requested 2026-08-08T05:55:09Z
+2026-08-08T05:56:10Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T05:57:10Z STALL #532 heartbeat age=33852s phase=polish event=resume requested 2026-08-08T05:56:10Z
+2026-08-08T05:57:10Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T05:58:10Z STALL #533 heartbeat age=33912s phase=polish event=resume requested 2026-08-08T05:57:10Z
+2026-08-08T05:58:10Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T05:59:11Z STALL #534 heartbeat age=33972s phase=polish event=resume requested 2026-08-08T05:58:10Z
+2026-08-08T05:59:11Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T06:00:11Z STALL #535 heartbeat age=34033s phase=polish event=resume requested 2026-08-08T05:59:11Z
+2026-08-08T06:00:11Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T06:01:11Z STALL #536 heartbeat age=34093s phase=polish event=resume requested 2026-08-08T06:00:11Z
+2026-08-08T06:01:12Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T06:02:12Z STALL #537 heartbeat age=34154s phase=polish event=resume requested 2026-08-08T06:01:12Z
+2026-08-08T06:02:12Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T06:03:12Z STALL #538 heartbeat age=34214s phase=polish event=resume requested 2026-08-08T06:02:12Z
+2026-08-08T06:03:12Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T06:04:12Z STALL #539 heartbeat age=34274s phase=polish event=resume requested 2026-08-08T06:03:12Z
+2026-08-08T06:04:13Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T06:05:13Z STALL #540 heartbeat age=34335s phase=polish event=resume requested 2026-08-08T06:04:13Z
+2026-08-08T06:05:13Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T06:06:13Z STALL #541 heartbeat age=34395s phase=polish event=resume requested 2026-08-08T06:05:13Z
+2026-08-08T06:06:13Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T06:07:14Z STALL #542 heartbeat age=34455s phase=polish event=resume requested 2026-08-08T06:06:13Z
+2026-08-08T06:07:14Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T06:08:14Z STALL #543 heartbeat age=34516s phase=polish event=resume requested 2026-08-08T06:07:14Z
+2026-08-08T06:08:14Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T06:09:14Z STALL #544 heartbeat age=34576s phase=polish event=resume requested 2026-08-08T06:08:14Z
+2026-08-08T06:09:14Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T06:10:15Z STALL #545 heartbeat age=34636s phase=polish event=resume requested 2026-08-08T06:09:14Z
+2026-08-08T06:10:15Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T06:11:15Z STALL #546 heartbeat age=34697s phase=polish event=resume requested 2026-08-08T06:10:15Z
+2026-08-08T06:11:15Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T06:12:15Z STALL #547 heartbeat age=34757s phase=polish event=resume requested 2026-08-08T06:11:15Z
+2026-08-08T06:12:15Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T06:13:16Z STALL #548 heartbeat age=34817s phase=polish event=resume requested 2026-08-08T06:12:15Z
+2026-08-08T06:13:16Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T06:14:16Z STALL #549 heartbeat age=34878s phase=polish event=resume requested 2026-08-08T06:13:16Z
+2026-08-08T06:14:16Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T06:15:16Z STALL #550 heartbeat age=34938s phase=polish event=resume requested 2026-08-08T06:14:16Z
+2026-08-08T06:15:16Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T06:16:17Z STALL #551 heartbeat age=34998s phase=polish event=resume requested 2026-08-08T06:15:16Z
+2026-08-08T06:16:17Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T06:17:17Z STALL #552 heartbeat age=35059s phase=polish event=resume requested 2026-08-08T06:16:17Z
+2026-08-08T06:17:17Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T06:18:17Z STALL #553 heartbeat age=35119s phase=polish event=resume requested 2026-08-08T06:17:17Z
+2026-08-08T06:18:17Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T06:19:18Z STALL #554 heartbeat age=35179s phase=polish event=resume requested 2026-08-08T06:18:17Z
+2026-08-08T06:19:18Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T06:20:18Z STALL #555 heartbeat age=35240s phase=polish event=resume requested 2026-08-08T06:19:18Z
+2026-08-08T06:20:18Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T06:21:18Z STALL #556 heartbeat age=35300s phase=polish event=resume requested 2026-08-08T06:20:18Z
+2026-08-08T06:21:18Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T06:22:19Z STALL #557 heartbeat age=35360s phase=polish event=resume requested 2026-08-08T06:21:18Z
+2026-08-08T06:22:19Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T06:23:19Z STALL #558 heartbeat age=35421s phase=polish event=resume requested 2026-08-08T06:22:19Z
+2026-08-08T06:23:19Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T06:24:19Z STALL #559 heartbeat age=35481s phase=polish event=resume requested 2026-08-08T06:23:19Z
+2026-08-08T06:24:19Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T06:25:20Z STALL #560 heartbeat age=35541s phase=polish event=resume requested 2026-08-08T06:24:19Z
+2026-08-08T06:25:20Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T06:26:20Z STALL #561 heartbeat age=35602s phase=polish event=resume requested 2026-08-08T06:25:20Z
+2026-08-08T06:26:20Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T06:27:20Z BUDGET EXHAUSTED — writing final report
+2026-08-08T06:27:20Z SUPERVISOR EXIT at budget

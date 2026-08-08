@@ -30,6 +30,14 @@ html, body { margin: 0; padding: 0; background: var(--bg); color: var(--fg);
 
 /* atlas */
 #atlas-wrap { padding: 12px 18px 40px; }
+#atlas-hero { max-width: 760px; margin: 18px auto 22px; text-align: center; }
+#atlas-hero h1 { font-size: 30px; margin: 0 0 10px; letter-spacing: -0.5px; }
+#atlas-hero p { color: var(--dim); font-size: 15px; line-height: 1.5; margin: 0 auto 16px; max-width: 640px; }
+#cta-greatest {
+  background: var(--accent); color: #0b0d10; border: none; border-radius: 10px;
+  padding: 12px 20px; font-size: 15px; font-weight: 700; cursor: pointer;
+}
+#cta-greatest:hover { filter: brightness(1.12); }
 #atlas-scroll { overflow-y: auto; }
 .season-row { display: flex; align-items: center; gap: 10px; height: 44px;
   border-bottom: 1px solid #151a21; cursor: pointer; }

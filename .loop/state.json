@@ -1,15 +1,15 @@
 {
   "project": "every-game-ever",
-  "worker": "live",
+  "worker": "headless",
   "phase": "polish",
   "iteration": 3,
   "heartbeat_ts": null,
-  "stall_count": 0,
-  "resume_spawns": 5,
+  "stall_count": 561,
+  "resume_spawns": 25,
   "budget_hours": 24.0,
   "started_at": 1786083996.613266,
   "budget_end_at": 1786170396.613266,
-  "mid_report_written": false,
+  "mid_report_written": true,
   "final_report_written": false,
   "phases": {
     "P1": {
@@ -33,5 +33,5 @@
       "note2": "v0.1.0 release + GitHub Pages live"
     }
   },
-  "last_event": "cadence: pace math fixed (dt/scale), OT permalinks verified live (175-174 OT2 1:21), mobile replay ok"
+  "last_event": "resume requested 2026-08-08T06:26:20Z"
 }

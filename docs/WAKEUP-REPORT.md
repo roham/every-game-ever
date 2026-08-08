@@ -1,9 +1,9 @@
-# Every Game Ever — MID LOOP REPORT (autonomous)
+# Every Game Ever — FINAL LOOP REPORT (autonomous)
 
-- Generated: 2026-08-07 09:16:02 UTC
+- Generated: 2026-08-08 06:27:20 UTC
 - Started: 2026-08-07 06:26:36 UTC
 - Budget: 24.0h — ends 2026-08-08 06:26:36 UTC
-- Phase: polish · Worker: headless · Resume spawns: 5
+- Phase: polish · Worker: headless · Resume spawns: 25
 
 ## Phase status
 - **P1** (dataset pipeline): complete — 45,263 games / 60 seasons
@@ -13,66 +13,92 @@
 
 ## Recent commits
 ```
-ee40853 [EGE-LOOP] content cycle 2: GREATEST-2022-23 (12 verified games w/ live links), STORIES corrected (175-176 = SAC-LAC 2OT), README links
-59fa280 [EGE-LOOP] polish: abbr derivation (Team-*, t_-unnamed) + release v0.1.2
-b651f20 [EGE-LOOP] polish: release v0.1.1; Pages workflow tracks latest release
-ab6a81c [EGE-LOOP] polish: wp sanity at true Q4 10:00 (elapsed 2280)
-cf90f64 [EGE-LOOP] polish: wp sanity elapsed-time semantics (Q4 10:00 = sec 3000)
-f7d8f65 [EGE-LOOP] polish: check() pd.isna for null-scored games
-fe6adea [EGE-LOOP] polish: home-only arena bridge → MEM 152-79 OKL verified on board; 21/30 t_nba named; stories updated
-b0d9a4e [EGE-LOOP] polish: NaN-proof tmap → t_nba boards resolve to real names (MEM 152-79 OKC 2021-12-02 verified)
-aeaaf25 [EGE-LOOP] polish: arena cross-ref names for t_nba ids (boards + atlas tooltips), CONTRIBUTING, display_name pipeline
-2265158 [EGE-LOOP] polish: og meta + og image; live end-of-game verified (117-104 Q4 0:28)
-32c1c69 [EGE-LOOP] polish: STORIES.md (record-mined), state update
-50f919e [EGE-LOOP] polish: recover truncated 2022-23 game ends (in()-refetch, 107K→175K events), flow_complete flag + honest null finals for 73 source-incomplete games; era 229.6 avg verified
-d7c24b5 [EGE-LOOP] P4: fix P() subpath resolution for GitHub Pages (deep-link data paths)
-e93ca4a [EGE-LOOP] P4: Pages workflow (ci downloads release bundle → builds atlas → deploy)
-df2566c [EGE-LOOP] P4: final README/schema/duckdb-queries/docs + release bundle v0.1.0
+3e15cbb [EGE-LOOP] cadence: GREATEST links point at the winning moments (OT2/0); pace fix verified live
+1c4b7f7 [EGE-LOOP] fix: playhead increment dt/scale (was 65x fast — game sprinted in ~0.7s)
+342286f [EGE-LOOP] fix: hash-tick seeks active replay (no rebuild storm); 400ms throttle
+fa01133 [EGE-LOOP] fix: 45s replay scale uses last sane event (was 2.3x fast)
+337814f [EGE-LOOP] docs: WAKEUP.md 30-second tour; loop in cadence
+36e152e [EGE-LOOP] polish: play-label reset on rebuild; GREATEST link fix; wp spot-check round
+2a67a3d [EGE-LOOP] polish: FUTURE roadmap; report embeds it; stakes screenshot
+562086a [EGE-LOOP] fix: stakes caption shows both sides' percentages correctly
+fa5f3a7 [EGE-LOOP] fix: redraw when wp data lands (stakes appears without interaction)
+43d765b [EGE-LOOP] fix: version parquet URLs (browser cache staleness between releases)
+5f71c15 [EGE-LOOP] fix: client wpAt applies 3-point margin windows (stakes caption live)
+77a5d00 [EGE-LOOP] polish: wp 3-pt windows + neighbor smoothing + v0.1.4 + schema doc
+211db4e [EGE-LOOP] content cycle 3: ERAS timeline doc; repo description/topics
+62cca70 [EGE-LOOP] polish: boards filter at post-merge stage; v0.1.3 rebuilt
+f6928af [EGE-LOOP] polish: precedents boards only claimed-final games + release v0.1.3
 ```
 
 ## Loop log (tail 40)
 ```
-2026-08-07T06:28:53Z supervisor live (pid detached, budget 24h)
-2026-08-07T06:39:49Z STALL #1 heartbeat age=656s phase=P1 event=state initialized
-2026-08-07T06:40:50Z STALL #2 heartbeat age=716s phase=P1 event=state initialized
-2026-08-07T06:41:50Z STALL #3 heartbeat age=777s phase=P1 event=state initialized
-2026-08-07T06:41:50Z RESUME spawn #0
-2026-08-07T06:41:50Z RESUME finished rc=127
-2026-08-07T06:46:04Z ege.py committed; 2-season acceptance build running in bg
-2026-08-07T07:05:58Z STALL #1 heartbeat age=654s phase=P1 event=resume requested 2026-08-07T06:41:50Z
-2026-08-07T07:06:58Z STALL #2 heartbeat age=714s phase=P1 event=resume requested 2026-08-07T06:41:50Z
-2026-08-07T07:07:59Z STALL #3 heartbeat age=774s phase=P1 event=resume requested 2026-08-07T06:41:50Z
-2026-08-07T07:07:59Z RESUME spawn #1
-2026-08-07T07:07:59Z RESUME finished rc=127
-2026-08-07T07:36:08Z STALL #1 heartbeat age=614s phase=P1 event=resume requested 2026-08-07T07:07:59Z
-2026-08-07T07:37:08Z STALL #2 heartbeat age=674s phase=P1 event=resume requested 2026-08-07T07:07:59Z
-2026-08-07T07:38:09Z STALL #3 heartbeat age=734s phase=P1 event=resume requested 2026-08-07T07:07:59Z
-2026-08-07T07:38:09Z RESUME spawn #2
-2026-08-07T07:38:09Z RESUME finished rc=127
-2026-08-07T07:48:12Z STALL #1 heartbeat age=603s phase=P1 event=resume requested 2026-08-07T07:38:09Z
-2026-08-07T07:49:13Z STALL #2 heartbeat age=663s phase=P1 event=resume requested 2026-08-07T07:38:09Z
-2026-08-07T07:50:13Z STALL #3 heartbeat age=724s phase=P1 event=resume requested 2026-08-07T07:38:09Z
-2026-08-07T07:50:13Z RESUME spawn #3
-2026-08-07T07:50:13Z RESUME finished rc=127
-2026-08-07T08:02:17Z STALL #1 heartbeat age=639s phase=P1 event=resume requested 2026-08-07T07:50:13Z
-2026-08-07T08:03:17Z STALL #2 heartbeat age=699s phase=P1 event=resume requested 2026-08-07T07:50:13Z
-2026-08-07T08:04:18Z STALL #3 heartbeat age=759s phase=P1 event=resume requested 2026-08-07T07:50:13Z
-2026-08-07T08:04:18Z RESUME spawn #4
-2026-08-07T08:04:18Z RESUME finished rc=127
-2026-08-07T08:07:38Z P1 build rerun (keyset rescue) async; web P3 scaffold committed
-2026-08-07T08:18:30Z P1+P2 verified: 45,263 games, 1,224 replay games, wp 6,473 buckets, precedents 100 rows
-2026-08-07T08:47:10Z P3 verified visually: replay MIL-PHI 2023-04-03 Q2 5:44, stakes overlay, permalinks tick; committed
-2026-08-07T08:47:59Z P4 docs + release bundle v0.1.0 done
-2026-08-07T08:52:27Z P4: live site verified (atlas), replay path fixed for Pages subpath
-2026-08-07T08:59:47Z polish pass 1: completion recovery + integrity flags; 2022-23 avg 229.6 verified (flagship game ends 117-104 Q4 0:28)
-2026-08-07T09:00:14Z polish iteration 1 complete
-2026-08-07T09:01:57Z polish iter: og tags; live deep-link to true final verified
-2026-08-07T09:05:31Z polish: display names via arena cross-ref; CONTRIBUTING
-2026-08-07T09:06:53Z polish: NaN-proof tmap; blowout board now names teams
-2026-08-07T09:09:48Z QA sweep: check+license+tsc green post polish
-2026-08-07T09:12:15Z v0.1.1 released (1.2M); Pages now tracks latest
-2026-08-07T09:15:44Z content cycle 2: 12-game listicle w/ live replay links; STORIES fact-corrected
+2026-08-08T06:07:14Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T06:08:14Z STALL #543 heartbeat age=34516s phase=polish event=resume requested 2026-08-08T06:07:14Z
+2026-08-08T06:08:14Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T06:09:14Z STALL #544 heartbeat age=34576s phase=polish event=resume requested 2026-08-08T06:08:14Z
+2026-08-08T06:09:14Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T06:10:15Z STALL #545 heartbeat age=34636s phase=polish event=resume requested 2026-08-08T06:09:14Z
+2026-08-08T06:10:15Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T06:11:15Z STALL #546 heartbeat age=34697s phase=polish event=resume requested 2026-08-08T06:10:15Z
+2026-08-08T06:11:15Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T06:12:15Z STALL #547 heartbeat age=34757s phase=polish event=resume requested 2026-08-08T06:11:15Z
+2026-08-08T06:12:15Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T06:13:16Z STALL #548 heartbeat age=34817s phase=polish event=resume requested 2026-08-08T06:12:15Z
+2026-08-08T06:13:16Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T06:14:16Z STALL #549 heartbeat age=34878s phase=polish event=resume requested 2026-08-08T06:13:16Z
+2026-08-08T06:14:16Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T06:15:16Z STALL #550 heartbeat age=34938s phase=polish event=resume requested 2026-08-08T06:14:16Z
+2026-08-08T06:15:16Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T06:16:17Z STALL #551 heartbeat age=34998s phase=polish event=resume requested 2026-08-08T06:15:16Z
+2026-08-08T06:16:17Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T06:17:17Z STALL #552 heartbeat age=35059s phase=polish event=resume requested 2026-08-08T06:16:17Z
+2026-08-08T06:17:17Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T06:18:17Z STALL #553 heartbeat age=35119s phase=polish event=resume requested 2026-08-08T06:17:17Z
+2026-08-08T06:18:17Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T06:19:18Z STALL #554 heartbeat age=35179s phase=polish event=resume requested 2026-08-08T06:18:17Z
+2026-08-08T06:19:18Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T06:20:18Z STALL #555 heartbeat age=35240s phase=polish event=resume requested 2026-08-08T06:19:18Z
+2026-08-08T06:20:18Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T06:21:18Z STALL #556 heartbeat age=35300s phase=polish event=resume requested 2026-08-08T06:20:18Z
+2026-08-08T06:21:18Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T06:22:19Z STALL #557 heartbeat age=35360s phase=polish event=resume requested 2026-08-08T06:21:18Z
+2026-08-08T06:22:19Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T06:23:19Z STALL #558 heartbeat age=35421s phase=polish event=resume requested 2026-08-08T06:22:19Z
+2026-08-08T06:23:19Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T06:24:19Z STALL #559 heartbeat age=35481s phase=polish event=resume requested 2026-08-08T06:23:19Z
+2026-08-08T06:24:19Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T06:25:20Z STALL #560 heartbeat age=35541s phase=polish event=resume requested 2026-08-08T06:24:19Z
+2026-08-08T06:25:20Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T06:26:20Z STALL #561 heartbeat age=35602s phase=polish event=resume requested 2026-08-08T06:25:20Z
+2026-08-08T06:26:20Z FATAL spawn cap reached — loop parked; final report at budget
+2026-08-08T06:27:20Z BUDGET EXHAUSTED — writing final report
 ```
+
+## Roadmap (docs/FUTURE.md)
+# Next moves (day-2+)
+
+What the loop recommends next, in value order, all inside the
+license boundary:
+
+1. **Quarter scores for all 59 seasons (balldontlie lane)** — the one
+   move that gives the pre-PBP era real shape in the Atlas (4-5 anchor
+   points per game instead of a flat final line). Requires the
+   BALLDONTLIE_API_KEY (Ralph-approved subscription) — not present on
+   this machine at build time; the lane is spec'd in the pipeline
+   conventions. This also unlocks "trailed entering the 4th and won"
+   for the ENTIRE record, not just the flow season.
+2. **Verified team-name map for the t_nba convention** — a static
+   30-row id→abbr table (public facts) to replace the arena-derived
+   partial (21/30) resolution.
+3. **OG share cards per iconic game** — the curated set (top-25 games
+   by flow/precedent) with unfurl-ready images; generic card covers
+   the rest.
+4. **Live scores** — turn the historical machine into a tonight
+   machine (new lane, requires a licensed live feed — balldontlie
+   again).
+5. **The search/constellation upgrade** — game-level player data lands
+   the day a PBP source with player ids (balldontlie PBP) is wired.
+6. **Site**: "Freshest" landing board, 
 
 ## Next actions for Roham
 - Read the README + open the deployed site (if any URL below).

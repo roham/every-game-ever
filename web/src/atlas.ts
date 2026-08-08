@@ -74,10 +74,29 @@ export function renderAtlas(
   const scroll = document.createElement("div");
   scroll.id = "atlas-scroll";
   const total = seasons.reduce((n, s) => n + s.games.length, 0);
+  if (!opts.glowGameIds) {
+    const hero = document.createElement("div");
+    hero.id = "atlas-hero";
+    const title = document.createElement("h1");
+    title.textContent = "Every NBA game since 1946 — replayable.";
+    const sub = document.createElement("p");
+    sub.textContent =
+      `${total.toLocaleString()} games, ${seasons.length} seasons. Every final, every lead swing, every record — and the one season with play-by-play, replayable moment by moment. Click any line, or start with the wildest game in the record.`;
+    const cta = document.createElement("button");
+    cta.id = "cta-greatest";
+    cta.textContent = "▶ Watch the wildest game ever: 175-176, 2OT, 36 lead changes";
+    cta.addEventListener("click", () => {
+      location.hash = "#/game/g_2022_hoopR_401469057";
+    });
+    hero.appendChild(title);
+    hero.appendChild(sub);
+    hero.appendChild(cta);
+    mount.appendChild(hero);
+  }
   const note = document.createElement("div");
   note.id = "constellation-note";
   note.textContent = opts.glowGameIds ? "" :
-    `Every game ever — ${total.toLocaleString()} games, ${seasons.length} seasons. Click any line.`;
+    `Gaps in the grid are eras the source record lacks (1996-2013, 2023-24/24-25). Flat lines = no play-by-play survives — the final is the truth.`;
   mount.appendChild(note);
 
   for (const s of seasons) {
