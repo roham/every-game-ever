@@ -3,7 +3,7 @@
 - Generated: 2026-08-08 06:27:20 UTC
 - Started: 2026-08-07 06:26:36 UTC
 - Budget: 24.0h — ends 2026-08-08 06:26:36 UTC
-- Phase: polish · Worker: headless · Resume spawns: 25
+- Phase: polish · Worker: live (completed) · Resume spawns: 25 (stall-window artifact, no foreign commits)
 
 ## Phase status
 - **P1** (dataset pipeline): complete — 45,263 games / 60 seasons

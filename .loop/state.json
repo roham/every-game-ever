@@ -1,6 +1,6 @@
 {
   "project": "every-game-ever",
-  "worker": "headless",
+  "worker": "live (completed)",
   "phase": "polish",
   "iteration": 3,
   "heartbeat_ts": null,
@@ -10,7 +10,7 @@
   "started_at": 1786083996.613266,
   "budget_end_at": 1786170396.613266,
   "mid_report_written": true,
-  "final_report_written": false,
+  "final_report_written": true,
   "phases": {
     "P1": {
       "status": "complete",
@@ -20,7 +20,7 @@
     "P2": {
       "status": "complete",
       "note": "win-probability + precedents",
-      "note2": "wp 7,197 buckets; precedents 4 boards"
+      "note2": "wp 2,588 buckets (3-pt windows + neighbor smoothing); precedents 4 boards"
     },
     "P3": {
       "status": "complete",
