@@ -77,6 +77,7 @@ export class Replay {
   frame: HTMLElement;
   opts: ReplayOptions;
   playing = false;
+  faults = 0;
   private t = 0;             // playhead (game seconds)
   private raf = 0;
   private lastTs = 0;
@@ -108,7 +109,13 @@ export class Replay {
       const dt = ts - this.lastTs;
       this.lastTs = ts;
       this.t += dt / this.scale;            // scale = real ms per game-second
-      this.draw();
+      try {
+        this.draw();
+      } catch (e) {
+        // a frame error must never kill playback or the page
+        this.faults = (this.faults ?? 0) + 1;
+        if (this.faults === 1) console.warn("replay frame fault:", e);
+      }
       this.raf = requestAnimationFrame(loop);
     };
     this.raf = requestAnimationFrame(loop);

@@ -104,7 +104,8 @@ export function renderAtlas(
     row.className = "season-row";
     const label = document.createElement("div");
     label.className = "season-label";
-    label.textContent = s.season.replace(/^(NBA|BAA|ABA)_/, "");
+    label.textContent =
+      s.season.replace(/^(NBA|BAA|ABA)_/, "") + (s.season === "2022-23" ? " · replayable" : "");
     const cv = document.createElement("canvas");
     cv.className = "season-canvas";
     row.appendChild(label);
@@ -148,9 +149,11 @@ export function renderAtlas(
       if (!m.length) continue;
       const range = Math.max(30, ...m.map(Math.abs));
       const mid = h / 2;
-      ctx.lineWidth = 1;
+      const replaySeason = s.season === "2022-23";
+      ctx.lineWidth = replaySeason ? 1.3 : 1.1;
       const glow = opts.glowGameIds?.has(g.id);
-      ctx.strokeStyle = glow ? "rgba(216,243,78,0.85)" : "rgba(128,136,150,0.55)";
+      ctx.strokeStyle = glow ? "rgba(216,243,78,0.9)"
+        : replaySeason ? "rgba(255,106,61,0.8)" : "rgba(150,158,172,0.8)";
       ctx.beginPath();
       const x0 = i * per + per / 2;
       const xstep = per / (m.length - 1 || 1);

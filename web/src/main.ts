@@ -151,7 +151,11 @@ async function viewGame(gameId: string, seek?: { period: number; clock: number }
           if (now - lastHashWrite > 400) {
             lastHashWrite = now;
             const next = `#/game/${escapeId(gameId)}/Q${period}/${clock}`;
-            if (location.hash !== next) location.hash = next;
+            if (location.hash !== next) {
+              // replaceState: update the URL without firing hashchange, so
+              // playback never re-enters the router (the seek-loop class)
+              history.replaceState(null, "", next);
+            }
           }
         }
       },
